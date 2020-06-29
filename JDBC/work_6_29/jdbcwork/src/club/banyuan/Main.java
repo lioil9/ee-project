@@ -11,6 +11,7 @@ public class Main {
 //      String name = Register.register();
       String name = Login.login();
       ShoppingCart.searchProduct(name);
+      ShoppingCart.addOrder(name);
     } catch (SQLException e) {
       e.printStackTrace();
     }
