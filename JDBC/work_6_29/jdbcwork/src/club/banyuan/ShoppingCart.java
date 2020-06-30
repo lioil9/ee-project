@@ -4,8 +4,6 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
@@ -47,7 +45,7 @@ public class ShoppingCart {
         product.setId(rs.getInt(1));
         product.setName(rs.getString(2));
         product.setDescription(rs.getString(3));
-        product.setPrice(rs.getFloat(4));
+        product.setPrice(rs.getDouble(4));
         product.setStock(rs.getInt(5));
         product.setCategoryLevel1Id(rs.getInt(6));
         product.setCategoryLevel2Id(rs.getInt(7));
@@ -56,7 +54,7 @@ public class ShoppingCart {
         product.setIsDelete(rs.getInt(10));
         products.add(product);
       }
-      JdbcUtils.close(conn,pstmt);
+      JdbcUtils.close(conn,pstmt,rs);
     } catch (SQLException throwables) {
       throwables.printStackTrace();
     }
@@ -69,7 +67,7 @@ public class ShoppingCart {
     Date date = new Date();
     java.sql.Date transDate = new java.sql.Date(date.getTime());
     List<Product> products = userShopping.get(name);
-    float cost = 0;
+    double cost = 0;
     for (Product s : products) {
       cost += s.getPrice();
     }
@@ -84,7 +82,7 @@ public class ShoppingCart {
       pstmt.setString(2,rs.getString(2));
       pstmt.setString(3,rs.getString(3));
       pstmt.setDate(4, transDate);
-      pstmt.setFloat(5,cost);
+      pstmt.setDouble(5,cost);
       pstmt.executeUpdate();
     }
 
@@ -103,10 +101,10 @@ public class ShoppingCart {
     for (Product product : products) {
       pstmt = connection.prepareStatement(insertSql);
       pstmt.setInt(1,product.getId());
-      pstmt.setFloat(2,product.getPrice());
+      pstmt.setDouble(2,product.getPrice());
       pstmt.executeUpdate();
     }
-    JdbcUtils.close(connection,pstmt);
+    JdbcUtils.close(connection,pstmt,rs);
 
   }
 }

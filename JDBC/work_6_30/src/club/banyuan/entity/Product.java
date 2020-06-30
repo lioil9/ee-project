@@ -1,16 +1,16 @@
-package club.banyuan;
+package club.banyuan.entity;
 
 public class Product {
-  private int id;
+  private Integer id;
   private String name;
   private String description;
-  private double price;
-  private int stock;
-  private int categoryLevel1Id;
-  private int categoryLevel2Id;
-  private int categoryLevel3Id;
+  private Double price;
+  private Integer stock;
+  private Integer categoryLevel1Id;
+  private Integer categoryLevel2Id;
+  private Integer categoryLevel3Id;
   private String fileName;
-  private int isDelete;
+  private Integer isDelete;
 
   @Override
   public String toString() {
@@ -28,11 +28,11 @@ public class Product {
         '}';
   }
 
-  public int getId() {
+  public Integer getId() {
     return id;
   }
 
-  public void setId(int id) {
+  public void setId(Integer id) {
     this.id = id;
   }
 
@@ -52,43 +52,43 @@ public class Product {
     this.description = description;
   }
 
-  public double getPrice() {
+  public Double getPrice() {
     return price;
   }
 
-  public void setPrice(double price) {
+  public void setPrice(Double price) {
     this.price = price;
   }
 
-  public int getStock() {
+  public Integer getStock() {
     return stock;
   }
 
-  public void setStock(int stock) {
+  public void setStock(Integer stock) {
     this.stock = stock;
   }
 
-  public int getCategoryLevel1Id() {
+  public Integer getCategoryLevel1Id() {
     return categoryLevel1Id;
   }
 
-  public void setCategoryLevel1Id(int categoryLevel1Id) {
+  public void setCategoryLevel1Id(Integer categoryLevel1Id) {
     this.categoryLevel1Id = categoryLevel1Id;
   }
 
-  public int getCategoryLevel2Id() {
+  public Integer getCategoryLevel2Id() {
     return categoryLevel2Id;
   }
 
-  public void setCategoryLevel2Id(int categoryLevel2Id) {
+  public void setCategoryLevel2Id(Integer categoryLevel2Id) {
     this.categoryLevel2Id = categoryLevel2Id;
   }
 
-  public int getCategoryLevel3Id() {
+  public Integer getCategoryLevel3Id() {
     return categoryLevel3Id;
   }
 
-  public void setCategoryLevel3Id(int categoryLevel3Id) {
+  public void setCategoryLevel3Id(Integer categoryLevel3Id) {
     this.categoryLevel3Id = categoryLevel3Id;
   }
 
@@ -100,11 +100,11 @@ public class Product {
     this.fileName = fileName;
   }
 
-  public int getIsDelete() {
+  public Integer getIsDelete() {
     return isDelete;
   }
 
-  public void setIsDelete(int isDelete) {
+  public void setIsDelete(Integer isDelete) {
     this.isDelete = isDelete;
   }
 }
