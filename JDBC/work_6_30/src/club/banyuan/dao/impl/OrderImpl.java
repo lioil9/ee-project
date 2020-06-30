@@ -17,12 +17,11 @@ public class OrderImpl extends BaseDaoImpl implements IOrderDao {
   public int add(Order order) {
     Integer id = 0;
     String sql =
-        "insert into `order` ( id, userId, loginName, userAddress, createTime, cost, serialNumber)values (null,?,?,?,?,?,?)";
+        "insert into `order` ( id, userId, loginName, userAddress, createTime, cost, serialNumber)values (null,?,?,null,?,?,?)";
     Object[] parms =
         new Object[] {
           order.getUserId(),
           order.getLoginName(),
-          order.getUserAddress(),
           order.getCreateTime(),
           order.getCost(),
           order.getSerialNumber()

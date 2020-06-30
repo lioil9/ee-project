@@ -7,6 +7,16 @@ public class OrderDetail {
   private Integer quantity;
   private Double cost;
 
+
+  public OrderDetail(){}
+
+  public OrderDetail(Integer orderId, Integer productId, Integer quantity, Double cost) {
+    this.orderId = orderId;
+    this.productId = productId;
+    this.quantity = quantity;
+    this.cost = cost;
+  }
+
   public Integer getId() {
     return id;
   }

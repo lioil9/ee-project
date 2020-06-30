@@ -11,6 +11,17 @@ public class Order {
   private Double cost;
   private String serialNumber;
 
+  public Order(){}
+
+  public Order(Integer userId, String loginName,String createTime,
+      Double cost, String serialNumber) {
+    this.userId = userId;
+    this.loginName = loginName;
+    this.createTime = createTime;
+    this.cost = cost;
+    this.serialNumber = serialNumber;
+  }
+
   public Integer getId() {
     return id;
   }

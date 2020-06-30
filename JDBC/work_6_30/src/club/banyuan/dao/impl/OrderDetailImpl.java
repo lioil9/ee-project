@@ -1,6 +1,7 @@
 package club.banyuan.dao.impl;
 
 import club.banyuan.dao.IOrderDetailDao;
+import club.banyuan.entity.Order;
 import club.banyuan.entity.OrderDetail;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -36,11 +37,33 @@ public class OrderDetailImpl extends BaseDaoImpl implements IOrderDetailDao {
 
   @Override
   public void add(OrderDetail orderDetail) {
-
+    String sql =
+        "insert into `order_detail` ( id,orderId,productId,quantity,cost)values (null,?,?,?,?)";
+    Object[] parms =
+        new Object[] {
+            orderDetail.getOrderId(),
+            orderDetail.getProductId(),
+            orderDetail.getQuantity(),
+            orderDetail.getCost()
+        };
+    try {
+      orderDetail.setId(this.executeInsert(sql, parms));
+    } catch (Exception e) {
+      e.printStackTrace();
+    } finally {
+      this.closeResource();
+    }
   }
 
   @Override
   public OrderDetail tableToClass(ResultSet rs) throws Exception {
-    return null;
+    OrderDetail orderDetail = new OrderDetail();
+    orderDetail.setId(rs.getInt("id"));
+    orderDetail.setOrderId(rs.getInt("orderId"));
+    orderDetail.setProductId(rs.getInt("productId"));
+    orderDetail.setQuantity(rs.getInt("quantity"));
+    orderDetail.setCost((double) rs.getFloat("cost"));
+
+    return orderDetail;
   }
 }
