@@ -7,4 +7,10 @@
 !*.txt
 !*.code
 !*.properties
+!*.css
+!*.js
+!*.png
+!*.gif
+!*.jpg
+!*.jsp
 !.gitignore
