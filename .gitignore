@@ -6,4 +6,5 @@
 !*.html
 !*.txt
 !*.code
+!*.properties
 !.gitignore
