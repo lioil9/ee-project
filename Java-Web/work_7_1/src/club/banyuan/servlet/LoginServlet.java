@@ -7,6 +7,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -22,19 +24,25 @@ public class LoginServlet extends HttpServlet {
     String loginName = request.getParameter("loginName");
     String password = request.getParameter("password");
     User user = null;
+    if(loginName.isBlank()){
+      request.setAttribute("errorMsg","用户名不能为空");
+    }
     try {
       Connection connection = DataSourceUtil.openConnection();
       UserImpl userImpl = new UserImpl(connection);
 
       user = userImpl.getLoginUser(loginName,password);
-    } catch (SQLException throwables) {
-      throwables.printStackTrace();
+    } catch (SQLException e) {
+      e.printStackTrace();
     }
     response.setCharacterEncoding("UTF-8");
     response.setHeader("content-type", "text/html;charset=UTF-8");
     PrintWriter writer = response.getWriter();
     if(user != null){
-      writer.println("<script>alert('登陆成功');location.href='/index.html'</script>");
+//      writer.println("<script>alert('登陆成功');location.href='/index.jsp'</script>");
+//      request.setAttribute("LoginName",user.getLoginName());
+      request.setAttribute("user",user);
+      request.getRequestDispatcher("index.jsp").forward(request,response);
     } else {
       writer.println("<script>alert('登陆失败,请重新登陆');location.href='/Login.html'</script>");
     }

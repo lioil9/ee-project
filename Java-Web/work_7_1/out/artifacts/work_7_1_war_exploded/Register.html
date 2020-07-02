@@ -48,7 +48,7 @@
 <!--Begin Login Begin-->
 <div class="log_bg">	
     <div class="top">
-        <div class="logo"><a href="index.html"><img src="images/logo.png" /></a></div>
+        <div class="logo"><a href="index.jsp"><img src="images/logo.png" /></a></div>
     </div>
 	<div class="regist">
     	<div class="log_img"><img src="images/l_img.png" width="611" height="425" /></div>
@@ -64,7 +64,7 @@
               </tr>
               <tr height="50">
                 <td align="right"><font color="#ff4e00">*</font>&nbsp;用户名 &nbsp;</td>
-                <td><input type="text" name="loginName" value="" class="l_user" /></td>
+                <td><input type="text"  name="loginName" value="" class="l_user" /></td>
               </tr>
               <tr height="50">
                 <td align="right"><font color="#ff4e00">*</font>&nbsp;用户昵称 &nbsp;</td>
@@ -75,8 +75,12 @@
                 <td><input type="password" name="password" value="" class="l_pwd" /></td>
               </tr>
               <tr height="50">
+                <td align="right"><font color="#ff4e00">*</font>&nbsp;确认密码 &nbsp;</td>
+                <td><input type="password" name="confirmPassword" value="" class="l_pwd" /></td>
+              </tr>
+              <tr height="50">
                 <td align="right">性别 &nbsp;</td>
-                <td><input type="text" name="sex" value="" class="l_mem" /></td>
+                <td><input type="text" name="sex" value="2" class="l_mem" /></td>
               </tr>
               <tr height="50">
                 <td align="right"><font color="#ff4e00">*</font>&nbsp;邮箱 &nbsp;</td>
@@ -90,7 +94,7 @@
               	<td>&nbsp;</td>
                 <td style="font-size:12px; padding-top:20px;">
                 	<span style="font-family:'宋体';" class="fl">
-                    	<label class="r_rad"><input type="checkbox" /></label><label class="r_txt">我已阅读并接受《用户协议》</label>
+                    	<label class="r_rad"><input type="checkbox" name="isAgree" value="true"/></label><label class="r_txt">我已阅读并接受《用户协议》</label>
                     </span>
                 </td>
               </tr>
@@ -114,7 +118,7 @@
 <!--End Footer End -->    
 
 </body>
-
+<script></script>
 
 <!--[if IE 6]>
 <script src="//letskillie6.googlecode.com/svn/trunk/2/zh_CN.js"></script>
