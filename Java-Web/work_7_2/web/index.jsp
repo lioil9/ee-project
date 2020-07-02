@@ -1,5 +1,5 @@
 <%@ page import="club.banyuan.entity.User" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %><%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -179,7 +179,7 @@
     <div class="logo"><a href="index.jsp"><img src="images/logo.png"/></a></div>
     <div class="search">
         <form action="search.do">
-            <input type="text" id="searchName" value="" class="s_ipt"/>
+            <input type="text" name="searchName" value="" class="s_ipt"/>
             <input type="submit" value="搜索" class="s_btn"/>
         </form>
         <span class="fl"><a href="#">咖啡</a><a href="#">iphone 6S</a><a href="#">新鲜美食</a><a href="#">蛋糕</a><a

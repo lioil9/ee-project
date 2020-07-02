@@ -40,7 +40,7 @@ public class RegisterServlet extends HttpServlet {
         }
       }
       if (!request.getParameter("confirmPassword").equals(request.getParameter("password"))) {
-        writer.println("<script>alert('两次密码不一致，请重新输入');location.href='/Regist.html'</script>");
+        writer.println("<script>alert('两次密码不一致，请重新输入');location.href='Regist.html'</script>");
         return;
       }
       user.setLoginName(request.getParameter("loginName"));
@@ -51,7 +51,7 @@ public class RegisterServlet extends HttpServlet {
       user.setSex(Integer.valueOf(request.getParameter("sex")));
 
     } catch (Exception e) {
-      writer.println("<script>alert('请输入完整的信息注册！');location.href='/Regist.html'</script>");
+      writer.println("<script>alert('请输入完整的信息注册！');location.href='Regist.html'</script>");
       return;
     }
 
@@ -60,7 +60,7 @@ public class RegisterServlet extends HttpServlet {
       if (userService.register(user)) {
         request.getRequestDispatcher("Login.html").forward(request,response);
       } else {
-        writer.println("<script>alert('已存在此用户，请重新注册!');location.href='/Regist.html'</script>");
+        writer.println("<script>alert('已存在此用户，请重新注册!');location.href='Regist.html'</script>");
       }
     } catch (SQLException e) {
       e.printStackTrace();
