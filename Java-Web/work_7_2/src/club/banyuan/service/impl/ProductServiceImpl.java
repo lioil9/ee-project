@@ -15,4 +15,10 @@ public class ProductServiceImpl implements IProductService {
     IProductDao productDao = new ProductDaoImpl(DataSourceUtil.openConnection());
     return productDao.getProductByName(name);
   }
+
+  @Override
+  public Product searchProductById(Integer id) throws SQLException {
+    IProductDao productDao = new ProductDaoImpl(DataSourceUtil.openConnection());
+    return productDao.getProductById(id);
+  }
 }

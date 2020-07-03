@@ -14,6 +14,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * 获取注册并跳转请求
+ */
 @WebServlet(name = "RegisterServlet",urlPatterns = "/register.do")
 public class RegisterServlet extends HttpServlet {
 

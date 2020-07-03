@@ -1,3 +1,7 @@
+<%@ page import="club.banyuan.entity.Product" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.Map.Entry" %>
+<%@page contentType="text/html; charset=UTF-8" language="java" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -12,11 +16,14 @@
     
     <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
     <script type="text/javascript" src="js/menu.js"></script>    
-            
-	<script type="text/javascript" src="js/lrscroll_1.js"></script>
+                
+	<script type="text/javascript" src="js/n_nav.js"></script>   
     
+    <script type="text/javascript" src="js/num.js">
+    	var jq = jQuery.noConflict();
+    </script>     
     
-	<script type="text/javascript" src="js/n_nav.js"></script>
+    <script type="text/javascript" src="js/shade.js"></script>
     
 <title>购物街</title>
 </head>
@@ -148,39 +155,37 @@
     </div>
 </div>
 <div class="top">
-    <div class="logo"><a href="index.jsp"><img src="images/logo.png" /></a></div>
+    <div class="logo"><a href="Index.html"><img src="images/logo.png" /></a></div>
     <div class="search">
-    	<form action="search.do" method="post">
+    	<form>
         	<input type="text" value="" class="s_ipt" />
             <input type="submit" value="搜索" class="s_btn" />
         </form>                      
         <span class="fl"><a href="#">咖啡</a><a href="#">iphone 6S</a><a href="#">新鲜美食</a><a href="#">蛋糕</a><a href="#">日用品</a><a href="#">连衣裙</a></span>
     </div>
+    <%
+        Map<Product,Integer> cart = (Map<Product, Integer>) session.getAttribute("cart");
+        Double sum = 0.0;
+    %>
     <div class="i_car">
-    	<div class="car_t">购物车 [ <span>3</span> ]</div>
+    	<div class="car_t">购物车 [ <span><%=cart.size()%></span> ]</div>
         <div class="car_bg">
        		<!--Begin 购物车未登录 Begin-->
         	<div class="un_login">还未登录！<a href="Login.html" style="color:#ff4e00;">马上登录</a> 查看购物车！</div>
             <!--End 购物车未登录 End-->
             <!--Begin 购物车已登录 Begin-->
             <ul class="cars">
+                <%for (Entry<Product, Integer> p : cart.entrySet()) {
+                sum += p.getKey().getPrice()*p.getValue();
+                %>
             	<li>
                 	<div class="img"><a href="#"><img src="images/car1.jpg" width="58" height="58" /></a></div>
-                    <div class="name"><a href="#">法颂浪漫梦境50ML 香水女士持久清新淡香 送2ML小样3只</a></div>
-                    <div class="price"><font color="#ff4e00">￥399</font> X1</div>
+                    <div class="name"><a href="#"><%=p.getKey().getName()%></a></div>
+                    <div class="price"><font color="#ff4e00">￥<%=String.format("%.0f",p.getKey().getPrice())%></font> X<%=p.getValue()%></div>
                 </li>
-                <li>
-                	<div class="img"><a href="#"><img src="images/car2.jpg" width="58" height="58" /></a></div>
-                    <div class="name"><a href="#">香奈儿（Chanel）邂逅活力淡香水50ml</a></div>
-                    <div class="price"><font color="#ff4e00">￥399</font> X1</div>
-                </li>
-                <li>
-                	<div class="img"><a href="#"><img src="images/car2.jpg" width="58" height="58" /></a></div>
-                    <div class="name"><a href="#">香奈儿（Chanel）邂逅活力淡香水50ml</a></div>
-                    <div class="price"><font color="#ff4e00">￥399</font> X1</div>
-                </li>
+                <%}%>
             </ul>
-            <div class="price_sum">共计&nbsp; <font color="#ff4e00">￥</font><span>1058</span></div>
+            <div class="price_sum">共计&nbsp; <font color="#ff4e00">￥</font><span><%=String.format("%.0f",sum)%></span></div>
             <div class="price_a"><a href="#">去购物车结算</a></div>
             <!--End 购物车已登录 End-->
         </div>
@@ -436,7 +441,7 @@
         </div>  
         <!--End 商品分类详情 End-->                                                     
     	<ul class="menu_r">                                                                                                                                               
-        	<li><a href="index.jsp">首页</a></li>
+        	<li><a href="Index.html">首页</a></li>
             <li><a href="Food.html">美食</a></li>
             <li><a href="Fresh.html">生鲜</a></li>
             <li><a href="HomeDecoration.html">家居</a></li>
@@ -449,333 +454,82 @@
     </div>
 </div>
 <!--End Menu End--> 
-<div class="i_bg">
-	<div class="postion">
-    	<span class="fl">全部 > 美妆个护 > 香水 > </span>
-        <span class="n_ch">
-            <span class="fl">品牌：<font>香奈儿</font></span>
-            <a href="#"><img src="images/s_close.gif" /></a>
-        </span>
-    </div>
-    <!--Begin 筛选条件 Begin-->
-    <div class="content mar_10">
-    	<table border="0" class="choice" style="width:100%; font-family:'宋体'; margin:0 auto;" cellspacing="0" cellpadding="0">
-          <tr valign="top">
-            <td width="70">&nbsp; 品牌：</td>
-            <td class="td_a"><a href="#" class="now">香奈儿（Chanel）</a><a href="#">迪奥（Dior）</a><a href="#">范思哲（VERSACE）</a><a href="#">菲拉格慕（Ferragamo）</a><a href="#">兰蔻（LANCOME）</a><a href="#">爱马仕（HERMES）</a><a href="#">卡文克莱（Calvin Klein）</a><a href="#">古驰（GUCCI）</a><a href="#">宝格丽（BVLGARI）</a><a href="#">阿迪达斯（Adidas）</a><a href="#">卡尔文·克莱恩（CK）</a><a href="#">凌仕（LYNX）</a><a href="#">大卫杜夫（Davidoff）</a><a href="#">安娜苏（Anna sui）</a><a href="#">阿玛尼（ARMANI）</a><a href="#">娇兰（Guerlain）</a></td>
-          </tr>
-          <tr valign="top">
-            <td>&nbsp; 价格：</td>                                                                                                       
-            <td class="td_a"><a href="#">0-199</a><a href="#" class="now">200-399</a><a href="#">400-599</a><a href="#">600-899</a><a href="#">900-1299</a><a href="#">1300-1399</a><a href="#">1400以上</a></td>
-          </tr>                                              
-          <tr>
-            <td>&nbsp; 类型：</td>
-            <td class="td_a"><a href="#">女士香水</a><a href="#">男士香水</a><a href="#">Q版香水</a><a href="#">组合套装</a><a href="#">香体走珠</a><a href="#">其它</a></td>
-          </tr>                                          
-          <tr>
-            <td>&nbsp; 香型：</td>                                       
-            <td class="td_a"><a href="#">浓香水</a><a href="#">香精Parfum香水</a><a href="#">淡香精EDP淡香水</a><a href="#">香露EDT</a><a href="#">古龙水</a><a href="#">其它</a></td>
-          </tr>                                                             
-        </table>                                                                                 
-    </div>
-    <!--End 筛选条件 End-->
-    
+<div class="i_bg">  
     <div class="content mar_20">
-    	<div class="l_history">
-        	<div class="his_t">
-            	<span class="fl">浏览历史</span>
-                <span class="fr"><a href="#">清空</a></span>
-            </div>
-        	<ul>
-            	<li>
-                    <div class="img"><a href="#"><img src="images/his_1.jpg" width="185" height="162" /></a></div>
-                	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>
-                    <div class="price">
-                    	<font>￥<span>368.00</span></font> &nbsp; 18R
-                    </div>
-                </li>
-                <li>
-                    <div class="img"><a href="#"><img src="images/his_2.jpg" width="185" height="162" /></a></div>
-                	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>
-                    <div class="price">
-                    	<font>￥<span>768.00</span></font> &nbsp; 18R
-                    </div>
-                </li>
-                <li>
-                    <div class="img"><a href="#"><img src="images/his_3.jpg" width="185" height="162" /></a></div>
-                	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>
-                    <div class="price">
-                    	<font>￥<span>680.00</span></font> &nbsp; 18R
-                    </div>
-                </li>
-                <li>
-                    <div class="img"><a href="#"><img src="images/his_4.jpg" width="185" height="162" /></a></div>
-                	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>
-                    <div class="price">
-                    	<font>￥<span>368.00</span></font> &nbsp; 18R
-                    </div>
-                </li>
-                <li>
-                    <div class="img"><a href="#"><img src="images/his_5.jpg" width="185" height="162" /></a></div>
-                	<div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>
-                    <div class="price">
-                    	<font>￥<span>368.00</span></font> &nbsp; 18R
-                    </div>
-                </li>
-        	</ul>
-        </div>
-        <div class="l_list">
-        	<div class="list_t">
-            	<span class="fl list_or">
-                	<a href="#" class="now">默认</a>
-                    <a href="#">
-                    	<span class="fl">销量</span>                        
-                        <span class="i_up">销量从低到高显示</span>
-                        <span class="i_down">销量从高到低显示</span>                                                     
-                    </a>
-                    <a href="#">
-                    	<span class="fl">价格</span>                        
-                        <span class="i_up">价格从低到高显示</span>
-                        <span class="i_down">价格从高到低显示</span>     
-                    </a>
-                    <a href="#">新品</a>
-                </span>
-                <span class="fr">共发现120件</span>
-            </div>
-            <div class="list_c">
-            	
-                <ul class="cate_list">
-                	<li>
-                    	<div class="img"><a href="#"><img src="images/per_1.jpg" width="210" height="185" /></a></div>
-                        <div class="price">
-                            <font>￥<span>198.00</span></font> &nbsp; 26R
-                        </div>
-                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
-                        <div class="carbg">
-                        	<a href="#" class="ss">收藏</a>
-                            <a href="#" class="j_car">加入购物车</a>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="img"><a href="#"><img src="images/per_2.jpg" width="210" height="185" /></a></div>
-                        <div class="price">
-                            <font>￥<span>198.00</span></font> &nbsp; 26R
-                        </div>
-                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
-                        <div class="carbg">
-                        	<a href="#" class="ss">收藏</a>
-                            <a href="#" class="j_car">加入购物车</a>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="img"><a href="#"><img src="images/per_3.jpg" width="210" height="185" /></a></div>
-                        <div class="price">
-                            <font>￥<span>198.00</span></font> &nbsp; 26R
-                        </div>
-                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
-                        <div class="carbg">
-                        	<a href="#" class="ss">收藏</a>
-                            <a href="#" class="j_car">加入购物车</a>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="img"><a href="#"><img src="images/per_4.jpg" width="210" height="185" /></a></div>
-                        <div class="price">
-                            <font>￥<span>198.00</span></font> &nbsp; 26R
-                        </div>
-                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
-                        <div class="carbg">
-                        	<a href="#" class="ss">收藏</a>
-                            <a href="#" class="j_car">加入购物车</a>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="img"><a href="#"><img src="images/per_5.jpg" width="210" height="185" /></a></div>
-                        <div class="price">
-                            <font>￥<span>198.00</span></font> &nbsp; 26R
-                        </div>
-                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
-                        <div class="carbg">
-                        	<a href="#" class="ss">收藏</a>
-                            <a href="#" class="j_car">加入购物车</a>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="img"><a href="#"><img src="images/per_6.jpg" width="210" height="185" /></a></div>
-                        <div class="price">
-                            <font>￥<span>198.00</span></font> &nbsp; 26R
-                        </div>
-                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
-                        <div class="carbg">
-                        	<a href="#" class="ss">收藏</a>
-                            <a href="#" class="j_car">加入购物车</a>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="img"><a href="#"><img src="images/per_7.jpg" width="210" height="185" /></a></div>
-                        <div class="price">
-                            <font>￥<span>198.00</span></font> &nbsp; 26R
-                        </div>
-                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
-                        <div class="carbg">
-                        	<a href="#" class="ss">收藏</a>
-                            <a href="#" class="j_car">加入购物车</a>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="img"><a href="#"><img src="images/per_8.jpg" width="210" height="185" /></a></div>
-                        <div class="price">
-                            <font>￥<span>198.00</span></font> &nbsp; 26R
-                        </div>
-                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
-                        <div class="carbg">
-                        	<a href="#" class="ss">收藏</a>
-                            <a href="#" class="j_car">加入购物车</a>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="img"><a href="#"><img src="images/per_9.jpg" width="210" height="185" /></a></div>
-                        <div class="price">
-                            <font>￥<span>198.00</span></font> &nbsp; 26R
-                        </div>
-                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
-                        <div class="carbg">
-                        	<a href="#" class="ss">收藏</a>
-                            <a href="#" class="j_car">加入购物车</a>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="img"><a href="#"><img src="images/per_10.jpg" width="210" height="185" /></a></div>
-                        <div class="price">
-                            <font>￥<span>198.00</span></font> &nbsp; 26R
-                        </div>
-                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
-                        <div class="carbg">
-                        	<a href="#" class="ss">收藏</a>
-                            <a href="#" class="j_car">加入购物车</a>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="img"><a href="#"><img src="images/per_11.jpg" width="210" height="185" /></a></div>
-                        <div class="price">
-                            <font>￥<span>198.00</span></font> &nbsp; 26R
-                        </div>
-                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
-                        <div class="carbg">
-                        	<a href="#" class="ss">收藏</a>
-                            <a href="#" class="j_car">加入购物车</a>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="img"><a href="#"><img src="images/per_12.jpg" width="210" height="185" /></a></div>
-                        <div class="price">
-                            <font>￥<span>198.00</span></font> &nbsp; 26R
-                        </div>
-                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
-                        <div class="carbg">
-                        	<a href="#" class="ss">收藏</a>
-                            <a href="#" class="j_car">加入购物车</a>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="img"><a href="#"><img src="images/per_5.jpg" width="210" height="185" /></a></div>
-                        <div class="price">
-                            <font>￥<span>198.00</span></font> &nbsp; 26R
-                        </div>
-                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
-                        <div class="carbg">
-                        	<a href="#" class="ss">收藏</a>
-                            <a href="#" class="j_car">加入购物车</a>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="img"><a href="#"><img src="images/per_6.jpg" width="210" height="185" /></a></div>
-                        <div class="price">
-                            <font>￥<span>198.00</span></font> &nbsp; 26R
-                        </div>
-                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
-                        <div class="carbg">
-                        	<a href="#" class="ss">收藏</a>
-                            <a href="#" class="j_car">加入购物车</a>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="img"><a href="#"><img src="images/per_7.jpg" width="210" height="185" /></a></div>
-                        <div class="price">
-                            <font>￥<span>198.00</span></font> &nbsp; 26R
-                        </div>
-                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
-                        <div class="carbg">
-                        	<a href="#" class="ss">收藏</a>
-                            <a href="#" class="j_car">加入购物车</a>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="img"><a href="#"><img src="images/per_8.jpg" width="210" height="185" /></a></div>
-                        <div class="price">
-                            <font>￥<span>198.00</span></font> &nbsp; 26R
-                        </div>
-                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
-                        <div class="carbg">
-                        	<a href="#" class="ss">收藏</a>
-                            <a href="#" class="j_car">加入购物车</a>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="img"><a href="#"><img src="images/per_9.jpg" width="210" height="185" /></a></div>
-                        <div class="price">
-                            <font>￥<span>198.00</span></font> &nbsp; 26R
-                        </div>
-                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
-                        <div class="carbg">
-                        	<a href="#" class="ss">收藏</a>
-                            <a href="#" class="j_car">加入购物车</a>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="img"><a href="#"><img src="images/per_10.jpg" width="210" height="185" /></a></div>
-                        <div class="price">
-                            <font>￥<span>198.00</span></font> &nbsp; 26R
-                        </div>
-                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
-                        <div class="carbg">
-                        	<a href="#" class="ss">收藏</a>
-                            <a href="#" class="j_car">加入购物车</a>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="img"><a href="#"><img src="images/per_11.jpg" width="210" height="185" /></a></div>
-                        <div class="price">
-                            <font>￥<span>198.00</span></font> &nbsp; 26R
-                        </div>
-                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
-                        <div class="carbg">
-                        	<a href="#" class="ss">收藏</a>
-                            <a href="#" class="j_car">加入购物车</a>
-                        </div>
-                    </li>
-                    <li>
-                    	<div class="img"><a href="#"><img src="images/per_12.jpg" width="210" height="185" /></a></div>
-                        <div class="price">
-                            <font>￥<span>198.00</span></font> &nbsp; 26R
-                        </div>
-                        <div class="name"><a href="#">香奈儿邂逅清新淡香水50ml</a></div>
-                        <div class="carbg">
-                        	<a href="#" class="ss">收藏</a>
-                            <a href="#" class="j_car">加入购物车</a>
-                        </div>
-                    </li>
-                </ul>
-                
-                <div class="pages">
-                	<a href="#" class="p_pre">上一页</a><a href="#" class="cur">1</a><a href="#">2</a><a href="#">3</a>...<a href="#">20</a><a href="#" class="p_pre">下一页</a>
-                </div>
-                
-                
-                
-            </div>
-        </div>
+    	<img src="images/img1.jpg" />        
     </div>
+    
+    <!--Begin 第一步：查看购物车 Begin -->
+    <div class="content mar_20">
+    	<table border="0" class="car_tab" style="width:1200px; margin-bottom:50px;" cellspacing="0" cellpadding="0">
+          <tr>
+            <td class="car_th" width="490">商品名称</td>
+            <td class="car_th" width="140">属性</td>
+            <td class="car_th" width="150">购买数量</td>
+            <td class="car_th" width="130">小计</td>
+            <td class="car_th" width="140">返还积分</td>
+            <td class="car_th" width="150">操作</td>
+          </tr>
+            <%for (Entry<Product, Integer> p : cart.entrySet()) {
+            %>
+          <tr class="car_tr">
+            <td>
+            	<div class="c_s_img"><img src="images/c_2.jpg" width="73" height="73" /></div>
+                <%=p.getKey().getName()%>
+            </td>
+            <td align="center">颜色：灰色</td>
+            <td align="center">
+            	<div class="c_num">
+                    <input type="button" value="" onclick="jianUpdate1(jq(this));" class="car_btn_1" />
+                	<input type="text" value="<%=p.getValue()%>" name="" class="car_ipt" />
+                    <input type="button" value="" onclick="addUpdate1(jq(this));" class="car_btn_2" />
+                </div>
+            </td>
+            <td align="center" style="color:#ff4e00;">￥<%=p.getKey().getPrice()%></td>
+            <td align="center">26R</td>
+            <td align="center"><a href="#">删除</a>&nbsp; &nbsp;<a href="#">加入收藏</a></td>
+          </tr>
+            <%}%>
+          <tr height="70">
+          	<td colspan="6" style="font-family:'Microsoft YaHei'; border-bottom:0;">
+            	<label class="r_rad"><input type="checkbox" name="clear" checked="checked" /></label><label class="r_txt">清空购物车</label>
+                <span class="fr">商品总价：<b style="font-size:22px; color:#ff4e00;">￥<%=String.format("%.0f",sum)%></b></span>
+            </td>
+          </tr>
+          <tr valign="top" height="150">
+          	<td colspan="6" align="right">
+            	<a href="#"><img src="images/buy1.gif" /></a>&nbsp; &nbsp; <a href="#"><img src="images/buy2.gif" /></a>
+            </td>
+          </tr>
+        </table>
+        
+    </div>
+	<!--End 第一步：查看购物车 End--> 
+    
+    
+    <!--Begin 弹出层-删除商品 Begin-->
+    <div id="fade" class="black_overlay"></div>
+    <div id="MyDiv" class="white_content">             
+        <div class="white_d">
+            <div class="notice_t">
+                <span class="fr" style="margin-top:10px; cursor:pointer;" onclick="CloseDiv('MyDiv','fade')"><img src="images/close.gif" /></span>
+            </div>
+            <div class="notice_c">
+           		
+                <table border="0" align="center" style="font-size:16px;" cellspacing="0" cellpadding="0">
+                  <tr valign="top">
+                    <td>您确定要把该商品移除购物车吗？</td>
+                  </tr>
+                  <tr height="50" valign="bottom">
+                    <td><a href="#" class="b_sure">确定</a><a href="#" class="b_buy">取消</a></td>
+                  </tr>
+                </table>
+                    
+            </div>
+        </div>
+    </div>    
+    <!--End 弹出层-删除商品 End-->
+    
     
     <!--Begin Footer Begin -->
     <div class="b_btm_bg bg_color">

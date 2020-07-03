@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface IProductService {
   List<Product> searchProduct(String name) throws SQLException;
-
+  Product searchProductById(Integer id)throws SQLException;
 }

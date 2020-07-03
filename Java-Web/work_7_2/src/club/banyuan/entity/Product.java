@@ -107,4 +107,19 @@ public class Product {
   public void setIsDelete(Integer isDelete) {
     this.isDelete = isDelete;
   }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (obj instanceof Product) {
+      Product objProduct = (Product) obj;
+      return this.getId().equals(objProduct.getId());
+    }else {
+      return false;
+    }
+  }
+
+  @Override
+  public int hashCode() {
+    return this.id.hashCode();
+  }
 }

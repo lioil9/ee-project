@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+/**
+ * 获取登陆并跳转页面请求
+ */
 @WebServlet(name = "LoginServlet", urlPatterns = "/login.do")
 public class LoginServlet extends HttpServlet {
 
