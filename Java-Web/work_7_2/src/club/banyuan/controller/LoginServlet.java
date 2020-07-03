@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  * 获取登陆并跳转页面请求
@@ -25,8 +26,9 @@ public class LoginServlet extends HttpServlet {
     try {
       User user = userService.login(loginName,password);
       if(user != null){
+        HttpSession session = request.getSession();
         System.out.println(user.getLoginName());
-        request.setAttribute("user", user);
+        session.setAttribute("user", user);
         request.getRequestDispatcher("index.jsp").forward(request,response);
         return;
       }

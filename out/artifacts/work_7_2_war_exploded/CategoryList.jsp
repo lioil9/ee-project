@@ -539,7 +539,7 @@
                 for (Product product : products) {
                     count++;
                     print.append("<li>");
-                    print.append("<div class=\"img\"><a href=\"#\"><img src=\"images/per_"+count+".jpg\" width=\"210\" height=\"185\" /></a></div>");
+                    print.append("<div class=\"img\"><a href=\"detail.do?pid="+product.getId()+"\"><img src=\"images/per_"+count+".jpg\" width=\"210\" height=\"185\" /></a></div>");
                     print.append("<div class=\"price\"><font>￥<span>"+String.format("%.2f",product.getPrice())+"</span></font> &nbsp; "+product.getStock()+"件</div>");
                     print.append("<div class=\"name\"><a href=\"#\">"+product.getName()+"</a></div>");
                     print.append("<div class=\"carbg\"><a href=\"#\" class=\"ss\">收藏</a><a href=\"#\" class=\"j_car\">加入购物车</a></div>");
