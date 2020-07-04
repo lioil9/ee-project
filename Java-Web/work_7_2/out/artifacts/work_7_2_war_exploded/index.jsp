@@ -123,7 +123,7 @@
         <span class="fr">
         	<span class="fl">
                 <%
-                    Object obj = request.getAttribute("user");
+                    Object obj = session.getAttribute("user");
                     if (obj != null) {
                         User user = (User) obj;
                         out.print("欢迎，<a href=\"Member.html\">" + user.getLoginName()+"</a>");
