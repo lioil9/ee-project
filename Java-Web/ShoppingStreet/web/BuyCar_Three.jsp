@@ -1,3 +1,9 @@
+<%@ page import="club.banyuan.entity.Product" %>
+<%@ page import="java.util.HashMap" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="club.banyuan.entity.User" %>
+<%@ page import="java.util.Map.Entry" %>
+<%@page contentType="text/html; charset=UTF-8" language="java" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -104,7 +110,31 @@
         </span>
         <!--End 所在收货地区 End-->
         <span class="fr">
-        	<span class="fl">你好，请<a href="Login.html">登录</a>&nbsp; <a href="Regist.html" style="color:#ff4e00;">免费注册</a>&nbsp;|&nbsp;<a href="#">我的订单</a>&nbsp;|</span>
+        	<span class="fl">
+                <%
+                    Object userObj = session.getAttribute("user");
+                    if (userObj != null) {
+                        User user = (User) userObj;
+                %>
+               <div class="ss_list">
+                    <a href="Member.jsp"><%=user.getLoginName()%></a>
+                    <div class="ss_list_bg">
+                    	<div class="s_city_t"></div>
+                        <div class="ss_list_c">
+                        	<ul>
+                            	<li><a href="<%=request.getContextPath()%>/logout.do">退出登录</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                &nbsp;|&nbsp;<a href="#">我的订单</a>
+                <%
+                    } else {
+                        out.print(
+                                "你好，请<a href=\"Login.jsp\">登录</a>&nbsp; <a href=\"Regist.jsp\" style=\"color:#ff4e00;\">免费注册</a>");
+                    }
+                %>
+                &nbsp;|</span>
         	<span class="ss">
             	<div class="ss_list">
                 	<a href="#">收藏夹</a>
@@ -116,7 +146,7 @@
                                 <li><a href="#">我的收藏夹</a></li>
                             </ul>
                         </div>
-                    </div>     
+                    </div>
                 </div>
                 <div class="ss_list">
                 	<a href="#">客户服务</a>
@@ -129,7 +159,7 @@
                                 <li><a href="#">客户服务</a></li>
                             </ul>
                         </div>
-                    </div>    
+                    </div>
                 </div>
                 <div class="ss_list">
                 	<a href="#">网站导航</a>
@@ -141,17 +171,18 @@
                                 <li><a href="#">网站导航</a></li>
                             </ul>
                         </div>
-                    </div>    
+                    </div>
                 </div>
             </span>
             <span class="fl">|&nbsp;关注我们：</span>
             <span class="s_sh"><a href="#" class="sh1">新浪</a><a href="#" class="sh2">微信</a></span>
-            <span class="fr">|&nbsp;<a href="#">手机版&nbsp;<img src="images/s_tel.png" align="absmiddle" /></a></span>
+            <span class="fr">|&nbsp;<a href="#">手机版&nbsp;<img src="images/s_tel.png"
+                                                              align="absmiddle"/></a></span>
         </span>
     </div>
 </div>
 <div class="top">
-    <div class="logo"><a href="Index.html"><img src="images/logo.png" /></a></div>
+    <div class="logo"><a href="index.jsp"><img src="images/logo.png" /></a></div>
     <div class="search">
     	<form>
         	<input type="text" value="" class="s_ipt" />
@@ -160,32 +191,56 @@
         <span class="fl"><a href="#">咖啡</a><a href="#">iphone 6S</a><a href="#">新鲜美食</a><a href="#">蛋糕</a><a href="#">日用品</a><a href="#">连衣裙</a></span>
     </div>
     <div class="i_car">
-    	<div class="car_t">购物车 [ <span>3</span> ]</div>
+        <%
+            String isLogin = "none";
+            String cartVisible = "block";
+            Map<Product, Integer> cart = new HashMap<>();
+            if (session.getAttribute("cart") != null) {
+                cart = (Map<Product, Integer>) session.getAttribute("cart");
+            }
+            int count = cart.size();
+            if (userObj == null) {
+                isLogin = "block";
+                cartVisible = "none";
+                count = 0;
+            }
+        %>
+        <div class="car_t">购物车 [ <span><%=count%></span> ]</div>
         <div class="car_bg">
-       		<!--Begin 购物车未登录 Begin-->
-        	<div class="un_login">还未登录！<a href="Login.html" style="color:#ff4e00;">马上登录</a> 查看购物车！</div>
+            <!--Begin 购物车未登录 Begin-->
+            <div class="un_login" style="display: <%=isLogin%>"> 还未登录！<a href="Login.jsp"
+                                                                         style="color:#ff4e00;">马上登录</a>
+                查看购物车！
+            </div>
             <!--End 购物车未登录 End-->
-            <!--Begin 购物车已登录 Begin-->
-            <ul class="cars">
-            	<li>
-                	<div class="img"><a href="#"><img src="images/car1.jpg" width="58" height="58" /></a></div>
-                    <div class="name"><a href="#">法颂浪漫梦境50ML 香水女士持久清新淡香 送2ML小样3只</a></div>
-                    <div class="price"><font color="#ff4e00">￥399</font> X1</div>
-                </li>
-                <li>
-                	<div class="img"><a href="#"><img src="images/car2.jpg" width="58" height="58" /></a></div>
-                    <div class="name"><a href="#">香奈儿（Chanel）邂逅活力淡香水50ml</a></div>
-                    <div class="price"><font color="#ff4e00">￥399</font> X1</div>
-                </li>
-                <li>
-                	<div class="img"><a href="#"><img src="images/car2.jpg" width="58" height="58" /></a></div>
-                    <div class="name"><a href="#">香奈儿（Chanel）邂逅活力淡香水50ml</a></div>
-                    <div class="price"><font color="#ff4e00">￥399</font> X1</div>
-                </li>
-            </ul>
-            <div class="price_sum">共计&nbsp; <font color="#ff4e00">￥</font><span>1058</span></div>
-            <div class="price_a"><a href="#">去购物车结算</a></div>
-            <!--End 购物车已登录 End-->
+            <div style="display: <%=cartVisible%>">
+                <!--Begin 购物车已登录 Begin-->
+                <ul class="cars">
+                    <%
+                        if (cart.isEmpty()) {
+                            out.print("<div class=\"un_login\">购物车里还没有商品，赶快去添加吧！</div>");
+                        }
+                        Double sum = 0.0;
+                        for (Entry<Product, Integer> p : cart.entrySet()) {
+                            sum += p.getKey().getPrice() * p.getValue();
+                    %>
+                    <li>
+                        <div class="img"><a href="#"><img src="images/car1.jpg" width="58"
+                                                          height="58"/></a></div>
+                        <div class="name"><a href="#"><%=p.getKey().getName()%>
+                        </a></div>
+                        <div class="price"><font color="#ff4e00">￥<%=String
+                                .format("%.0f", p.getKey().getPrice())%>
+                        </font> X<%=p.getValue()%>
+                        </div>
+                    </li>
+                    <%}%>
+                </ul>
+                <div class="price_sum">共计&nbsp; <font color="#ff4e00">￥</font><span><%=String
+                        .format("%.0f", sum)%></span></div>
+                <div class="price_a"><a href="BuyCar.jsp">去购物车结算</a></div>
+                <!--End 购物车已登录 End-->
+            </div>
         </div>
     </div>
 </div>
@@ -439,7 +494,7 @@
         </div>  
         <!--End 商品分类详情 End-->                                                     
     	<ul class="menu_r">                                                                                                                                               
-        	<li><a href="Index.html">首页</a></li>
+        	<li><a href="index.jsp">首页</a></li>
             <li><a href="Food.html">美食</a></li>
             <li><a href="Fresh.html">生鲜</a></li>
             <li><a href="HomeDecoration.html">家居</a></li>
@@ -465,12 +520,12 @@
             <table border="0" style="width:1000px; text-align:center;" cellspacing="0" cellpadding="0">
               <tr height="35">
                 <td style="font-size:18px;">
-                	感谢您在本店购物！您的订单已提交成功，请记住您的订单号: <font color="#ff4e00">2015092598275</font>
+                	感谢您在本店购物！您的订单已提交成功，请记住您的订单号: <font color="#ff4e00">${requestScope.order.serialNumber}</font>
                 </td>
               </tr>
               <tr>
                 <td style="font-size:14px; font-family:'宋体'; padding:10px 0 20px 0; border-bottom:1px solid #b6b6b6;">
-                	您选定的配送方式为: <font color="#ff4e00">申通快递</font>； &nbsp; &nbsp;您选定的支付方式为: <font color="#ff4e00">支付宝</font>； &nbsp; &nbsp;您的应付款金额为: <font color="#ff4e00">￥888.00</font>
+                	您选定的配送方式为: <font color="#ff4e00">申通快递</font>； &nbsp; &nbsp;您选定的支付方式为: <font color="#ff4e00">支付宝</font>； &nbsp; &nbsp;您的应付款金额为: <font color="#ff4e00">￥${requestScope.order.cost}</font>
                 </td>
               </tr>
               <tr>
@@ -481,7 +536,7 @@
               </tr>
               <tr>
                 <td>
-                	<a href="#">首页</a> &nbsp; &nbsp; <a href="#">用户中心</a>
+                	<a href="index.jsp">首页</a> &nbsp; &nbsp; <a href="Member.jsp">用户中心</a>
                 </td>
               </tr>
             </table>        	

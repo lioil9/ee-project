@@ -242,7 +242,7 @@
                 </ul>
                 <div class="price_sum">共计&nbsp; <font color="#ff4e00">￥</font><span><%=String
                         .format("%.0f", sum)%></span></div>
-                <div class="price_a"><a href="#">去购物车结算</a></div>
+                <div class="price_a"><a href="BuyCar.jsp">去购物车结算</a></div>
                 <!--End 购物车已登录 End-->
             </div>
         </div>
@@ -617,7 +617,7 @@
             </tr>
             <tr valign="top" height="150">
                 <td colspan="6" align="right">
-                    <a href="#"><img src="images/buy1.gif"/></a>&nbsp; &nbsp; <a href="${request.getContextPath()}/confirm.do"><img
+                    <a href="#"><img src="images/buy1.gif"/></a>&nbsp; &nbsp; <a href="<%=request.getContextPath()%>/confirm.do"><img
                         src="images/buy2.gif"/></a>
                 </td>
             </tr>

@@ -237,7 +237,7 @@
                     </ul>
                     <div class="price_sum">共计&nbsp; <font color="#ff4e00">￥</font><span><%=String
                             .format("%.0f", sum)%></span></div>
-                    <div class="price_a"><a href="#">去购物车结算</a></div>
+                    <div class="price_a"><a href="BuyCar.jsp">去购物车结算</a></div>
                     <!--End 购物车已登录 End-->
                 </div>
             </div>

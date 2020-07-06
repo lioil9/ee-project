@@ -30,14 +30,14 @@ public class AddOrderServlet extends HttpServlet {
       User user = (User) session.getAttribute("user");
 
       IUserAddressService userAddressService = new UserAddressServiceImpl();
-      String address = "用户地址";
+      String address = null;
       try {
         address = userAddressService.getDefaultAddress(user.getId()).getAddress();
       } catch (SQLException e) {
         e.printStackTrace();
       }
       double totalPrice = Double.parseDouble(session.getAttribute("totalPrice").toString());
-      Map<Product, Integer> car = (Map<Product, Integer>) session.getAttribute("car");
+      Map<Product, Integer> car = (Map<Product, Integer>) session.getAttribute("cart");
       IOrderService orderService = new OrderServiceImpl();
       Order order = orderService.addOrder(car, totalPrice, user, address);
       request.setAttribute("order", order);

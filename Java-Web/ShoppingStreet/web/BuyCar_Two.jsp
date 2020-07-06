@@ -3,6 +3,11 @@
 <%@ page import="java.util.HashMap" %>
 <%@ page import="java.util.Map" %>
 <%@ page import="club.banyuan.entity.User" %>
+<%@ page import="club.banyuan.service.IUserAddressService" %>
+<%@ page import="club.banyuan.service.impl.UserAddressServiceImpl" %>
+<%@ page import="java.sql.SQLException" %>
+<%@ page import="club.banyuan.entity.UserAddress" %>
+<%@page contentType="text/html; charset=UTF-8" language="java" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -183,7 +188,7 @@
     </div>
 </div>
 <div class="top">
-    <div class="logo"><a href="Index.html"><img src="images/logo.png" /></a></div>
+    <div class="logo"><a href="index.jsp"><img src="images/logo.png" /></a></div>
     <div class="search">
     	<form>
         	<input type="text" value="" class="s_ipt" />
@@ -239,7 +244,7 @@
                 </ul>
                 <div class="price_sum">共计&nbsp; <font color="#ff4e00">￥</font><span><%=String
                         .format("%.0f", sum)%></span></div>
-                <div class="price_a"><a href="#">去购物车结算</a></div>
+                <div class="price_a"><a href="BuyCar.jsp">去购物车结算</a></div>
                 <!--End 购物车已登录 End-->
             </div>
         </div>
@@ -495,7 +500,7 @@
         </div>  
         <!--End 商品分类详情 End-->                                                     
     	<ul class="menu_r">                                                                                                                                               
-        	<li><a href="Index.html">首页</a></li>
+        	<li><a href="index.jsp">首页</a></li>
             <li><a href="Food.html">美食</a></li>
             <li><a href="Fresh.html">生鲜</a></li>
             <li><a href="HomeDecoration.html">家居</a></li>
@@ -555,11 +560,10 @@
                     <td align="center" style="color:#ff4e00;">￥<%=p.getKey().getPrice()%>
                     </td>
                     <td align="center">26R</td>
-                    <td align="center"><a href="#">删除</a>&nbsp; &nbsp;<a href="#">加入收藏</a></td>
                 </tr>
                 <%}%>
                 <td colspan="5" align="right" style="font-family:'Microsoft YaHei';">
-                    商品总价：￥<%=%> ； 返还积分 56R
+                    商品总价：￥<%=String.format("%.2f",sum)%> ； 返还积分 56R
                 </td>
               </tr>
             </table>
@@ -567,16 +571,27 @@
             <div class="two_t">
             	<span class="fr"><a href="#">修改</a></span>收货人信息
             </div>
+            <%
+                IUserAddressService userAddressService = new UserAddressServiceImpl();
+                UserAddress userAddress = new UserAddress();
+                try {
+                    assert userObj != null;
+                    userAddress = userAddressService.getDefaultAddress(((User) userObj).getId());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            %>
             <table border="0" class="peo_tab" style="width:1110px;" cellspacing="0" cellpadding="0">
               <tr>
-                <td class="p_td" width="160">商品名称</td>
-                <td width="395">海贼王</td>
+                <td class="p_td" width="160">收货人姓名</td>
+                <td width="395">${sessionScope.user.userName}</td>
                 <td class="p_td" width="160">电子邮件</td>
-                <td width="395">12345678@qq.com</td>
+                <td width="395">${sessionScope.user.email}</td>
               </tr>
               <tr>
                 <td class="p_td">详细信息</td>
-                <td>四川省成都市武侯区</td>
+                <td><%=userAddress.getAddress()%></td>
                 <td class="p_td">邮政编码</td>
                 <td>6011111</td>
               </tr>
@@ -584,11 +599,11 @@
                 <td class="p_td">电话</td>
                 <td></td>
                 <td class="p_td">手机</td>
-                <td>18600002222</td>
+                <td>${sessionScope.user.mobile}</td>
               </tr>
               <tr>
-                <td class="p_td">标志建筑</td>
-                <td></td>
+                <td class="p_td">备注</td>
+                <td><%=userAddress.getRemark()%></td>
                 <td class="p_td">最佳送货时间</td>
                 <td></td>
               </tr>
@@ -752,7 +767,7 @@
               </tr>
               <tr height="70">
                 <td align="right">
-                	<b style="font-size:14px;">应付款金额：<span style="font-size:22px; color:#ff4e00;">￥2899</span></b>
+                	<b style="font-size:14px;">应付款金额：<span style="font-size:22px; color:#ff4e00;">￥<%=String.format("%.2f",sum)%></span></b>
                 </td>
               </tr>
               <tr height="70">
