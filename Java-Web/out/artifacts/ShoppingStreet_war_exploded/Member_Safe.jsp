@@ -177,7 +177,7 @@
 </div>
 <div class="m_top_bg">
     <div class="top">
-        <div class="m_logo"><a href="Index.html"><img src="images/logo1.png" /></a></div>
+        <div class="m_logo"><a href="index.jsp"><img src="images/logo1.png" /></a></div>
         <div class="m_search">
             <form>
                 <input type="text" value="" class="m_ipt" />
@@ -249,8 +249,8 @@
             <div class="left_m">
             	<div class="left_m_t t_bg1">订单中心</div>
                 <ul>
-                	<li><a href="Member_Order.html">我的订单</a></li>
-                    <li><a href="Member_Address.html">收货地址</a></li>
+                    <li><a href="<%=request.getContextPath()%>/getOrder.do">我的订单</a></li>
+                    <li><a href="Member_Address.jsp">收货地址</a></li>
                     <li><a href="#">缺货登记</a></li>
                     <li><a href="#">跟踪订单</a></li>
                 </ul>
@@ -258,7 +258,7 @@
             <div class="left_m">
             	<div class="left_m_t t_bg2">会员中心</div>
                 <ul>
-                	<li><a href="Member_User.html">用户信息</a></li>
+                	<li><a href="Member_User.jsp">用户信息</a></li>
                     <li><a href="Member_Collect.html">我的收藏</a></li>
                     <li><a href="Member_Msg.html">我的留言</a></li>
                     <li><a href="Member_Links.html">推广链接</a></li>
@@ -287,15 +287,15 @@
             <p></p>
             <div class="mem_tit">账户安全</div>
             <div class="m_des">
-                <form>
+                <form action="change.do" method="post">
                 <table border="0" style="width:880px;"  cellspacing="0" cellpadding="0">
                   <tr height="45">
                     <td width="80" align="right">原手机 &nbsp; &nbsp;</td>
-                    <td><input type="text" value="" class="add_ipt" style="width:180px;" />&nbsp; <font color="#ff4e00">*</font></td>
+                    <td><input type="text" name="originalValue" value="" class="add_ipt" style="width:180px;" />&nbsp; <font color="#ff4e00">*</font></td>
                   </tr>
                   <tr height="45">
                     <td align="right">新手机 &nbsp; &nbsp;</td>
-                    <td><input type="text" value="" class="add_ipt" style="width:180px;" />&nbsp; <font color="#ff4e00">*</font></td>
+                    <td><input type="text" name="changeValue" value="" class="add_ipt" style="width:180px;" />&nbsp; <font color="#ff4e00">*</font></td>
                   </tr>
                   <tr height="50">
                     <td>&nbsp;</td>
@@ -306,15 +306,15 @@
             </div>
             
             <div class="m_des">
-                <form>
+                <form action="change.do" method="post">
                 <table border="0" style="width:880px;"  cellspacing="0" cellpadding="0">
                   <tr height="45">
                     <td width="80" align="right">原邮箱 &nbsp; &nbsp;</td>
-                    <td><input type="text" value="" class="add_ipt" style="width:180px;" />&nbsp; <font color="#ff4e00">*</font></td>
+                    <td><input type="text" name="originalValue" value="" class="add_ipt" style="width:180px;" />&nbsp; <font color="#ff4e00">*</font></td>
                   </tr>
                   <tr height="45">
                     <td align="right">新邮箱 &nbsp; &nbsp;</td>
-                    <td><input type="text" value="" class="add_ipt" style="width:180px;" />&nbsp; <font color="#ff4e00">*</font></td>
+                    <td><input type="text" name="changeValue" value="" class="add_ipt" style="width:180px;" />&nbsp; <font color="#ff4e00">*</font></td>
                   </tr>
                   <tr height="50">
                     <td>&nbsp;</td>
@@ -325,11 +325,11 @@
             </div>
             
             <div class="m_des">
-                <form>
+                <form action="change.do" method="post">
                 <table border="0" style="width:880px;"  cellspacing="0" cellpadding="0">
                   <tr height="45">
                     <td width="80" align="right">原密码 &nbsp; &nbsp;</td>
-                    <td><input type="password" value="" class="add_ipt" style="width:180px;" />&nbsp; <font color="#ff4e00">*</font></td>
+                    <td><input type="password" name="originalValue" value="" class="add_ipt" style="width:180px;" />&nbsp; <font color="#ff4e00">*</font></td>
                   </tr>
                   <tr height="45">
                     <td align="right">新密码 &nbsp; &nbsp;</td>
@@ -337,11 +337,11 @@
                   </tr>
                   <tr height="45">
                     <td align="right">确认密码 &nbsp; &nbsp;</td>
-                    <td><input type="password" value="" class="add_ipt" style="width:180px;" />&nbsp; <font color="#ff4e00">*</font></td>
+                    <td><input type="password" name="changeValue" value="" class="add_ipt" style="width:180px;" />&nbsp; <font color="#ff4e00">*</font></td>
                   </tr>
                   <tr height="50">
                     <td>&nbsp;</td>
-                    <td><input type="submit" value="确认修改" class="btn_tj" /></td>
+                    <td><input type="button" value="确认修改" class="btn_tj" /></td>
                   </tr>
                 </table>
                 </form>

@@ -1,11 +1,9 @@
 package club.banyuan.dao.impl;
 
 import club.banyuan.dao.IUserAddressDao;
-import club.banyuan.entity.Order;
 import club.banyuan.entity.UserAddress;
 import java.sql.Connection;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,7 +65,11 @@ public class UserAddressDaoImpl extends BaseDaoImpl implements IUserAddressDao {
     userAddress.setId(rs.getInt("id"));
     userAddress.setUserId(rs.getInt("userId"));
     userAddress.setAddress(rs.getString("address"));
-    userAddress.setCreateTime(df.format(rs.getDate("createTime")));
+    if (rs.getTimestamp("createTime") != null) {
+      userAddress.setCreateTime(df.format(rs.getTimestamp("createTime")));
+    } else {
+      userAddress.setCreateTime("");
+    }
     userAddress.setIsDefault(rs.getInt("isDefault"));
     userAddress.setRemark(rs.getString("remark"));
 
