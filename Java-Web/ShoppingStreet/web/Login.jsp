@@ -79,7 +79,7 @@
                     }
                 %>
                 &nbsp;|</span>
-            <span class="fl">|&nbsp;关注我们：</span>
+            <span class="fl">&nbsp;关注我们：</span>
             <span class="s_sh"><a href="#" class="sh1">新浪</a><a href="#" class="sh2">微信</a></span>
             <span class="fr">|&nbsp;<a href="#">手机版&nbsp;<img src="images/s_tel.png" align="absmiddle" /></a></span>
         </span>
@@ -115,7 +115,9 @@
               	<td>&nbsp;</td>
                 <td style="font-size:12px; padding-top:20px;">
                 	<span style="font-family:'宋体';" class="fl">
-                    	<label class="r_rad"><input type="checkbox" /></label><label class="r_txt">请保存我这次的登录信息</label>
+                    	<label class="r_rad">
+                            <input type="checkbox" name="keepStatus" value="1"/>
+                        </label><label class="r_txt">请保存我这次的登录信息</label>
                     </span>
                     <span class="fr"><a href="#" style="color:#ff4e00;">忘记密码</a></span>
                 </td>

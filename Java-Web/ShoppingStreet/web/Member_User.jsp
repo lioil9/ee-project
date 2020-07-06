@@ -289,7 +289,7 @@
                   <tr valign="top">
                     <td width="115"><img src="images/user.jpg" width="90" height="90" /></td>
                     <td>
-                    	<div class="m_user">TRACY</div>
+                    	<div class="m_user"><%=user.getLoginName()%></div>
                         <p>
                             等级：注册用户 <br />
                             <font color="#ff4e00">您还差 270 积分达到 分红100</font><br />

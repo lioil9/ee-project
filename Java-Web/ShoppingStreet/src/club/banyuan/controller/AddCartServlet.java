@@ -28,23 +28,23 @@ public class AddCartServlet extends HttpServlet {
     } catch (Exception exception) {
       exception.printStackTrace();
     }
-    if(product!=null) {
+    if (product != null) {
       HttpSession session = request.getSession();
       Map<Product, Integer> cart;
-      if(session.getAttribute("cart") == null){
-        cart  = new HashMap<>();
-      }else {
+      if (session.getAttribute("cart") == null) {
+        cart = new HashMap<>();
+      } else {
         cart = (Map<Product, Integer>) session.getAttribute("cart");
       }
-      if(cart.containsKey(product)){
-        cart.replace(product,cart.get(product)+num);
-      }else {
-        cart.put(product,num);
+      if (cart.containsKey(product)) {
+        cart.replace(product, cart.get(product) + num);
+      } else {
+        cart.put(product, num);
       }
-      session.setAttribute("cart",cart);
+      session.setAttribute("cart", cart);
     }
 
-    request.getRequestDispatcher("BuyCar.jsp").forward(request,response);
+    request.getRequestDispatcher("BuyCar.jsp").forward(request, response);
   }
 
   protected void doGet(HttpServletRequest request,

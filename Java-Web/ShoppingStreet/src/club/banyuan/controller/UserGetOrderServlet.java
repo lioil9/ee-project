@@ -25,13 +25,13 @@ public class UserGetOrderServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request,
       HttpServletResponse response)
       throws ServletException, IOException {
-      HttpSession session = request.getSession();
-      User user = (User) session.getAttribute("user");
+    HttpSession session = request.getSession();
+    User user = (User) session.getAttribute("user");
     IOrderService orderService = new OrderServiceImpl();
     try {
       List<Order> orders = orderService.getOrderByUserId(user.getId());
       request.setAttribute("userOrders", orders);
-      request.getRequestDispatcher("Member_Order.jsp").forward(request,response);
+      request.getRequestDispatcher("Member_Order.jsp").forward(request, response);
     } catch (SQLException throwables) {
       throwables.printStackTrace();
     }

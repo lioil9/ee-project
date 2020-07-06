@@ -917,7 +917,7 @@
                 <table border="0" align="center" style="margin-top:;" cellspacing="0" cellpadding="0">
                     <tr valign="top">
                         <td>
-                            <span style="color:#3e3e3e; font-size:18px; font-weight:bold;">请登陆后再将商品添加至购物车</span><br />
+                            <span style="color:#3e3e3e; font-size:18px; font-weight:bold;">请<a href="Login.jsp" style="color: rgb(255,40,0)">登陆</a>后再将商品添加至购物车</span><br />
                         </td>
                     </tr>
                 </table>

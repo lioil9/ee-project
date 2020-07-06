@@ -19,6 +19,13 @@ public class UserAddressServiceImpl implements IUserAddressService {
   }
 
   @Override
+  public UserAddress getDefaultAddress(Integer userId) throws SQLException {
+    Connection connection = DataSourceUtil.openConnection();
+    IUserAddressDao userAddressDao = new UserAddressDaoImpl(connection);
+    return userAddressDao.getDefaultAddress(userId);
+  }
+
+  @Override
   public Integer addAddress(UserAddress userAddress) throws SQLException {
     Connection connection = DataSourceUtil.openConnection();
     IUserAddressDao userAddressDao = new UserAddressDaoImpl(connection);

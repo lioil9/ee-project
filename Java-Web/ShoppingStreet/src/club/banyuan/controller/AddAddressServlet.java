@@ -48,7 +48,7 @@ public class AddAddressServlet extends HttpServlet {
       userAddress.setIsDefault(Integer.valueOf(request.getParameter("isDefault")));
       userAddress.setRemark(request.getParameter("remark"));
       userAddressService.addAddress(userAddress);
-      request.getRequestDispatcher("Member_Address.jsp").forward(request,response);
+      request.getRequestDispatcher("Member_Address.jsp").forward(request, response);
     } catch (SQLException e) {
       e.printStackTrace();
     } catch (Exception e) {

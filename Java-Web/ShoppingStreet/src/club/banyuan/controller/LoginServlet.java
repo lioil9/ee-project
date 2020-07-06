@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.sql.SQLException;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -23,20 +24,25 @@ public class LoginServlet extends HttpServlet {
     String loginName = request.getParameter("loginName");
     String password = request.getParameter("password");
     UserServiceImpl userService = new UserServiceImpl();
+    Cookie cookie = new Cookie("loginName", loginName);
     try {
-      User user = userService.login(loginName,password);
-      if(user != null){
+      User user = userService.login(loginName, password);
+      if (user != null) {
         HttpSession session = request.getSession();
         System.out.println(user.getLoginName());
         session.setAttribute("user", user);
-        request.getRequestDispatcher("index.jsp").forward(request,response);
+        if(request.getParameter("keepStatus") != null) {
+          cookie.setMaxAge(24 * 3600);
+          response.addCookie(cookie);
+        }
+        request.getRequestDispatcher("index.jsp").forward(request, response);
         return;
       }
     } catch (SQLException e) {
       e.printStackTrace();
     }
 
-    request.getRequestDispatcher("Login.jsp").forward(request,response);
+    request.getRequestDispatcher("Login.jsp").forward(request, response);
 
 
   }

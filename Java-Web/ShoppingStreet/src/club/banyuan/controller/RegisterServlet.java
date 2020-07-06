@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * 获取注册并跳转请求
  */
-@WebServlet(name = "RegisterServlet",urlPatterns = "/register.do")
+@WebServlet(name = "RegisterServlet", urlPatterns = "/register.do")
 public class RegisterServlet extends HttpServlet {
 
   protected void doPost(HttpServletRequest request,
@@ -60,7 +60,7 @@ public class RegisterServlet extends HttpServlet {
     try {
       IUserService userService = new UserServiceImpl();
       if (userService.register(user)) {
-        request.getRequestDispatcher("Login.jsp").forward(request,response);
+        request.getRequestDispatcher("Login.jsp").forward(request, response);
       } else {
         writer.println("<script>alert('已存在此用户，请重新注册!');location.href='Regist.jsp'</script>");
       }

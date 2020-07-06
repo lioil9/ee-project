@@ -9,6 +9,7 @@ import java.util.Properties;
 import javax.sql.DataSource;
 
 public class DataSourceUtil {
+
   private DataSource dataSource;
   private static String driver;
   private static String url;
@@ -33,6 +34,7 @@ public class DataSourceUtil {
     user = params.getProperty("username");
     password = params.getProperty("password");
   }
+
   // 获取连接
   public static Connection openConnection() throws SQLException {
     Connection connection = null;
@@ -45,10 +47,13 @@ public class DataSourceUtil {
     }
     return connection;
   }
+
   // 关闭连接
   public static void closeConnection(Connection connection) {
     try {
-      if (connection != null) connection.close();
+      if (connection != null) {
+        connection.close();
+      }
     } catch (SQLException e) {
       e.printStackTrace();
     }

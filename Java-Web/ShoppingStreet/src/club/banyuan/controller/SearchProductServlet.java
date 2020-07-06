@@ -19,7 +19,8 @@ import javax.servlet.http.HttpServletResponse;
 public class SearchProductServlet extends HttpServlet {
 
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {}
+      throws ServletException, IOException {
+  }
 
   protected void doGet(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
@@ -38,7 +39,6 @@ public class SearchProductServlet extends HttpServlet {
       throwables.printStackTrace();
     }
   }
-
 
 
 }

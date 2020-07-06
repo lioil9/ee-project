@@ -1,3 +1,4 @@
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page import="club.banyuan.entity.User" %>
 <%@ page import="club.banyuan.entity.Product" %>
 <%@ page import="java.util.Map" %>
@@ -121,14 +122,10 @@
         </span>
         <!--End 所在收货地区 End-->
         <span class="fr">
-        	<span class="fl">
-                <%
-                    Object userObj = session.getAttribute("user");
-                    if (userObj != null) {
-                        User user = (User) userObj;
-                        %>
-               <div class="ss_list">
-                    <a href="Member.jsp"><%=user.getLoginName()%></a>
+            <c:if test="${sessionScope.user != null}">
+                <span class="fl">
+                <div class="ss_list">
+                    <a href="Member.jsp">${sessionScope.user.loginName}</a>
                     <div class="ss_list_bg">
                     	<div class="s_city_t"></div>
                         <div class="ss_list_c">
@@ -139,13 +136,42 @@
                     </div>
                 </div>
                 &nbsp;|&nbsp;<a href="#">我的订单</a>
-                <%
-                    } else {
-                        out.print(
-                                "你好，请<a href=\"Login.jsp\">登录</a>&nbsp; <a href=\"Regist.jsp\" style=\"color:#ff4e00;\">免费注册</a>");
-                    }
-                %>
                 &nbsp;|</span>
+            </c:if>
+
+            <c:if test="${sessionScope.user == null}">
+                <%
+                    String loginName = null;
+                    Cookie[] cookies = request.getCookies();
+                    for (Cookie cookie : cookies) {
+                        if (cookie.getName().equals("loginName")) {
+                            loginName = cookie.getValue();
+                            break;
+                        }
+                    }
+                    session.setAttribute("loginName", loginName);
+                %>
+                <c:if test="${empty sessionScope.loginName}">
+                    <span class="fl">你好，请<a href="Login.jsp">登录</a>&nbsp; <a href="Regist.jsp"
+                                                                             style="color:#ff4e00;">免费注册</a></span>
+                </c:if>
+                <c:if test="${!empty sessionScope.loginName}">
+                    <span class="fl">
+                <div class="ss_list">
+                    <a href="Member.jsp">${sessionScope.loginName}</a>
+                    <div class="ss_list_bg">
+                    	<div class="s_city_t"></div>
+                        <div class="ss_list_c">
+                        	<ul>
+                            	<li><a href="<%=request.getContextPath()%>/logout.do">退出登录</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                &nbsp;|&nbsp;<a href="#">我的订单</a>
+                &nbsp;|</span>
+                </c:if>
+            </c:if>
         	<span class="ss">
             	<div class="ss_list">
                 	<a href="#">收藏夹</a>
@@ -204,14 +230,15 @@
     </div>
     <div class="i_car">
         <%
+            Object userObj = session.getAttribute("user");
             String isLogin = "none";
             String cartVisible = "block";
             Map<Product, Integer> cart = new HashMap<>();
-            if(session.getAttribute("cart") !=null) {
+            if (session.getAttribute("cart") != null) {
                 cart = (Map<Product, Integer>) session.getAttribute("cart");
             }
             int count = cart.size();
-            if(userObj == null){
+            if (userObj == null) {
                 isLogin = "block";
                 cartVisible = "none";
                 count = 0;
@@ -220,27 +247,36 @@
         <div class="car_t">购物车 [ <span><%=count%></span> ]</div>
         <div class="car_bg">
             <!--Begin 购物车未登录 Begin-->
-            <div class="un_login" style="display: <%=isLogin%>"> 还未登录！<a href="Login.jsp" style="color:#ff4e00;">马上登录</a> 查看购物车！</div>
+            <div class="un_login" style="display: <%=isLogin%>"> 还未登录！<a href="Login.jsp"
+                                                                         style="color:#ff4e00;">马上登录</a>
+                查看购物车！
+            </div>
             <!--End 购物车未登录 End-->
             <div style="display: <%=cartVisible%>">
                 <!--Begin 购物车已登录 Begin-->
                 <ul class="cars">
                     <%
-                        if(cart.isEmpty()){
+                        if (cart.isEmpty()) {
                             out.print("<div class=\"un_login\">购物车里还没有商品，赶快去添加吧！</div>");
                         }
                         Double sum = 0.0;
                         for (Entry<Product, Integer> p : cart.entrySet()) {
-                            sum += p.getKey().getPrice()*p.getValue();
+                            sum += p.getKey().getPrice() * p.getValue();
                     %>
                     <li>
-                        <div class="img"><a href="#"><img src="images/car1.jpg" width="58" height="58" /></a></div>
-                        <div class="name"><a href="#"><%=p.getKey().getName()%></a></div>
-                        <div class="price"><font color="#ff4e00">￥<%=String.format("%.0f",p.getKey().getPrice())%></font> X<%=p.getValue()%></div>
+                        <div class="img"><a href="#"><img src="images/car1.jpg" width="58"
+                                                          height="58"/></a></div>
+                        <div class="name"><a href="#"><%=p.getKey().getName()%>
+                        </a></div>
+                        <div class="price"><font color="#ff4e00">￥<%=String
+                                .format("%.0f", p.getKey().getPrice())%>
+                        </font> X<%=p.getValue()%>
+                        </div>
                     </li>
                     <%}%>
                 </ul>
-                <div class="price_sum">共计&nbsp; <font color="#ff4e00">￥</font><span><%=String.format("%.0f",sum)%></span></div>
+                <div class="price_sum">共计&nbsp; <font color="#ff4e00">￥</font><span><%=String
+                        .format("%.0f", sum)%></span></div>
                 <div class="price_a"><a href="#">去购物车结算</a></div>
                 <!--End 购物车已登录 End-->
             </div>

@@ -59,6 +59,26 @@ public class UserAddressDaoImpl extends BaseDaoImpl implements IUserAddressDao {
   }
 
   @Override
+  public UserAddress getDefaultAddress(Integer userId) {
+    UserAddress userAddresse = new UserAddress();
+    String sql = "select * from `user_address` where userId = ? and isDefault = 1";
+    Object[] parms = new Object[]{userId};
+    ResultSet rs = this.executeQuery(sql,parms);
+    try{
+      while (rs.next()){
+        userAddresse = this.tableToClass(rs);
+      }
+    } catch (Exception e){
+      e.printStackTrace();
+    } finally{
+      this.closeResource();
+      this.closeResource(rs);
+    }
+
+    return userAddresse;
+  }
+
+  @Override
   public UserAddress tableToClass(ResultSet rs) throws Exception {
     SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     UserAddress userAddress = new UserAddress();

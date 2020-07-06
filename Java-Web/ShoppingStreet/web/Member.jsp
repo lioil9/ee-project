@@ -339,42 +339,23 @@
             <table border="0" class="acc_tab" style="width:870px;" cellspacing="0" cellpadding="0">
                 <tr>
                     <td class="td_l">用户ID：</td>
-                    <td><%=user.getId()%>
+                    <td>${sessionScope.user.id}
                     </td>
                 </tr>
                 <tr>
                     <td class="td_l b_none">身份证号：</td>
-                    <td><%
-                        if (user.getIdentityCode() == null) {
-                            out.print(" ");
-                        } else {
-                            out.print(user.getIdentityCode()
-                                    .replaceAll("(\\d{6})\\d+(\\d)", "$1***********$2"));
-                        }
-                    %></td>
+                    <td>${sessionScope.user.identityCode.replaceAll("(\\d{6})\\d+(\\d)", "$1***********$2")}
+                    </td>
                 </tr>
                 <tr>
                     <td class="td_l b_none">电 话：</td>
-                    <td><%
-                        if (user.getIdentityCode() == null) {
-                            out.print(" ");
-                        } else {
-                            user.getMobile().replaceAll("(\\d{3})\\d+(\\d{4})", "$1****$2");
-                        }
-                        %>
+                    <td>${sessionScope.user.mobile.replaceAll("(\\d{3})\\d+(\\d{4})", "$1****$2")}
                     </td>
                 </tr>
                 <tr>
                     <td class="td_l">邮 箱：</td>
-                    <td><%
-                        if (user.getIdentityCode() == null) {
-                            out.print(" ");
-                        } else {
-                            user.getEmail()
-                                    .replaceAll("(\\w?)(\\w+)(\\w)(@\\w+\\.[a-z]+(\\.[a-z]+)?)",
-                                            "$1****$3$4");
-                        }
-                    %>
+                    <td>${sessionScope.user.email.replaceAll("(\\w?)(\\w+)(\\w)(@\\w+\\.[a-z]+(\\.[a-z]+)?)",
+                            "$1****$3$4")}
                     </td>
                 </tr>
                 <tr>
