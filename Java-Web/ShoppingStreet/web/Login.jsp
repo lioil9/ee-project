@@ -61,7 +61,7 @@
                         User user = (User) userObj;
                 %>
                <div class="ss_list">
-                    <a href="Member.jsp"><%=user.getLoginName()%></a>
+                    <a href="<%=request.getContextPath()%>/user/Member.jsp"><%=user.getLoginName()%></a>
                     <div class="ss_list_bg">
                     	<div class="s_city_t"></div>
                         <div class="ss_list_c">

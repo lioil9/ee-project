@@ -44,7 +44,7 @@ public class AddCartServlet extends HttpServlet {
       session.setAttribute("cart",cart);
     }
 
-    request.getRequestDispatcher("BuyCar.jsp").forward(request,response);
+    request.getRequestDispatcher("<%=request.getContextPath()%>/user/BuyCar.jsp").forward(request,response);
   }
 
   protected void doGet(HttpServletRequest request,

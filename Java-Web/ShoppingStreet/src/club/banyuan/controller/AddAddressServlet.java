@@ -48,11 +48,11 @@ public class AddAddressServlet extends HttpServlet {
       userAddress.setIsDefault(Integer.valueOf(request.getParameter("isDefault")));
       userAddress.setRemark(request.getParameter("remark"));
       userAddressService.addAddress(userAddress);
-      request.getRequestDispatcher("Member_Address.jsp").forward(request, response);
+      request.getRequestDispatcher(request.getContextPath()+"/user/Member_Address.jsp").forward(request, response);
     } catch (SQLException e) {
       e.printStackTrace();
     } catch (Exception e) {
-      writer.println("<script>alert('请输入必填的地址信息');location.href='Member_Address.jsp'</script>");
+      writer.println("<script>alert('请输入必填的地址信息');location.href='"+request.getContextPath()+"/user/Member_Address.jsp'</script>");
       e.printStackTrace();
     }
   }

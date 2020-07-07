@@ -3,37 +3,30 @@
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.HashMap" %>
 <%@ page import="java.util.Map.Entry" %>
-<%@ page import="club.banyuan.service.IUserAddressService" %>
-<%@ page import="club.banyuan.service.impl.UserAddressServiceImpl" %>
-<%@ page import="java.util.List" %>
-<%@ page import="club.banyuan.entity.UserAddress" %>
 <%@page contentType="text/html; charset=UTF-8" language="java" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link type="text/css" rel="stylesheet" href="css/style.css"/>
+    <link type="text/css" rel="stylesheet" href="../css/style.css"/>
     <!--[if IE 6]>
-    <script src="js/iepng.js" type="text/javascript"></script>
+    <script src="../js/iepng.js" type="text/javascript"></script>
     <script type="text/javascript">
         EvPNG.fix('div, ul, img, li, input, a');
     </script>
     <![endif]-->
 
-    <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
-    <script type="text/javascript" src="js/menu.js"></script>
+    <script type="text/javascript" src="../js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="../js/menu.js"></script>
 
-    <script type="text/javascript" src="js/select.js"></script>
-
+    <script type="text/javascript" src="../js/select.js"></script>
 
     <title>购物街</title>
-    <script type="text/javascript" language="JavaScript">
-      $(function () {
-        $("#addAddressBtn").click(function(){
-          $("#addAddress").submit();
-        });
-      });
-    </script>
+    <%
+        String path = request.getContextPath();
+        String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    %>
+    <base href="<%=basePath%>"/>
 </head>
 <body>
 <!--Begin Header Begin-->
@@ -119,14 +112,8 @@
         <!--End 所在收货地区 End-->
         <span class="fr">
         	<span class="fl">
-                <%
-                    Object userObj = session.getAttribute("user");
-                    User user = new User();
-                    if (userObj != null) {
-                        user = (User) userObj;
-                %>
                <div class="ss_list">
-                    <a href="Member.jsp"><%=user.getLoginName()%></a>
+                    <a href="<%=request.getContextPath()%>/user/Member.jsp">${sessionScope.user.loginName}</a>
                     <div class="ss_list_bg">
                     	<div class="s_city_t"></div>
                         <div class="ss_list_c">
@@ -137,11 +124,6 @@
                     </div>
                 </div>
                 &nbsp;|&nbsp;<a href="#">我的订单</a>
-                <%
-                    } else {
-                        response.sendRedirect("Login.jsp");
-                    }
-                %>
             </span>
         	<span class="ss">
             	<div class="ss_list">
@@ -154,7 +136,7 @@
                                 <li><a href="#">我的收藏夹</a></li>
                             </ul>
                         </div>
-                    </div>     
+                    </div>
                 </div>
                 <div class="ss_list">
                 	<a href="#">客户服务</a>
@@ -167,7 +149,7 @@
                                 <li><a href="#">客户服务</a></li>
                             </ul>
                         </div>
-                    </div>    
+                    </div>
                 </div>
                 <div class="ss_list">
                 	<a href="#">网站导航</a>
@@ -179,7 +161,7 @@
                                 <li><a href="#">网站导航</a></li>
                             </ul>
                         </div>
-                    </div>    
+                    </div>
                 </div>
             </span>
             <span class="fl">|&nbsp;关注我们：</span>
@@ -191,7 +173,8 @@
 </div>
 <div class="m_top_bg">
     <div class="top">
-        <div class="m_logo"><a href="index.jsp"><img src="images/logo1.png"/></a></div>
+        <div class="m_logo"><a href="<%=request.getContextPath()%>/index.jsp"><img
+                src="images/logo1.png"/></a></div>
         <div class="m_search">
             <form>
                 <input type="text" value="" class="m_ipt"/>
@@ -202,53 +185,44 @@
         </div>
         <div class="i_car">
             <%
-                String isLogin = "none";
-                String cartVisible = "block";
+                Double sum = 0.0;
                 Map<Product, Integer> cart = new HashMap<>();
                 if (session.getAttribute("cart") != null) {
                     cart = (Map<Product, Integer>) session.getAttribute("cart");
                 }
-                int count = cart.size();
-                if (userObj == null) {
-                    isLogin = "block";
-                    cartVisible = "none";
-                    count = 0;
-                }
             %>
-            <div class="car_t">购物车 [ <span><%=count%></span> ]</div>
+            <div class="car_t">购物车 [ <span><%=cart.size()%></span> ]</div>
             <div class="car_bg">
-                <!--Begin 购物车未登录 Begin-->
-                <div class="un_login" style="display: <%=isLogin%>"> 还未登录！<a href="Login.jsp"
-                                                                             style="color:#ff4e00;">马上登录</a>
-                    查看购物车！
-                </div>
-                <!--End 购物车未登录 End-->
-                <div style="display: <%=cartVisible%>">
+                <div>
                     <!--Begin 购物车已登录 Begin-->
                     <ul class="cars">
-                        <%
-                            if (cart.isEmpty()) {
-                                out.print("<div class=\"un_login\">购物车里还没有商品，赶快去添加吧！</div>");
-                            }
-                            Double sum = 0.0;
-                            for (Entry<Product, Integer> p : cart.entrySet()) {
-                                sum += p.getKey().getPrice() * p.getValue();
-                        %>
-                        <li>
-                            <div class="img"><a href="#"><img src="images/car1.jpg" width="58"
-                                                              height="58"/></a></div>
-                            <div class="name"><a href="#"><%=p.getKey().getName()%>
-                            </a></div>
-                            <div class="price"><font color="#ff4e00">￥<%=String
-                                    .format("%.0f", p.getKey().getPrice())%>
-                            </font> X<%=p.getValue()%>
-                            </div>
-                        </li>
-                        <%}%>
+                        <c:if test="${sessionScope.cart.size() == 0}">
+                            <div class="un_login">购物车里还没有商品，赶快去添加吧！</div>
+                        </c:if>
+                        <c:if test="${sessionScope.cart.size() > 0}">
+                            <%
+                                for (Entry<Product, Integer> p : cart.entrySet()) {
+                                    sum += p.getKey().getPrice() * p.getValue();
+                            %>
+                            <li>
+                                <div class="img"><a href="#"><img src="images/car1.jpg" width="58"
+                                                                  height="58"/></a></div>
+                                <div class="name"><a href="#"><%=p.getKey().getName()%>>
+                                </a></div>
+                                <div class="price"><font color="#ff4e00">￥
+                                    <%=String.format("%.0f", p.getKey().getPrice())%>
+                                </font> X<%=p.getValue()%>
+                                </div>
+                            </li>
+                            <%
+                                }
+                            %>
+                        </c:if>
                     </ul>
                     <div class="price_sum">共计&nbsp; <font color="#ff4e00">￥</font><span><%=String
                             .format("%.0f", sum)%></span></div>
-                    <div class="price_a"><a href="BuyCar.jsp">去购物车结算</a></div>
+                    <div class="price_a"><a href="<%=request.getContextPath()%>/user/BuyCar.jsp">去购物车结算</a>
+                    </div>
                     <!--End 购物车已登录 End-->
                 </div>
             </div>
@@ -264,8 +238,9 @@
             <div class="left_m">
                 <div class="left_m_t t_bg1">订单中心</div>
                 <ul>
-                    <li><a href="<%=request.getContextPath()%>/getOrder.do">我的订单</a></li>
-                    <li><a href="Member_Address.jsp" class="now">收货地址</a></li>
+                    <li><a href="getOrder.do">我的订单</a></li>
+                    <li><a href="<%=request.getContextPath()%>/user/Member_Address.jsp">收货地址</a>
+                    </li>
                     <li><a href="#">缺货登记</a></li>
                     <li><a href="#">跟踪订单</a></li>
                 </ul>
@@ -273,7 +248,7 @@
             <div class="left_m">
                 <div class="left_m_t t_bg2">会员中心</div>
                 <ul>
-                    <li><a href="Member_User.jsp">用户信息</a></li>
+                    <li><a href="<%=request.getContextPath()%>/user/Member_User.jsp">用户信息</a></li>
                     <li><a href="Member_Collect.html">我的收藏</a></li>
                     <li><a href="Member_Msg.html">我的留言</a></li>
                     <li><a href="Member_Links.html">推广链接</a></li>
@@ -283,7 +258,8 @@
             <div class="left_m">
                 <div class="left_m_t t_bg3">账户中心</div>
                 <ul>
-                    <li><a href="Member_Safe.jsp">账户安全</a></li>
+                    <li><a href="<%=request.getContextPath()%>/user/Member_Safe.jsp" class="now">账户安全</a>
+                    </li>
                     <li><a href="Member_Packet.html">我的红包</a></li>
                     <li><a href="Member_Money.html">资金管理</a></li>
                 </ul>
@@ -298,146 +274,83 @@
                 </ul>
             </div>
         </div>
-        <div class="m_right" style="overflow: scroll;">
+        <div class="m_right">
             <p></p>
-            <div class="mem_tit">收货地址</div>
-
-            <div style="max-height: 391px; overflow: scroll">
-                <%
-                    IUserAddressService userAddressService = new UserAddressServiceImpl();
-                    List<UserAddress> userAddresses = userAddressService.getAddress(user.getId());
-                    if (userAddresses.isEmpty()) {
-                        out.print("<div style=\"margin-left:20px\">还未添加收货地址，请在下方添加</div>");
-                    } else {
-                        for (UserAddress userAddress : userAddresses) {
-
-
-                %>
-                <div class="address">
-                    <div class="a_close"><a href="#"><img src="images/a_close.png"/></a></div>
-                    <table border="0" class="add_t" align="center"
-                           style="width:98%; margin:10px auto;" cellspacing="0" cellpadding="0">
-                        <tr>
-                            <td colspan="2" style="font-size:14px; color:#ff4e00;"><%=userAddress
-                                    .getRemark()%>
+            <div class="mem_tit">账户安全</div>
+            <div class="m_des">
+                <form action="change.do" method="post">
+                    <table border="0" style="width:880px;" cellspacing="0" cellpadding="0">
+                        <tr height="45">
+                            <td width="80" align="right">原手机 &nbsp; &nbsp;</td>
+                            <td><input type="text" name="originalValue" value="" class="add_ipt"
+                                       style="width:180px;"/>&nbsp; <font color="#ff4e00">*</font>
                             </td>
                         </tr>
-                        <tr>
-                            <td align="right" width="80">收货人姓名：</td>
-                            <td><%=user.getUserName()%>
+                        <tr height="45">
+                            <td align="right">新手机 &nbsp; &nbsp;</td>
+                            <td><input type="text" name="changeValue" value="" class="add_ipt"
+                                       style="width:180px;"/>&nbsp; <font color="#ff4e00">*</font>
                             </td>
                         </tr>
-                        <tr>
-                            <td align="right">配送区域：</td>
-                            <td><%=userAddress.getAddress()%>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="right">详细地址：</td>
-                            <td><%=userAddress.getAddress()%>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="right">手机：</td>
-                            <td><%=user.getMobile()%>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="right">电话：</td>
-                            <td><%=user.getMobile()%>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="right">电子邮箱：</td>
-                            <td><%=user.getEmail()%>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td align="right">默认地址</td>
-                            <td>
-                                <%
-                                   if(userAddress.getIsDefault()==1){
-                                     out.print("是");
-                                   }else {
-                                     out.print("否");
-                                   }
-                                %>
-                            </td>
+                        <tr height="50">
+                            <td>&nbsp;</td>
+                            <td><input type="submit" value="确认修改" class="btn_tj"/></td>
                         </tr>
                     </table>
-
-                    <p align="right">
-                        <a href="#" style="color:#ff4e00;">设为默认</a>&nbsp; &nbsp; &nbsp; &nbsp; <a
-                            href="#" style="color:#ff4e00;">编辑</a>&nbsp; &nbsp; &nbsp; &nbsp;
-                    </p>
-
-
-                </div>
-                <%
-                        }
-                    }
-                %>
+                </form>
             </div>
 
-            <div class="mem_tit">
-                <a href="#"><img src="images/add_ad.gif"/></a>
+            <div class="m_des">
+                <form action="change.do" method="post">
+                    <table border="0" style="width:880px;" cellspacing="0" cellpadding="0">
+                        <tr height="45">
+                            <td width="80" align="right">原邮箱 &nbsp; &nbsp;</td>
+                            <td><input type="text" name="originalValue" value="" class="add_ipt"
+                                       style="width:180px;"/>&nbsp; <font color="#ff4e00">*</font>
+                            </td>
+                        </tr>
+                        <tr height="45">
+                            <td align="right">新邮箱 &nbsp; &nbsp;</td>
+                            <td><input type="text" name="changeValue" value="" class="add_ipt"
+                                       style="width:180px;"/>&nbsp; <font color="#ff4e00">*</font>
+                            </td>
+                        </tr>
+                        <tr height="50">
+                            <td>&nbsp;</td>
+                            <td><input type="submit" value="确认修改" class="btn_tj"/></td>
+                        </tr>
+                    </table>
+                </form>
             </div>
-            <form id="addAddress" action="addAddress.do" method="post">
-            <table border="0" class="add_tab" style="width:930px;" cellspacing="0" cellpadding="0">
 
-                <tr>
-                    <td width="135" align="right">配送地区</td>
-                    <td colspan="3" style="font-family:'宋体';">
-                       <input style="width: 600px" type="text" name="address" value="" class="add_ipt" />
-                        （必填）
-                    </td>
-                </tr>
-                <tr>
-                    <td align="right">收货人姓名</td>
-                    <td style="font-family:'宋体';"><input type="text" name="" value="姓名" class="add_ipt"/>（必填）
-                    </td>
-                    <td align="right">电子邮箱</td>
-                    <td style="font-family:'宋体';"><input type="text" name="email" value="12345678@qq.com"
-                                                         class="add_ipt"/>（必填）
-                    </td>
-                </tr>
-                <tr>
-                    <td align="right">详细地址</td>
-                    <td style="font-family:'宋体';"><input type="text" name="addressDetail" value="" class="add_ipt"/>（必填）
-                    </td>
-                    <td align="right">邮政编码</td>
-                    <td style="font-family:'宋体';"><input type="text" value="610000"
-                                                         class="add_ipt"/></td>
-                </tr>
-                <tr>
-                    <td align="right">手机</td>
-                    <td style="font-family:'宋体';"><input type="text" value="<%=user.getMobile()%>"
-                                                         class="add_ipt"/>（必填）
-                    </td>
-                    <td align="right">备注</td>
-                    <td style="font-family:'宋体';"><input type="text" name="remark" value="家"
-                                                         class="add_ipt"/></td>
-                </tr>
-                <tr>
-                    <td align="right">默认地址</td>
-                    <td style="font-family:'宋体';">
-                        <select class="jj" name="isDefault" style="background-color:#f6f6f6;">
-                            <option value="0" selected="selected">否</option>
-                            <option value="1">是</option>
-                        </select>
-                    </td>
-                    <td></td>
-                    <td></td>
-                </tr>
-
-            </table>
-            <p align="right">
-                <input type="submit" id="addAddressBtn" class="add_b" value="确认添加">
-<%--                <a href="#">删除</a>&nbsp; &nbsp; --%>
-<%--                <a id="addAddressBtn" href="" class="add_b">确认添加</a>--%>
-            </p>
-            </form>
-
+            <div class="m_des">
+                <form action="change.do" method="post">
+                    <table border="0" style="width:880px;" cellspacing="0" cellpadding="0">
+                        <tr height="45">
+                            <td width="80" align="right">原密码 &nbsp; &nbsp;</td>
+                            <td><input type="password" name="originalValue" value="" class="add_ipt"
+                                       style="width:180px;"/>&nbsp; <font color="#ff4e00">*</font>
+                            </td>
+                        </tr>
+                        <tr height="45">
+                            <td align="right">新密码 &nbsp; &nbsp;</td>
+                            <td><input type="password" value="" class="add_ipt"
+                                       style="width:180px;"/>&nbsp; <font color="#ff4e00">*</font>
+                            </td>
+                        </tr>
+                        <tr height="45">
+                            <td align="right">确认密码 &nbsp; &nbsp;</td>
+                            <td><input type="password" name="changeValue" value="" class="add_ipt"
+                                       style="width:180px;"/>&nbsp; <font color="#ff4e00">*</font>
+                            </td>
+                        </tr>
+                        <tr height="50">
+                            <td>&nbsp;</td>
+                            <td><input type="button" value="确认修改" class="btn_tj"/></td>
+                        </tr>
+                    </table>
+                </form>
+            </div>
 
 
         </div>

@@ -33,7 +33,7 @@ public class ConfirmOrderServlet extends HttpServlet {
         totalPrice += product.getPrice() * car.get(product);
       }
       session.setAttribute("totalPrice", totalPrice);
-      request.getRequestDispatcher("BuyCar_Two.jsp").forward(request, response);
+      request.getRequestDispatcher("/user/BuyCar_Two.jsp").forward(request, response);
     }
   }
 }

@@ -30,8 +30,9 @@ public class UserGetOrderServlet extends HttpServlet {
     IOrderService orderService = new OrderServiceImpl();
     try {
       List<Order> orders = orderService.getOrderByUserId(user.getId());
+      System.out.println(orders.size());
       request.setAttribute("userOrders", orders);
-      request.getRequestDispatcher("Member_Order.jsp").forward(request, response);
+      request.getRequestDispatcher("/user/Member_Order.jsp").forward(request, response);
     } catch (SQLException throwables) {
       throwables.printStackTrace();
     }

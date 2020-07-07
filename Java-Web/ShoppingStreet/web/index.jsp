@@ -125,7 +125,7 @@
             <c:if test="${sessionScope.user != null}">
                 <span class="fl">
                 <div class="ss_list">
-                    <a href="Member.jsp">${sessionScope.user.loginName}</a>
+                    <a href="<%=request.getContextPath()%>/user/Member.jsp">${sessionScope.user.loginName}</a>
                     <div class="ss_list_bg">
                     	<div class="s_city_t"></div>
                         <div class="ss_list_c">
@@ -142,11 +142,13 @@
             <c:if test="${sessionScope.user == null}">
                 <%
                     String loginName = null;
-                    Cookie[] cookies = request.getCookies();
-                    for (Cookie cookie : cookies) {
-                        if (cookie.getName().equals("loginName")) {
-                            loginName = cookie.getValue();
-                            break;
+                    if(request.getCookies() !=null){
+                        Cookie[] cookies = request.getCookies();
+                        for (Cookie cookie : cookies) {
+                            if (cookie.getName().equals("loginName")) {
+                                loginName = cookie.getValue();
+                                break;
+                            }
                         }
                     }
                     session.setAttribute("loginName", loginName);
@@ -158,7 +160,7 @@
                 <c:if test="${!empty sessionScope.loginName}">
                     <span class="fl">
                 <div class="ss_list">
-                    <a href="Member.jsp">${sessionScope.loginName}</a>
+                    <a href="<%=request.getContextPath()%>/user/Member.jsp">${sessionScope.loginName}</a>
                     <div class="ss_list_bg">
                     	<div class="s_city_t"></div>
                         <div class="ss_list_c">
@@ -277,7 +279,7 @@
                 </ul>
                 <div class="price_sum">共计&nbsp; <font color="#ff4e00">￥</font><span><%=String
                         .format("%.0f", sum)%></span></div>
-                <div class="price_a"><a href="BuyCar.jsp">去购物车结算</a></div>
+                <div class="price_a"><a href="<%=request.getContextPath()%>/user/BuyCar.jsp">去购物车结算</a></div>
                 <!--End 购物车已登录 End-->
             </div>
         </div>

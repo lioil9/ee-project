@@ -25,4 +25,10 @@ public class UserServiceImpl implements IUserService {
       return true;
     }
   }
+
+  @Override
+  public boolean isExist(String loginName) throws SQLException {
+    IUserDao userDao = new UserDaoImpl(DataSourceUtil.openConnection());
+    return userDao.isExist(loginName);
+  }
 }

@@ -1,16 +1,21 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ page import="java.util.List" %>
 <%@ page import="club.banyuan.entity.Product" %>
-<%@ page import="java.util.ArrayList" %>
-<%@ page import="club.banyuan.entity.User" %>
 <%@ page import="java.util.Map.Entry" %>
-<%@ page import="java.util.Map" %>
 <%@ page import="java.util.HashMap" %>
-<%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
+<%@ page import="java.util.Map" %>
+<%@ page import="club.banyuan.entity.User" %>
+<%@ page import="club.banyuan.service.IUserAddressService" %>
+<%@ page import="club.banyuan.service.impl.UserAddressServiceImpl" %>
+<%@ page import="java.sql.SQLException" %>
+<%@ page import="club.banyuan.entity.UserAddress" %>
+<%@page contentType="text/html; charset=UTF-8" language="java" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <%
+        String path = request.getContextPath();
+        String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    %>
+    <base href="<%=basePath%>"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link type="text/css" rel="stylesheet" href="css/style.css"/>
     <!--[if IE 6]>
@@ -23,10 +28,17 @@
     <script type="text/javascript" src="js/jquery-1.8.2.min.js"></script>
     <script type="text/javascript" src="js/menu.js"></script>
 
-    <script type="text/javascript" src="js/lrscroll_1.js"></script>
-
-
     <script type="text/javascript" src="js/n_nav.js"></script>
+
+    <script type="text/javascript" src="js/select.js"></script>
+
+    <script type="text/javascript" src="js/num.js">
+      var jq = jQuery.noConflict();
+    </script>
+
+    <script type="text/javascript" src="js/shade.js"></script>
+
+
 
     <title>购物街</title>
 </head>
@@ -113,43 +125,15 @@
         </span>
         <!--End 所在收货地区 End-->
         <span class="fr">
-            <c:if test="${sessionScope.user != null}">
-                <span class="fl">
-                <div class="ss_list">
-                    <a href="<%=request.getContextPath()%>/user/Member.jsp">${sessionScope.user.loginName}</a>
-                    <div class="ss_list_bg">
-                    	<div class="s_city_t"></div>
-                        <div class="ss_list_c">
-                        	<ul>
-                            	<li><a href="<%=request.getContextPath()%>/logout.do">退出登录</a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                &nbsp;|&nbsp;<a href="#">我的订单</a>
-                &nbsp;|</span>
-            </c:if>
-
-            <c:if test="${sessionScope.user == null}">
+        	<span class="fl">
                 <%
-                    String loginName = null;
-                    Cookie[] cookies = request.getCookies();
-                    for (Cookie cookie : cookies) {
-                        if (cookie.getName().equals("loginName")) {
-                            loginName = cookie.getValue();
-                            break;
-                        }
-                    }
-                    session.setAttribute("loginName", loginName);
+                    Object userObj = session.getAttribute("user");
+                    if (userObj != null) {
+                        User user = (User) userObj;
                 %>
-                <c:if test="${empty sessionScope.loginName}">
-                    <span class="fl">你好，请<a href="Login.jsp">登录</a>&nbsp; <a href="Regist.jsp"
-                                                                             style="color:#ff4e00;">免费注册</a></span>
-                </c:if>
-                <c:if test="${!empty sessionScope.loginName}">
-                    <span class="fl">
-                <div class="ss_list">
-                    <a href="<%=request.getContextPath()%>/user/Member.jsp">${sessionScope.loginName}</a>
+               <div class="ss_list">
+                    <a href="<%=request.getContextPath()%>/user/Member.jsp"><%=user
+                            .getLoginName()%></a>
                     <div class="ss_list_bg">
                     	<div class="s_city_t"></div>
                         <div class="ss_list_c">
@@ -160,9 +144,13 @@
                     </div>
                 </div>
                 &nbsp;|&nbsp;<a href="#">我的订单</a>
+                <%
+                    } else {
+                        out.print(
+                                "你好，请<a href=\"Login.jsp\">登录</a>&nbsp; <a href=\"Regist.jsp\" style=\"color:#ff4e00;\">免费注册</a>");
+                    }
+                %>
                 &nbsp;|</span>
-                </c:if>
-            </c:if>
         	<span class="ss">
             	<div class="ss_list">
                 	<a href="#">收藏夹</a>
@@ -174,7 +162,7 @@
                                 <li><a href="#">我的收藏夹</a></li>
                             </ul>
                         </div>
-                    </div>     
+                    </div>
                 </div>
                 <div class="ss_list">
                 	<a href="#">客户服务</a>
@@ -187,7 +175,7 @@
                                 <li><a href="#">客户服务</a></li>
                             </ul>
                         </div>
-                    </div>    
+                    </div>
                 </div>
                 <div class="ss_list">
                 	<a href="#">网站导航</a>
@@ -199,7 +187,7 @@
                                 <li><a href="#">网站导航</a></li>
                             </ul>
                         </div>
-                    </div>    
+                    </div>
                 </div>
             </span>
             <span class="fl">|&nbsp;关注我们：</span>
@@ -210,10 +198,11 @@
     </div>
 </div>
 <div class="top">
-    <div class="logo"><a href="index.jsp"><img src="images/logo.png"/></a></div>
+    <div class="logo"><a href="<%=request.getContextPath()%>/index.jsp"><img src="images/logo.png"/></a>
+    </div>
     <div class="search">
-        <form action="search.do">
-            <input type="text" name="searchName" value="" class="s_ipt"/>
+        <form>
+            <input type="text" value="" class="s_ipt"/>
             <input type="submit" value="搜索" class="s_btn"/>
         </form>
         <span class="fl"><a href="#">咖啡</a><a href="#">iphone 6S</a><a href="#">新鲜美食</a><a href="#">蛋糕</a><a
@@ -221,54 +210,44 @@
     </div>
     <div class="i_car">
         <%
-            Object userObj = session.getAttribute("user");
-            String isLogin = "none";
-            String cartVisible = "block";
+            Double sum = 0.0;
             Map<Product, Integer> cart = new HashMap<>();
             if (session.getAttribute("cart") != null) {
                 cart = (Map<Product, Integer>) session.getAttribute("cart");
             }
-            int count = cart.size();
-            if (userObj == null) {
-                isLogin = "block";
-                cartVisible = "none";
-                count = 0;
-            }
         %>
-        <div class="car_t">购物车 [ <span><%=count%></span> ]</div>
+        <div class="car_t">购物车 [ <span><%=cart.size()%></span> ]</div>
         <div class="car_bg">
-            <!--Begin 购物车未登录 Begin-->
-            <div class="un_login" style="display: <%=isLogin%>"> 还未登录！<a href="Login.jsp"
-                                                                         style="color:#ff4e00;">马上登录</a>
-                查看购物车！
-            </div>
-            <!--End 购物车未登录 End-->
-            <div style="display: <%=cartVisible%>">
+            <div>
                 <!--Begin 购物车已登录 Begin-->
                 <ul class="cars">
-                    <%
-                        if (cart.isEmpty()) {
-                            out.print("<div class=\"un_login\">购物车里还没有商品，赶快去添加吧！</div>");
-                        }
-                        Double sum = 0.0;
-                        for (Entry<Product, Integer> p : cart.entrySet()) {
-                            sum += p.getKey().getPrice() * p.getValue();
-                    %>
-                    <li>
-                        <div class="img"><a href="#"><img src="images/car1.jpg" width="58"
-                                                          height="58"/></a></div>
-                        <div class="name"><a href="#"><%=p.getKey().getName()%>
-                        </a></div>
-                        <div class="price"><font color="#ff4e00">￥<%=String
-                                .format("%.0f", p.getKey().getPrice())%>
-                        </font> X<%=p.getValue()%>
-                        </div>
-                    </li>
-                    <%}%>
+                    <c:if test="${sessionScope.cart.size() == 0}">
+                        <div class="un_login">购物车里还没有商品，赶快去添加吧！</div>
+                    </c:if>
+                    <c:if test="${sessionScope.cart.size() > 0}">
+                        <%
+                            for (Entry<Product, Integer> p : cart.entrySet()) {
+                                sum += p.getKey().getPrice() * p.getValue();
+                        %>
+                        <li>
+                            <div class="img"><a href="#"><img src="images/car1.jpg" width="58"
+                                                              height="58"/></a></div>
+                            <div class="name"><a href="#"><%=p.getKey().getName()%>>
+                            </a></div>
+                            <div class="price"><font color="#ff4e00">￥
+                                <%=String.format("%.0f", p.getKey().getPrice())%>
+                            </font> X<%=p.getValue()%>
+                            </div>
+                        </li>
+                        <%
+                            }
+                        %>
+                    </c:if>
                 </ul>
                 <div class="price_sum">共计&nbsp; <font color="#ff4e00">￥</font><span><%=String
                         .format("%.0f", sum)%></span></div>
-                <div class="price_a"><a href="<%=request.getContextPath()%>/user/BuyCar.jsp">去购物车结算</a></div>
+                <div class="price_a"><a
+                        href="<%=request.getContextPath()%>/user/BuyCar.jsp">去购物车结算</a></div>
                 <!--End 购物车已登录 End-->
             </div>
         </div>
@@ -572,7 +551,7 @@
         </div>
         <!--End 商品分类详情 End-->
         <ul class="menu_r">
-            <li><a href="index.jsp">首页</a></li>
+            <li><a href="<%=request.getContextPath()%>/index.jsp">首页</a></li>
             <li><a href="Food.html">美食</a></li>
             <li><a href="Fresh.html">生鲜</a></li>
             <li><a href="HomeDecoration.html">家居</a></li>
@@ -586,159 +565,304 @@
 </div>
 <!--End Menu End-->
 <div class="i_bg">
-    <div class="postion">
-        <span class="fl">全部 > 美妆个护 > 香水 > </span>
-        <span class="n_ch">
-            <span class="fl">品牌：<font>香奈儿</font></span>
-            <a href="#"><img src="images/s_close.gif"/></a>
-        </span>
-    </div>
-    <!--Begin 筛选条件 Begin-->
-    <div class="content mar_10">
-        <table border="0" class="choice" style="width:100%; font-family:'宋体'; margin:0 auto;"
-               cellspacing="0" cellpadding="0">
-            <tr valign="top">
-                <td width="70">&nbsp; 品牌：</td>
-                <td class="td_a"><a href="#" class="now">香奈儿（Chanel）</a><a href="#">迪奥（Dior）</a><a
-                        href="#">范思哲（VERSACE）</a><a href="#">菲拉格慕（Ferragamo）</a><a href="#">兰蔻（LANCOME）</a><a
-                        href="#">爱马仕（HERMES）</a><a href="#">卡文克莱（Calvin Klein）</a><a href="#">古驰（GUCCI）</a><a
-                        href="#">宝格丽（BVLGARI）</a><a href="#">阿迪达斯（Adidas）</a><a
-                        href="#">卡尔文·克莱恩（CK）</a><a href="#">凌仕（LYNX）</a><a
-                        href="#">大卫杜夫（Davidoff）</a><a href="#">安娜苏（Anna sui）</a><a href="#">阿玛尼（ARMANI）</a><a
-                        href="#">娇兰（Guerlain）</a></td>
-            </tr>
-            <tr valign="top">
-                <td>&nbsp; 价格：</td>
-                <td class="td_a"><a href="#">0-199</a><a href="#" class="now">200-399</a><a
-                        href="#">400-599</a><a href="#">600-899</a><a href="#">900-1299</a><a
-                        href="#">1300-1399</a><a href="#">1400以上</a></td>
-            </tr>
-            <tr>
-                <td>&nbsp; 类型：</td>
-                <td class="td_a"><a href="#">女士香水</a><a href="#">男士香水</a><a href="#">Q版香水</a><a
-                        href="#">组合套装</a><a href="#">香体走珠</a><a href="#">其它</a></td>
-            </tr>
-            <tr>
-                <td>&nbsp; 香型：</td>
-                <td class="td_a"><a href="#">浓香水</a><a href="#">香精Parfum香水</a><a
-                        href="#">淡香精EDP淡香水</a><a href="#">香露EDT</a><a href="#">古龙水</a><a
-                        href="#">其它</a></td>
-            </tr>
-        </table>
-    </div>
-    <!--End 筛选条件 End-->
-
     <div class="content mar_20">
-        <div class="l_history">
-            <div class="his_t">
-                <span class="fl">浏览历史</span>
-                <span class="fr"><a href="#">清空</a></span>
+        <img src="images/img2.jpg"/>
+    </div>
+
+    <!--Begin 第二步：确认订单信息 Begin -->
+    <div class="content mar_20">
+        <div class="two_bg">
+            <div class="two_t">
+                <span class="fr"><a href="#">修改</a></span>商品列表
             </div>
-            <ul>
-                <li>
-                    <div class="img"><a href="#"><img src="images/his_1.jpg" width="185"
-                                                      height="162"/></a></div>
-                    <div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>
-                    <div class="price">
-                        <font>￥<span>368.00</span></font> &nbsp; 18R
-                    </div>
+            <table border="0" class="car_tab" style="width:1110px;" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="car_th" width="550">商品名称</td>
+                    <td class="car_th" width="140">属性</td>
+                    <td class="car_th" width="150">购买数量</td>
+                    <td class="car_th" width="130">小计</td>
+                    <td class="car_th" width="140">返还积分</td>
+                </tr>
+                <%
+                    for (Entry<Product, Integer> p : cart.entrySet()) {
+                %>
+                <c:choose>
+                <c:when test="${status.index%2 != 0 }">
+                <tr class="car_tr">
+                    </c:when>
+                    <c:otherwise>
+                <tr>
+                    </c:otherwise>
+                    </c:choose>
+                    <td>
+                        <div class="c_s_img"><img src="images/c_2.jpg" width="73" height="73"/>
+                        </div>
+                        <%=p.getKey().getName()%>
+                    </td>
+                    <td align="center">颜色：灰色</td>
+                    <td align="center">
+                        <div class="c_num">
+                            <input type="button" value="" onclick="jianUpdate1(jq(this));"
+                                   class="car_btn_1"/>
+                            <input type="text" value="<%=p.getValue()%>" name="" class="car_ipt"/>
+                            <input type="button" value="" onclick="addUpdate1(jq(this));"
+                                   class="car_btn_2"/>
+                        </div>
+                    </td>
+                    <td align="center" style="color:#ff4e00;">￥<%=p.getKey().getPrice()%>
+                    </td>
+                    <td align="center">26R</td>
+                </tr>
+                <%}%>
+                <td colspan="5" align="right" style="font-family:'Microsoft YaHei';">
+                    商品总价：￥<%=String.format("%.2f", sum)%> ； 返还积分 56R
+                </td>
+                </tr>
+            </table>
+
+            <div class="two_t">
+                <span class="fr"><a href="#">修改</a></span>收货人信息
+            </div>
+            <%
+                IUserAddressService userAddressService = new UserAddressServiceImpl();
+                UserAddress userAddress = new UserAddress();
+                try {
+                    assert userObj != null;
+                    userAddress = userAddressService.getDefaultAddress(((User) userObj).getId());
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+
+            %>
+            <table border="0" class="peo_tab" style="width:1110px;" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="p_td" width="160">收货人姓名</td>
+                    <td width="395">${sessionScope.user.userName}</td>
+                    <td class="p_td" width="160">电子邮件</td>
+                    <td width="395">${sessionScope.user.email}</td>
+                </tr>
+                <tr>
+                    <td class="p_td">详细信息</td>
+                    <td><%=userAddress.getAddress()%>
+                    </td>
+                    <td class="p_td">邮政编码</td>
+                    <td>6011111</td>
+                </tr>
+                <tr>
+                    <td class="p_td">电话</td>
+                    <td></td>
+                    <td class="p_td">手机</td>
+                    <td>${sessionScope.user.mobile}</td>
+                </tr>
+                <tr>
+                    <td class="p_td">备注</td>
+                    <td><%=userAddress.getRemark()%>
+                    </td>
+                    <td class="p_td">最佳送货时间</td>
+                    <td></td>
+                </tr>
+            </table>
+
+
+            <div class="two_t">
+                配送方式
+            </div>
+            <table border="0" class="car_tab" style="width:1110px;" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="car_th" width="80"></td>
+                    <td class="car_th" width="200">名称</td>
+                    <td class="car_th" width="370">订购描述</td>
+                    <td class="car_th" width="150">费用</td>
+                    <td class="car_th" width="135">免费额度</td>
+                    <td class="car_th" width="175">保价费用</td>
+                </tr>
+                <tr>
+                    <td align="center"><input type="checkbox" name="ch" checked="checked"/></td>
+                    <td align="center" style="font-size:14px;"><b>申通快递</b></td>
+                    <td>江、浙、沪地区首重为15元/KG，其他地区18元/KG，续重均为5-6元/KG， 云南地区为8元</td>
+                    <td align="center">￥15.00</td>
+                    <td align="center">￥0.00</td>
+                    <td align="center">不支持保价</td>
+                </tr>
+                <tr>
+                    <td align="center"><input type="checkbox" name="ch"/></td>
+                    <td align="center" style="font-size:14px;"><b>城际快递</b></td>
+                    <td>运费固定</td>
+                    <td align="center">￥15.00</td>
+                    <td align="center">￥0.00</td>
+                    <td align="center">不支持保价</td>
+                </tr>
+                <tr>
+                    <td align="center"><input type="checkbox" name="ch"/></td>
+                    <td align="center" style="font-size:14px;"><b>邮局平邮</b></td>
+                    <td>运费固定</td>
+                    <td align="center">￥15.00</td>
+                    <td align="center">￥0.00</td>
+                    <td align="center">不支持保价</td>
+                </tr>
+                <tr>
+                    <td colspan="6">
+                        <span class="fr"><label class="r_rad"><input type="checkbox" name="baojia"/></label><label
+                                class="r_txt">配送是否需要保价</label></span>
+                    </td>
+                </tr>
+            </table>
+
+            <div class="two_t">
+                支付方式
+            </div>
+            <ul class="pay">
+                <li class="checked">余额支付
+                    <div class="ch_img"></div>
                 </li>
-                <li>
-                    <div class="img"><a href="#"><img src="images/his_2.jpg" width="185"
-                                                      height="162"/></a></div>
-                    <div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>
-                    <div class="price">
-                        <font>￥<span>768.00</span></font> &nbsp; 18R
-                    </div>
+                <li>银行亏款/转账
+                    <div class="ch_img"></div>
                 </li>
-                <li>
-                    <div class="img"><a href="#"><img src="images/his_3.jpg" width="185"
-                                                      height="162"/></a></div>
-                    <div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>
-                    <div class="price">
-                        <font>￥<span>680.00</span></font> &nbsp; 18R
-                    </div>
+                <li>货到付款
+                    <div class="ch_img"></div>
                 </li>
-                <li>
-                    <div class="img"><a href="#"><img src="images/his_4.jpg" width="185"
-                                                      height="162"/></a></div>
-                    <div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>
-                    <div class="price">
-                        <font>￥<span>368.00</span></font> &nbsp; 18R
-                    </div>
-                </li>
-                <li>
-                    <div class="img"><a href="#"><img src="images/his_5.jpg" width="185"
-                                                      height="162"/></a></div>
-                    <div class="name"><a href="#">Dior/迪奥香水2件套装</a></div>
-                    <div class="price">
-                        <font>￥<span>368.00</span></font> &nbsp; 18R
-                    </div>
+                <li>支付宝
+                    <div class="ch_img"></div>
                 </li>
             </ul>
-        </div>
-        <%
-            List<Product> products = new ArrayList<>(
-                    (List<Product>) request.getAttribute("searchResult"));
-            String isVisible;
-            if (products.isEmpty()) {
-                isVisible = "visible";
-            } else {
-                isVisible = "hidden";
-            }
-        %>
-        <div class="l_list">
-            <div class="list_t">
-            	<span class="fl list_or">
-                	<a href="#" class="now">默认</a>
-                    <a href="#">
-                    	<span class="fl">销量</span>                        
-                        <span class="i_up">销量从低到高显示</span>
-                        <span class="i_down">销量从高到低显示</span>                                                     
-                    </a>
-                    <a href="#">
-                    	<span class="fl">价格</span>                        
-                        <span class="i_up">价格从低到高显示</span>
-                        <span class="i_down">价格从高到低显示</span>     
-                    </a>
-                    <a href="#">新品</a>
-                </span>
-                <span class="fr">共发现<%=products.size()%>件</span>
+
+            <div class="two_t">
+                商品包装
             </div>
-            <div class="list_c">
+            <table border="0" class="car_tab" style="width:1110px;" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="car_th" width="80"></td>
+                    <td class="car_th" width="490">名称</td>
+                    <td class="car_th" width="180">费用</td>
+                    <td class="car_th" width="180">免费额度</td>
+                    <td class="car_th" width="180">图片</td>
+                </tr>
+                <tr>
+                    <td align="center"><input type="checkbox" name="pack" checked="checked"/></td>
+                    <td><b style="font-size:14px;">不要包装</b></td>
+                    <td align="center">￥15.00</td>
+                    <td align="center">￥0.00</td>
+                    <td align="center"></td>
+                </tr>
+                <tr>
+                    <td align="center"><input type="checkbox" name="pack"/></td>
+                    <td><b style="font-size:14px;">精品包装</b></td>
+                    <td align="center">￥15.00</td>
+                    <td align="center">￥0.00</td>
+                    <td align="center"><a href="#" style="color:#ff4e00;">查看</a></td>
+                </tr>
+            </table>
 
-                <ul class="cate_list">
-                    <div style="visibility: <%=isVisible%>">&nbsp;未找到商品</div>
-                    <%
-                        for (Product product : products) {
-                    %>
-                    <li>
-                        <div class="img"><a href="detail.do?pid=<%=product.getId()%>"><img
-                                src="images/per_8.jpg" width="210" height="185"/></a></div>
-                        <div class="price">
-                            <font>￥<span><%=String
-                                    .format("%.2f", product.getPrice())%></span></font> &nbsp; 26R
-                        </div>
-                        <div class="name"><a href="#"><%=product.getName()%>
-                        </a></div>
-                        <div class="carbg">
-                            <a href="#" class="ss">收藏</a>
-                            <a href="#" class="j_car">加入购物车</a>
-                        </div>
-                    </li>
-                    <%}%>
-                </ul>
-
-                <div class="pages">
-                    <a href="#" class="p_pre">上一页</a><a href="#" class="cur">1</a><a
-                        href="#">2</a><a href="#">3</a>...<a href="#">20</a><a href="#"
-                                                                               class="p_pre">下一页</a>
-                </div>
-
-
+            <div class="two_t">
+                祝福贺卡
             </div>
+            <table border="0" class="car_tab" style="width:1110px;" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td class="car_th" width="80"></td>
+                    <td class="car_th" width="490">名称</td>
+                    <td class="car_th" width="180">费用</td>
+                    <td class="car_th" width="180">免费额度</td>
+                    <td class="car_th" width="180">图片</td>
+                </tr>
+                <tr>
+                    <td align="center"><input type="checkbox" name="wish" checked="checked"/></td>
+                    <td><b style="font-size:14px;">不要贺卡</b></td>
+                    <td align="center">￥15.00</td>
+                    <td align="center">￥0.00</td>
+                    <td align="center"></td>
+                </tr>
+                <tr>
+                    <td align="center" style="border-bottom:0; padding-bottom:0;"><input
+                            type="checkbox" name="wish"/></td>
+                    <td style="border-bottom:0; padding-bottom:0;"><b
+                            style="font-size:14px;">祝福贺卡</b></td>
+                    <td align="center" style="border-bottom:0; padding-bottom:0;">￥15.00</td>
+                    <td align="center" style="border-bottom:0; padding-bottom:0;">￥0.00</td>
+                    <td align="center" style="border-bottom:0; padding-bottom:0;"><a href="#"
+                                                                                     style="color:#ff4e00;">查看</a>
+                    </td>
+                </tr>
+                <tr valign="top">
+                    <td align="center"></td>
+                    <td colspan="4">
+                        <span class="fl"><b style="font-size:14px;">祝福语：</b></span>
+                        <span class="fl"><textarea class="add_txt"
+                                                   style="width:860px; height:50px;"></textarea></span>
+                    </td>
+                </tr>
+            </table>
+
+            <div class="two_t">
+                其他信息
+            </div>
+            <table border="0" class="car_tab" style="width:1110px;" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td width="145" align="right" style="padding-right:0;"><b
+                            style="font-size:14px;">使用红包：</b></td>
+                    <td>
+                        <span class="fl" style="margin-left:50px; margin-right:10px;">选择已有红包</span>
+                        <select class="jj" name="city">
+                            <option value="0" selected="selected">请选择</option>
+                            <option value="1">50元</option>
+                            <option value="2">30元</option>
+                            <option value="3">20元</option>
+                            <option value="4">10元</option>
+                        </select>
+                        <span class="fl"
+                              style="margin-left:50px; margin-right:10px;">或者输入红包序列号</span>
+                        <span class="fl"><input type="text" value="" class="c_ipt"
+                                                style="width:220px;"/>
+                    <span class="fr" style="margin-left:10px;"><input type="submit" value="验证红包"
+                                                                      class="btn_tj"/></span>
+                    </td>
+                </tr>
+                <tr valign="top">
+                    <td align="right" style="padding-right:0;"><b style="font-size:14px;">订单附言：</b>
+                    </td>
+                    <td style="padding-left:0;"><textarea class="add_txt"
+                                                          style="width:860px; height:50px;"></textarea>
+                    </td>
+                </tr>
+                <tr>
+                    <td align="right" style="padding-right:0;"><b style="font-size:14px;">缺货处理：</b>
+                    </td>
+                    <td>
+                        <label class="r_rad"><input type="checkbox" name="none" checked="checked"/></label><label
+                            class="r_txt" style="margin-right:50px;">等待所有商品备齐后再发</label>
+                        <label class="r_rad"><input type="checkbox" name="none"/></label><label
+                            class="r_txt" style="margin-right:50px;">取下订单</label>
+                        <label class="r_rad"><input type="checkbox" name="none"/></label><label
+                            class="r_txt" style="margin-right:50px;">与店主协商</label>
+                    </td>
+                </tr>
+            </table>
+
+            <table border="0" style="width:900px; margin-top:20px;" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td align="right">
+                        该订单完成后，您将获得 <font color="#ff4e00">1815</font> 积分 ，以及价值 <font
+                            color="#ff4e00">￥0.00</font> 的红包 <br/>
+                        商品总价: <font color="#ff4e00">￥1815.00</font> + 配送费用: <font color="#ff4e00">￥15.00</font>
+                    </td>
+                </tr>
+                <tr height="70">
+                    <td align="right">
+                        <b style="font-size:14px;">应付款金额：<span
+                                style="font-size:22px; color:#ff4e00;">￥<%=String
+                                .format("%.2f", sum)%></span></b>
+                    </td>
+                </tr>
+                <tr height="70">
+                    <td align="right"><a href="<%=request.getContextPath()%>/addOrder.do"><img
+                            src="images/btn_sure.gif"/></a></td>
+                </tr>
+            </table>
+
+
         </div>
     </div>
+    <!--End 第二步：确认订单信息 End-->
+
 
     <!--Begin Footer Begin -->
     <div class="b_btm_bg bg_color">

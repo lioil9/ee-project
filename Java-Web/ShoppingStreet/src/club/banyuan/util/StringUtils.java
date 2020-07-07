@@ -22,8 +22,8 @@ public class StringUtils {
         "0100","0101","0110","0111",  
         "1000","1001","1010","1011",  
         "1100","1101","1110","1111"};  
-//    private static String[] chineseDigits = new String[] { "Áã", "Ò¼", "·¡", "Èş", "ËÁ", "Îé", "Â½", "Æâ", "°Æ", "¾Á"};
-    public static String[] chineseDigits = new String[] { "Áã", "Ò»", "¶ş", "Èı", "ËÄ", "Îå", "Áù", "Æß", "°Ë", "¾Å"};
+//    private static String[] chineseDigits = new String[] { "é›¶", "å£¹", "è´°", "å", "è‚†", "ä¼", "é™†", "æŸ’", "æŒ", "ç–"};
+    public static String[] chineseDigits = new String[] { "é›¶", "ä¸€", "äºŒ", "ä¸‰", "å››", "äº”", "å…­", "ä¸ƒ", "å…«", "ä¹"};
 	
     private static final char[] charBytes = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9','a', 'b', 'c', 'd', 'e', 'f', 'g', 'h',
 		'i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'};
@@ -31,19 +31,19 @@ public class StringUtils {
     private static final char[] numberBytes = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9'};
     
     /**
-     * Éú³ÉÖ¸¶¨Î»ÊıµÄËæ»úÊı×Ó.
+     * ç”ŸæˆæŒ‡å®šä½æ•°çš„éšæœºæ•°å­.
      * @param number
      * @return
      */
     public static String randomNumbers(int number) {
-    	int count = 0; //Éú³ÉµÄÃÜÂëµÄ³¤¶È
-    	int i; //Éú³ÉµÄËæ»úÊı
+    	int count = 0; //ç”Ÿæˆçš„å¯†ç çš„é•¿åº¦
+    	int i; //ç”Ÿæˆçš„éšæœºæ•°
     	final int maxNum = numberBytes.length;
     	StringBuffer randomStr = new StringBuffer("");
         Random r = new Random();
         while(count < number){
-        	 //Éú³ÉËæ»úÊı£¬È¡¾ø¶ÔÖµ£¬·ÀÖ¹Éú³É¸ºÊı£¬
-	         i = Math.abs(r.nextInt(maxNum)); //Éú³ÉµÄÊı×î´óÎª36-1
+        	 //ç”Ÿæˆéšæœºæ•°ï¼Œå–ç»å¯¹å€¼ï¼Œé˜²æ­¢ç”Ÿæˆè´Ÿæ•°ï¼Œ
+	         i = Math.abs(r.nextInt(maxNum)); //ç”Ÿæˆçš„æ•°æœ€å¤§ä¸º36-1
 	         if (i >= 0 && i < numberBytes.length) {
 	        	 randomStr.append(numberBytes[i]);
 	          count ++;
@@ -55,14 +55,14 @@ public class StringUtils {
     
     
     public static String randomStrByNumber(int number) {
-    	int count = 0; //Éú³ÉµÄÃÜÂëµÄ³¤¶È
-    	int i; //Éú³ÉµÄËæ»úÊı
+    	int count = 0; //ç”Ÿæˆçš„å¯†ç çš„é•¿åº¦
+    	int i; //ç”Ÿæˆçš„éšæœºæ•°
     	final int maxNum = charBytes.length;
     	StringBuffer randomStr = new StringBuffer("");
         Random r = new Random();
         while(count < number){
-        	 //Éú³ÉËæ»úÊı£¬È¡¾ø¶ÔÖµ£¬·ÀÖ¹Éú³É¸ºÊı£¬
-	         i = Math.abs(r.nextInt(maxNum)); //Éú³ÉµÄÊı×î´óÎª36-1
+        	 //ç”Ÿæˆéšæœºæ•°ï¼Œå–ç»å¯¹å€¼ï¼Œé˜²æ­¢ç”Ÿæˆè´Ÿæ•°ï¼Œ
+	         i = Math.abs(r.nextInt(maxNum)); //ç”Ÿæˆçš„æ•°æœ€å¤§ä¸º36-1
 	         if (i >= 0 && i < charBytes.length) {
 	        	 randomStr.append(charBytes[i]);
 	          count ++;
@@ -77,7 +77,7 @@ public class StringUtils {
 		return uuid.toString().replace("-", "").toUpperCase();
 	}
 	public static String digitsTochinese(int i){
-		//´óÓÚ10µÄĞèÒªÖØĞ´
+		//å¤§äº10çš„éœ€è¦é‡å†™
 		return chineseDigits[i];
 	}
 	public static String toAllUpperCase(String uuid) {
@@ -96,7 +96,7 @@ public class StringUtils {
 	
 
 	
-	// Ê®Áù½øÖÆ×Ö·û´®×ªbyteÊı×é
+	// åå…­è¿›åˆ¶å­—ç¬¦ä¸²è½¬byteæ•°ç»„
 		public static byte[] hexStringToBytes(String hexString) {
 			if (hexString == null || hexString.equals("")) {
 				return null;
@@ -116,7 +116,7 @@ public class StringUtils {
 			return (byte) "0123456789ABCDEF".indexOf(c);
 		}
 
-		// Êı×é×ª×Ö·û´®¡¢ÒÔ¿Õ¸ñ¼ä¸ô
+		// æ•°ç»„è½¬å­—ç¬¦ä¸²ã€ä»¥ç©ºæ ¼é—´éš”
 		public static String bytesToHexString(byte[] src) {
 			StringBuilder stringBuilder = new StringBuilder("");
 			if (src == null || src.length <= 0) {
@@ -224,25 +224,25 @@ public class StringUtils {
 		}
 	/** 
      *  
-     * @return ×ª»»Îª¶ş½øÖÆ×Ö·û´®
+     * @return è½¬æ¢ä¸ºäºŒè¿›åˆ¶å­—ç¬¦ä¸²
      */  
     public static String bytes2BinaryStr(byte[] bArray){  
         String outStr = "";  
         int pos = 0;  
         for(byte b:bArray){  
-            //¸ßËÄÎ»  
+            //é«˜å››ä½  
             pos = (b&0xF0)>>4;  
             outStr+=binaryArray[pos];  
-            //µÍËÄÎ»  
+            //ä½å››ä½  
             pos=b&0x0F;  
             outStr+=binaryArray[pos];  
         }  
         return outStr;  
     }
-    /**½«¶ş½øÖÆ×ª»»³É16½øÖÆ
-  ¡¡¡¡* @param buf
-  ¡¡¡¡* @return
-  ¡¡¡¡*/
+    /**å°†äºŒè¿›åˆ¶è½¬æ¢æˆ16è¿›åˆ¶
+  ã€€ã€€* @param buf
+  ã€€ã€€* @return
+  ã€€ã€€*/
     public static String binaryToHexString(byte[] bytes) {
    		StringBuffer sb = new StringBuffer();
    		for (int i = 0; i < bytes.length; i++) {
@@ -254,10 +254,10 @@ public class StringUtils {
    		}
    		return sb.toString();
     }
-    /**½«16½øÖÆ×ª»»Îª¶ş½øÖÆ
-  ¡¡¡¡* @param hexStr
-  ¡¡¡¡* @return
-  ¡¡¡¡*/
+    /**å°†16è¿›åˆ¶è½¬æ¢ä¸ºäºŒè¿›åˆ¶
+  ã€€ã€€* @param hexStr
+  ã€€ã€€* @return
+  ã€€ã€€*/
 	public static byte[] hexStringToBinary(String hexStr) {
 		if (hexStr.length() < 1)
 			return null;
@@ -270,7 +270,7 @@ public class StringUtils {
 		return result;
 	}
 	
-	//Ê®Áù½øÖÆ×ªÎª×Ö·û
+	//åå…­è¿›åˆ¶è½¬ä¸ºå­—ç¬¦
 	public static String hexStringToString(String s) {
 		byte[] baKeyword = new byte[s.length() / 2];
 		for (int i = 0; i < baKeyword.length; i++) {
@@ -290,14 +290,14 @@ public class StringUtils {
 	}
 
 	/**
-	 * ¸øÄ³¸öÈÕÆÚ¼Ó¼¸ÌìºóµÄÈÕÆÚ eg:2013-06-28ºÅ+1ÌìÊÇ 2013-06-29 £¬+3ÌìÊÇ2013-07-01
-	 * @param date ÈÕÆÚ
-	 * @param dump Êı×Ö
+	 * ç»™æŸä¸ªæ—¥æœŸåŠ å‡ å¤©åçš„æ—¥æœŸ eg:2013-06-28å·+1å¤©æ˜¯ 2013-06-29 ï¼Œ+3å¤©æ˜¯2013-07-01
+	 * @param date æ—¥æœŸ
+	 * @param dump æ•°å­—
 	 * @return
 	 */
 	public static String getDateByAddSomeDay(Date date,int dump){
 		Calendar ca=Calendar.getInstance();
-        SimpleDateFormat sm = new SimpleDateFormat("yyyy-MM-dd");  //¹¹ÔìÈÎÒâ¸ñÊ½
+        SimpleDateFormat sm = new SimpleDateFormat("yyyy-MM-dd");  //æ„é€ ä»»æ„æ ¼å¼
         String today = sm.format(date);
         String[] timeArray= today.split("-");
         ca.set(Calendar.YEAR,Integer.parseInt(timeArray[0]));
@@ -309,7 +309,7 @@ public class StringUtils {
 	}
 	
 	/**
-	 * Éú³É¹«Ô¿
+	 * ç”Ÿæˆå…¬é’¥
 	 * @param pubkey
 	 * @return
 	 * add by yaoyuan
@@ -326,7 +326,7 @@ public class StringUtils {
 	}
 	
 	/**
-	 * »ñÈ¡µ±Ç°Ê±¼ä ¾«È·µ½ºÁÃë
+	 * è·å–å½“å‰æ—¶é—´ ç²¾ç¡®åˆ°æ¯«ç§’
 	 */
 	public static String getCurrentTime(){
 		 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
@@ -334,9 +334,9 @@ public class StringUtils {
 		 return currentTime;
 	}
 	/** 
-     * @¹¦ÄÜ: BCDÂë×ªÎª10½øÖÆ´®(°¢À­²®Êı¾İ) 
-     * @²ÎÊı: BCDÂë 
-     * @½á¹û: 10½øÖÆ´® 
+     * @åŠŸèƒ½: BCDç è½¬ä¸º10è¿›åˆ¶ä¸²(é˜¿æ‹‰ä¼¯æ•°æ®) 
+     * @å‚æ•°: BCDç  
+     * @ç»“æœ: 10è¿›åˆ¶ä¸² 
      */  
     public static String bcd2Str(byte[] bytes) {  
         StringBuffer temp = new StringBuffer(bytes.length * 2);  
@@ -349,9 +349,9 @@ public class StringUtils {
     }  
   
     /** 
-     * @¹¦ÄÜ: 10½øÖÆ´®×ªÎªBCDÂë 
-     * @²ÎÊı: 10½øÖÆ´® 
-     * @½á¹û: BCDÂë 
+     * @åŠŸèƒ½: 10è¿›åˆ¶ä¸²è½¬ä¸ºBCDç  
+     * @å‚æ•°: 10è¿›åˆ¶ä¸² 
+     * @ç»“æœ: BCDç  
      */  
     public static byte[] str2Bcd(String asc) {  
         int len = asc.length();  
@@ -389,9 +389,9 @@ public class StringUtils {
         return bbt;  
     }
     /**
-     * È¥³ı×Ö·û´®ÖĞµÄ·ûºÏ${}ĞÎÊ½µÄ×Ó´®.
+     * å»é™¤å­—ç¬¦ä¸²ä¸­çš„ç¬¦åˆ${}å½¢å¼çš„å­ä¸².
      * @param
-     * @return È¥³ı${}µÄ×Ö·û´®
+     * @return å»é™¤${}çš„å­—ç¬¦ä¸²
      */
     public static String escape$String(String input) {
         return input.replaceAll("\\$\\{[^}]*\\}", "");
@@ -420,12 +420,12 @@ public class StringUtils {
     	
     }
 	/**
-	 * Éú³ÉÑéÖ¤Âë
+	 * ç”ŸæˆéªŒè¯ç 
 	 * @return
 	 */
 	public static String createValidateCode(){
 		String str = "0,1,2,3,4,5,6,7,E,F,G,H,I,J,K,L,M,N,O,P,Q,R,S,T,U,V,W,X,Y,Z,8,9,a,b,c,d,e,f,g,h,i,j,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,A,B,C,D";
-		String str2[] = str.split(",");//½«×Ö·û´®ÒÔ,·Ö¸î
+		String str2[] = str.split(",");//å°†å­—ç¬¦ä¸²ä»¥,åˆ†å‰²
 		String code="";
 		for(int i=0;i<4;i++){
 			int a=(int)(Math.random()*36);
@@ -434,7 +434,7 @@ public class StringUtils {
 		return code;
 	}
 	/**
-	 * ¸ù¾İÉí·İÖ¤¼ÆËãÄêÁä
+	 * æ ¹æ®èº«ä»½è¯è®¡ç®—å¹´é¾„
 	 * @param idNumber
 	 * @return
 	 */
@@ -450,7 +450,7 @@ public class StringUtils {
 		return a.get(Calendar.YEAR)-years;
 	}
 	/**
-	 * ¸ù¾İÉí·İÖ¤¼ÆËãĞÔ±ğ
+	 * æ ¹æ®èº«ä»½è¯è®¡ç®—æ€§åˆ«
 	 * @param idNumber
 	 * @return
 	 */
@@ -464,8 +464,8 @@ public class StringUtils {
 	}
 	
 	/**
-	 * ²éÕÒÊı×ÖÔÚÊı×éÖĞµÃÇø¼ä.
-	 * @param sortedData ÅÅĞòÊı×é
+	 * æŸ¥æ‰¾æ•°å­—åœ¨æ•°ç»„ä¸­å¾—åŒºé—´.
+	 * @param sortedData æ’åºæ•°ç»„
 	 * @param findValue
 	 * @return
 	 */
@@ -484,26 +484,26 @@ public class StringUtils {
 	}
 	
 	/** 
-     * Ñ­»·¶ş·Ö²éÕÒÊı×éÇø¼ä£¬·µ»ØµÚÒ»´Î³öÏÖ¸ÃÖµµÄÎ»ÖÃ 
-     * @param sortedData    ÒÑÅÅĞòµÄÊı×é 
-     * @param findValue     ĞèÒªÕÒµÄÖµ 
-     * @return ÖµÔÚÊı×éÖĞµÄÎ»ÖÃ£¬´Ó0¿ªÊ¼¡£ÕÒ²»µ½·µ»Ø-1 
+     * å¾ªç¯äºŒåˆ†æŸ¥æ‰¾æ•°ç»„åŒºé—´ï¼Œè¿”å›ç¬¬ä¸€æ¬¡å‡ºç°è¯¥å€¼çš„ä½ç½® 
+     * @param sortedData    å·²æ’åºçš„æ•°ç»„ 
+     * @param findValue     éœ€è¦æ‰¾çš„å€¼ 
+     * @return å€¼åœ¨æ•°ç»„ä¸­çš„ä½ç½®ï¼Œä»0å¼€å§‹ã€‚æ‰¾ä¸åˆ°è¿”å›-1 
      */  
     public static int binarySearch(Integer[] sortedData,int findValue)  {  
         int start=0;  
         int end=sortedData.length-1;  
           
         while(start<=end)  {  
-            //ÖĞ¼äÎ»ÖÃ  
-            int middle=(start+end)>>1;    //Ïàµ±ÓÚ(start+end)/2
+            //ä¸­é—´ä½ç½®  
+            int middle=(start+end)>>1;    //ç›¸å½“äº(start+end)/2
      //   System.out.println("middle==>>" + middle);
-            //ÖĞÖµ  
+            //ä¸­å€¼  
             int middleValue=sortedData[middle];  
 
              if(findValue < middleValue)  {
-                //Ğ¡ÓÚÖĞÖµÊ±ÔÚÖĞÖµÇ°ÃæÕÒ  
+                //å°äºä¸­å€¼æ—¶åœ¨ä¸­å€¼å‰é¢æ‰¾  
                 end = middle-1;
-                //Èç¹ûĞ¡ÓÚÇ°±ßµÄÖµ ºÍÇ° Ç°±ßµÄÖµ  Ôò¼ÌĞøÏÂÒ»´Î²éÕÒ
+                //å¦‚æœå°äºå‰è¾¹çš„å€¼ å’Œå‰ å‰è¾¹çš„å€¼  åˆ™ç»§ç»­ä¸‹ä¸€æ¬¡æŸ¥æ‰¾
                 if (end >= 0) {
                 	int end_v =sortedData[end];
                     if (findValue >= end_v) {
@@ -514,7 +514,7 @@ public class StringUtils {
                 }
             }  
             else   {  
-                //´óÓÚÖĞÖµÔÚÖĞÖµºóÃæÕÒ  
+                //å¤§äºä¸­å€¼åœ¨ä¸­å€¼åé¢æ‰¾  
                 start=middle+1;
                 if (start <= sortedData.length -1) {
                 	int end_v = sortedData[start];
@@ -526,7 +526,7 @@ public class StringUtils {
                 }
             }  
         }  
-        //ÕÒ²»µ½  
+        //æ‰¾ä¸åˆ°  
         return -1;  
     }  
 	

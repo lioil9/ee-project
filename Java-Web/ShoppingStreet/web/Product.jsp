@@ -133,7 +133,7 @@
                         User user = (User) userObj;
                 %>
                <div class="ss_list">
-                    <a href="Member.jsp"><%=user.getLoginName()%></a>
+                    <a href="<%=request.getContextPath()%>/user/Member.jsp"><%=user.getLoginName()%></a>
                     <div class="ss_list_bg">
                     	<div class="s_city_t"></div>
                         <div class="ss_list_c">
@@ -244,7 +244,7 @@
                     <%}%>
                 </ul>
                 <div class="price_sum">共计&nbsp; <font color="#ff4e00">￥</font><span><%=String.format("%.0f",sum)%></span></div>
-                <div class="price_a"><a href="BuyCar.jsp">去购物车结算</a></div>
+                <div class="price_a"><a href="<%=request.getContextPath()%>/user/BuyCar.jsp">去购物车结算</a></div>
                 <!--End 购物车已登录 End-->
             </div>
         </div>

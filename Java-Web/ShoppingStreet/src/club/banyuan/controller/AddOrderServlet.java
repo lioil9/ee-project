@@ -44,7 +44,7 @@ public class AddOrderServlet extends HttpServlet {
 
       session.removeAttribute("cart");
       session.removeAttribute("totalPrice");
-      request.getRequestDispatcher("BuyCar_Three.jsp").forward(request, response);
+      request.getRequestDispatcher("/user/BuyCar_Three.jsp").forward(request, response);
     }
 
 
