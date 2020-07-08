@@ -8,6 +8,19 @@ public class User {
   String mobile;
   String address;
   Integer postalCode;
+  public User(){
+
+  }
+  public User(Integer id, String userName, String password, String idNum, String mobile,
+      String address, Integer postalCode) {
+    this.id = id;
+    this.userName = userName;
+    this.password = password;
+    this.idNum = idNum;
+    this.mobile = mobile;
+    this.address = address;
+    this.postalCode = postalCode;
+  }
 
   public String getIdNum() {
     return idNum;

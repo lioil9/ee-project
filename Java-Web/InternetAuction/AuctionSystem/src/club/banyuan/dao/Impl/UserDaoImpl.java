@@ -15,7 +15,7 @@ public class UserDaoImpl extends BaseDaoImpl implements IUserDao {
   @Override
   public int addUser(User user) {
     Integer id = 0;
-    String sql = "insert into user (id, userName, password,idNUm,mobile,address,postalCode) values (null,?,?,?,?,?,?)";
+    String sql = "insert into user (id, userName, password,idNum,mobile,address,postalCode) values (null,?,?,?,?,?,?)";
     Object[] parms = new Object[]{
         user.getUserName(),
         user.getPassword(),
