@@ -4,17 +4,17 @@ public class User {
   Integer id;
   String userName;
   String password;
-  String idNm;
+  String idNum;
   String mobile;
   String address;
   Integer postalCode;
 
-  public String getIdNm() {
-    return idNm;
+  public String getIdNum() {
+    return idNum;
   }
 
-  public void setIdNm(String idNm) {
-    this.idNm = idNm;
+  public void setIdNum(String idNum) {
+    this.idNum = idNum;
   }
 
   public String getMobile() {

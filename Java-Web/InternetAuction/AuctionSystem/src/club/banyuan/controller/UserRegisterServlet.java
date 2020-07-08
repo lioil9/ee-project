@@ -7,7 +7,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "UserRegisterServlet")
+@WebServlet(name = "UserRegisterServlet",urlPatterns = "/userRegister.do")
 public class UserRegisterServlet extends HttpServlet {
 
   protected void doPost(HttpServletRequest request,
