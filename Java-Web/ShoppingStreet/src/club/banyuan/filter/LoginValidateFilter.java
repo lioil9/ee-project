@@ -16,6 +16,7 @@ public class LoginValidateFilter implements Filter {
   @Override
   public void doFilter(ServletRequest request, ServletResponse response,
       FilterChain chain) throws IOException, ServletException {
+
     HttpServletRequest httpReq = (HttpServletRequest) request;
     HttpSession session = httpReq.getSession();
     if (session.getAttribute("user") != null) {

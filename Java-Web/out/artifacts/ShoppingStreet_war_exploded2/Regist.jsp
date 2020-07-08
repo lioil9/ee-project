@@ -55,34 +55,50 @@
 
       $(function () {
         var flag = true;
-        var userName = $("#userName").val();
-        var password = $("#password").val();
-        var email = $("#email").val();
-        var mobile = $("#mobile").val();
-        $("#userNameNotice").blur(function () {
+        $("#userName").blur(function () {
+          var userName = $("#userName").val();
           if (userName === "") {
             $("#userNameNotice").html("昵称不能为空");
             flag = false;
+          }else {
+            $("#userNameNotice").html("");
           }
         })
-        $("#passwordNotice").blur(function () {
+        $("#password").blur(function () {
+          var password = $("#password").val();
           if(password === ""){
             $("#passwordNotice").html("密码不能为空");
             flag = false;
+          }else {
+            $("#passwordNotice").html("");
           }
         })
-        
-        if(email === ""){
-          $("#emailNotice").html("邮箱不能为空");
-          flag = false;
-        }
-        if(mobile === ""){
-          $("#mobileNotice").html("手机号不能为空");
-          flag = false;
-        }
-        if(flag){
-          $("#submitBtn").submit();
-        }
+        $("#email").blur(function () {
+          var email = $("#email").val();
+          if(email === ""){
+            $("#emailNotice").html("邮箱不能为空");
+            flag = false;
+          }else {
+            $("#emailNotice").html("");
+          }
+        })
+        $("#mobile").blur(function () {
+          var mobile = $("#mobile").val();
+          if(mobile === ""){
+            $("#mobileNotice").html("手机号不能为空");
+            flag = false;
+          }else {
+            $("#mobileNotice").html("");
+          }
+        })
+        $("#submitBtn").click(function () {
+          if(flag){
+            $("#submitBtn").submit();
+          }else {
+            alert("请输入完整注册信息！")
+          }
+        })
+
 
       })
 

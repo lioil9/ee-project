@@ -2,7 +2,7 @@ package club.banyuan.servlet;
 
 import club.banyuan.dao.impl.UserImpl;
 import club.banyuan.entity.User;
-import club.banyuan.utils.DataSourceUtil;
+import club.banyuan.util.DataSourceUtil;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
