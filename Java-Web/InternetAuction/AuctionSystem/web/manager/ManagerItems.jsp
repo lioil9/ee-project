@@ -13,6 +13,7 @@
     <title>竞拍系统</title>
     <link href="css/common.css" rel="stylesheet" type="text/css"/>
     <link href="css/style.css" rel="stylesheet" type="text/css"/>
+    <script type="text/javascript" src="js/jquery-1.8.3.js"></script>
 </head>
 
 <body>
@@ -34,7 +35,7 @@
         <label for="price">起拍价</label>
         <input name="" type="text" id="price" class="nwinput"/>
         <input name="" type="button" value="查询" class="spbg buttombg f14  sale-buttom"/>
-        <input type="button" value="发布" class="spbg buttombg f14  sale-buttom buttomb"/>
+        <input id="addBtn" type="button" value="发布" class="spbg buttombg f14  sale-buttom buttomb"/>
     </div>
     <div class="items">
         <ul class="rows even strong">
@@ -84,6 +85,11 @@
             </div>
     </div>
     <script>
+        $(function () {
+          $("#addBtn").click(function () {
+            window.location.href = "manager/AddItems.jsp";
+          })
+        })
       function abc() {
 
         if (confirm("你真的确认要删除吗？请确认")) {

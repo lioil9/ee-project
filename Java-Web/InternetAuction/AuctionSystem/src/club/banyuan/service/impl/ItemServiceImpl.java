@@ -22,8 +22,8 @@ public class ItemServiceImpl implements IItemService {
   @Override
   public Boolean changeAuctionItem(AuctionItem auctionItem) throws SQLException {
     Connection connection = DataSourceUtil.openConnection();
-    IItemDao iItemDao = new ItemDaoImpl(connection);
-    return iItemDao.changeAuctionItem(auctionItem) == 1;
+    IItemDao itemDao = new ItemDaoImpl(connection);
+    return itemDao.changeAuctionItem(auctionItem) == 1;
   }
 
   @Override
@@ -31,6 +31,20 @@ public class ItemServiceImpl implements IItemService {
     Connection connection = DataSourceUtil.openConnection();
     IItemDao itemDao = new ItemDaoImpl(connection);
     return itemDao.getAuctionItemById(itemId);
+  }
+
+  @Override
+  public Boolean deleteAuctionItem(Integer itemId) throws SQLException {
+    Connection connection = DataSourceUtil.openConnection();
+    IItemDao itemDao = new ItemDaoImpl(connection);
+    return itemDao.deleteAuctionItem(itemId) == 1;
+  }
+
+  @Override
+  public Boolean addAuctionItem(AuctionItem auctionItem) throws SQLException {
+    Connection connection = DataSourceUtil.openConnection();
+    IItemDao itemDao = new ItemDaoImpl(connection);
+    return itemDao.addAuctionItem(auctionItem) > 1;
   }
 
 

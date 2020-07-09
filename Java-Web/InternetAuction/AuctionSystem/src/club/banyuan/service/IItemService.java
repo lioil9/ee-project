@@ -9,4 +9,6 @@ public interface IItemService {
         Double startPrice, Integer page) throws SQLException;
     Boolean changeAuctionItem(AuctionItem auctionItem) throws SQLException;
     AuctionItem getAuctionItemById(Integer itemId) throws SQLException;
+    Boolean deleteAuctionItem(Integer itemId) throws SQLException;
+    Boolean addAuctionItem(AuctionItem auctionItem) throws SQLException;
 }

@@ -10,7 +10,9 @@ public interface IItemDao extends IBaseDao{
 
   Integer addAuctionItem(AuctionItem auctionItem);
 
-  AuctionItem getAuctionItemById(Integer id) throws SQLException;
+  AuctionItem getAuctionItemById(Integer id);
 
-  Integer changeAuctionItem(AuctionItem auctionItem) throws SQLException;
+  Integer changeAuctionItem(AuctionItem auctionItem);
+
+  Integer deleteAuctionItem(Integer id);
 }

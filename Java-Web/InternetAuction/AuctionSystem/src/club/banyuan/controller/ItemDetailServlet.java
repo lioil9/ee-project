@@ -10,6 +10,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "ItemDetailServlet", urlPatterns = "/detail.do")
 public class ItemDetailServlet extends HttpServlet {
@@ -20,18 +21,19 @@ public class ItemDetailServlet extends HttpServlet {
       Integer itemId = Integer.valueOf(request.getParameter("itemId"));
     IItemService itemService = new ItemServiceImpl();
     AuctionItem auctionItem = null;
+    HttpSession session = request.getSession();
     try {
       auctionItem = itemService.getAuctionItemById(itemId);
-
       if(auctionItem != null) {
-        request.setAttribute("autionItem", auctionItem);
-        request.getRequestDispatcher("ChangeItems.jsp").forward(request,response);
+        session.setAttribute("auctionItem", auctionItem);
+        request.getRequestDispatcher("manager/ChangeItems.jsp").forward(request,response);
         return;
       }
     } catch (SQLException throwables) {
       throwables.printStackTrace();
     }
-    request.getRequestDispatcher("manager/ManagerItems.jsp").forward(request,response);
+    request.setAttribute("identity","manager");
+    request.getRequestDispatcher("getAuctionItems.do").forward(request,response);
   }
 
   protected void doGet(HttpServletRequest request,

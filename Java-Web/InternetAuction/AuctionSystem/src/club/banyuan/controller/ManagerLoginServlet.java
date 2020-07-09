@@ -27,7 +27,9 @@ public class ManagerLoginServlet extends HttpServlet {
     IManagerService managerService = new ManagerServiceImpl();
     try {
       Manager manager = managerService.login(userName,password);
+      System.out.println("mlogin");
       if(manager!=null) {
+        System.out.println("mloginNotNull");
         HttpSession session = request.getSession();
         session.setAttribute("manager",manager);
         if(request.getParameter("keepStatus") != null){
@@ -40,7 +42,6 @@ public class ManagerLoginServlet extends HttpServlet {
         request.getRequestDispatcher("getAuctionItems.do").forward(request,response);
         return;
       }
-
     } catch (SQLException throwables) {
       throwables.printStackTrace();
     }

@@ -69,13 +69,26 @@ public class ItemDaoImpl extends BaseDaoImpl implements IItemDao {
   }
 
   @Override
-  public AuctionItem getAuctionItemById(Integer id) throws SQLException {
+  public AuctionItem getAuctionItemById(Integer id) {
     String sql = "select * from auctionItem where id = ?";
-    return null;
+    Object[] parms = new Object[]{id};
+    AuctionItem auctionItem = null;
+    ResultSet rs = this.executeQuery(sql, parms);
+    try {
+      while (rs.next()){
+        auctionItem = this.tableToClass(rs);
+      }
+    }catch (Exception e){
+      e.printStackTrace();
+    }finally {
+      this.closeResource();
+      this.closeResource(rs);
+    }
+    return auctionItem;
   }
 
   @Override
-  public Integer changeAuctionItem(AuctionItem auctionItem) throws SQLException {
+  public Integer changeAuctionItem(AuctionItem auctionItem) {
     String sql = "update auctionItem set name=?, startPrice=?, basePrice=?, "
         + "startTime=?, endTime=?, remark=? "
         + "where id = ?";
@@ -88,6 +101,22 @@ public class ItemDaoImpl extends BaseDaoImpl implements IItemDao {
         auctionItem.getRemark(),
         auctionItem.getId()
     };
+    Integer updateRow = 0;
+    try {
+      updateRow = this.executeUpdate(sql,parms);
+    }catch (Exception e){
+      e.printStackTrace();
+    }finally {
+      this.closeResource();
+    }
+    return updateRow;
+  }
+
+  @Override
+  public Integer deleteAuctionItem(Integer id) {
+    String sql = "delete from auctionItem where id = ?";
+    Object[] parms = new Object[]{id};
+
     Integer updateRow = 0;
     try {
       updateRow = this.executeUpdate(sql,parms);
