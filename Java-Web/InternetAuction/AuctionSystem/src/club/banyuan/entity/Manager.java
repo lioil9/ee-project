@@ -1,9 +1,9 @@
 package club.banyuan.entity;
 
 public class Manager {
-  Integer id;
-  String userName;
-  String password;
+  private Integer id;
+  private String userName;
+  private String password;
 
   public Integer getId() {
     return id;

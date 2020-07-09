@@ -33,7 +33,7 @@ public class UserRegisterServlet extends HttpServlet {
       }
       IUserService userService = new UserServiceImpl();
       userService.register(user);
-      request.getRequestDispatcher("index,html").forward(request,response);
+      request.getRequestDispatcher("index.html").forward(request,response);
     }catch (Exception e){
       e.printStackTrace();
     }

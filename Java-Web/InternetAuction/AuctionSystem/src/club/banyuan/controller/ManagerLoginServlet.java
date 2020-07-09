@@ -34,7 +34,10 @@ public class ManagerLoginServlet extends HttpServlet {
           Cookie cookie = new Cookie("managerUserName",userName);
           response.addCookie(cookie);
         }
-        request.getRequestDispatcher("ManagerItems.html").forward(request,response);
+        Integer page = 1;
+        request.setAttribute("page", page);
+        request.setAttribute("identity","manager");
+        request.getRequestDispatcher("getAuctionItems.do").forward(request,response);
         return;
       }
 
@@ -48,6 +51,6 @@ public class ManagerLoginServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request,
       HttpServletResponse response)
       throws ServletException, IOException {
-
+      doPost(request,response);
   }
 }

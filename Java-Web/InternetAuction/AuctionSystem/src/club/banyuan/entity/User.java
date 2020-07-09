@@ -1,13 +1,13 @@
 package club.banyuan.entity;
 
 public class User {
-  Integer id;
-  String userName;
-  String password;
-  String idNum;
-  String mobile;
-  String address;
-  Integer postalCode;
+  private Integer id;
+  private String userName;
+  private String password;
+  private String idNum;
+  private String mobile;
+  private String address;
+  private Integer postalCode;
   public User(){
 
   }

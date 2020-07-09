@@ -12,8 +12,6 @@ import javax.servlet.annotation.WebFilter;
 @WebFilter(filterName = "UserLoginFilter")
 public class UserLoginFilter implements Filter {
 
-  public void destroy() {
-  }
 
   public void doFilter(ServletRequest req, ServletResponse resp,
       FilterChain chain) throws ServletException, IOException {

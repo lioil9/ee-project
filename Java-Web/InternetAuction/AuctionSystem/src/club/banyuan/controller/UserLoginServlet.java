@@ -31,7 +31,10 @@ public class UserLoginServlet extends HttpServlet {
           Cookie cookie = new Cookie("userName",userName);
           response.addCookie(cookie);
         }
-        request.getRequestDispatcher("拍卖品列表页.html").forward(request,response);
+        Integer page = 1;
+        request.setAttribute("identity","user");
+        request.setAttribute("page", page);
+        request.getRequestDispatcher("getAuctionItems.do").forward(request,response);
         return;
       }
 
