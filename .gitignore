@@ -13,4 +13,5 @@
 !*.gif
 !*.jpg
 !*.jsp
+!*.sql
 !.gitignore
