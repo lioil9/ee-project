@@ -4,10 +4,13 @@ import club.banyuan.entity.AuctionItem;
 import club.banyuan.service.IItemService;
 import club.banyuan.service.impl.ItemServiceImpl;
 import java.io.IOException;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletRequestWrapper;
 import javax.servlet.http.HttpServletResponse;
 
 @WebServlet(name = "AddItemServlet", urlPatterns = "/addItem.do")
@@ -28,11 +31,7 @@ public class AddItemServlet extends HttpServlet {
       auctionItem.setRemark(request.getParameter("remark"));
 
       itemService.addAuctionItem(auctionItem);
-      Integer page = 1;
-      request.setAttribute("page", page);
-      request.setAttribute("identity", "manager");
-      request.getRequestDispatcher("getAuctionItems.do").forward(request, response);
-
+      response.sendRedirect("managerGetAuctionItems.do");
     } catch (Exception e) {
       e.printStackTrace();
     }

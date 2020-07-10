@@ -17,7 +17,7 @@
   <script type="text/javascript">
     $(function () {
       $("#cancelBtn").click(function () {
-        window.location.href = "getAuctionItems.do";
+        window.location.href = "managerGetAuctionItems.do";
       })
     })
   </script>

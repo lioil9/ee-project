@@ -17,11 +17,12 @@ public class ChangeItemServlet extends HttpServlet {
   protected void doPost(HttpServletRequest request,
       HttpServletResponse response)
       throws ServletException, IOException {
-    HttpSession session = request.getSession();
-    AuctionItem auctionItem = (AuctionItem) session.getAttribute("auctionItem");
     IItemService itemService = new ItemServiceImpl();
     request.setCharacterEncoding("utf-8");
+
     try {
+      Integer id =  Integer.valueOf(request.getParameter("itemId"));
+      AuctionItem auctionItem = itemService.getAuctionItemById(id);
       auctionItem.setName(request.getParameter("name"));
       auctionItem.setStartPrice(Double.valueOf(request.getParameter("startPrice")));
       auctionItem.setBasePrice(Double.valueOf(request.getParameter("basePrice")));
@@ -30,11 +31,8 @@ public class ChangeItemServlet extends HttpServlet {
       auctionItem.setRemark(request.getParameter("remark"));
 
       itemService.changeAuctionItem(auctionItem);
-      request.setAttribute("page", 1);
-      request.setAttribute("identity", "manager");
-      session.invalidate();
-      request.getRequestDispatcher("getAuctionItems.do").forward(request, response);
 
+      response.sendRedirect("managerGetAuctionItems.do");
     } catch (Exception e) {
       e.printStackTrace();
     }

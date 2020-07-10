@@ -18,7 +18,7 @@
         <div class="logout right"><a href="#" title="注销">注销</a></div>
     </div>
     <%--搜索框begin--%>
-    <form action="getAuctionItems.do" method="get">
+    <form action="userGetAuctionItems.do" method="post">
         <div class="forms">
             <label for="name">名称</label>
             <input name="name" type="text" class="nwinput" id="name"/>
@@ -30,7 +30,7 @@
             <input name="endTime" type="text" id="end-time" class="nwinput"/>
             <label for="price">起拍价</label>
             <input name="startPrice" type="text" id="price" class="nwinput"/>
-            <input name="" type="button" value="查询" class="spbg buttombg f14  sale-buttom"/>
+            <input name="" type="submit" value="查询" class="spbg buttombg f14  sale-buttom"/>
         </div>
     </form>
     <%--搜索框end--%>

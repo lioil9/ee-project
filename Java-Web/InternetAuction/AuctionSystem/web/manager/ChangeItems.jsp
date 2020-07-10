@@ -17,7 +17,7 @@
   <script type="text/javascript">
     $(function () {
       $("#cancelBtn").click(function () {
-        window.location.href = "getAuctionItems.do";
+        window.location.href = "managerGetAuctionItems.do";
       })
     })
   </script>
@@ -36,32 +36,33 @@
           <dl>
             <dd >
               <label>名称：</label>
-              <input type="text" name="name" class="inputh lf" value="${sessionScope.auctionItem.name}" />
+              <input name="itemId" style="display: none" value="${requestScope.auctionItem.id}"/>
+              <input type="text" name="name" class="inputh lf" value="${requestScope.auctionItem.name}" />
               <div class="xzkbg spbg lf"></div>
             </dd>
             <dd>
               <label>起拍价：</label>
-              <input type="text" name="startPrice" class="inputh lf" value="${sessionScope.auctionItem.startPrice}" />
+              <input type="text" name="startPrice" class="inputh lf" value="${requestScope.auctionItem.startPrice}" />
               <div class="lf red laba">必须为数字</div>
             </dd>
             <dd>
               <label>底价：</label>
-              <input type="text" name="basePrice" class="inputh lf" value="${sessionScope.auctionItem.basePrice}" />
+              <input type="text" name="basePrice" class="inputh lf" value="${requestScope.auctionItem.basePrice}" />
               <div class="lf red laba">必须为数字</div>
             </dd>
             <dd>
               <label>开始时间：</label>
-              <input type="text" name="startTime" class="inputh lf" value="${sessionScope.auctionItem.startTime}" />
+              <input type="text" name="startTime" class="inputh lf" value="${requestScope.auctionItem.startTime}" />
               <div class="lf red laba">格式：2011-05-05 12:30:00</div>
             </dd>
             <dd>
               <label>结束时间：</label>
-              <input type="text" name="endTime" class="inputh lf" value="${sessionScope.auctionItem.endTime}" />
+              <input type="text" name="endTime" class="inputh lf" value="${requestScope.auctionItem.endTime}" />
               <div class="lf red laba">格式：2011-05-05 12:30:00</div>
             </dd>
             <dd class="dds">
               <label>描述：</label>
-              <textarea name="remark" cols="" rows="" class="textarea">${sessionScope.auctionItem.remark}</textarea>
+              <textarea name="remark" cols="" rows="" class="textarea">${requestScope.auctionItem.remark}</textarea>
             </dd>
             <dd>
               <label>修改图片：</label>

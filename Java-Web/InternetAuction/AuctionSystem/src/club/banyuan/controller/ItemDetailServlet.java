@@ -21,11 +21,10 @@ public class ItemDetailServlet extends HttpServlet {
       Integer itemId = Integer.valueOf(request.getParameter("itemId"));
     IItemService itemService = new ItemServiceImpl();
     AuctionItem auctionItem = null;
-    HttpSession session = request.getSession();
     try {
       auctionItem = itemService.getAuctionItemById(itemId);
       if(auctionItem != null) {
-        session.setAttribute("auctionItem", auctionItem);
+        request.setAttribute("auctionItem", auctionItem);
         request.getRequestDispatcher("manager/ChangeItems.jsp").forward(request,response);
         return;
       }
@@ -33,7 +32,7 @@ public class ItemDetailServlet extends HttpServlet {
       throwables.printStackTrace();
     }
     request.setAttribute("identity","manager");
-    request.getRequestDispatcher("getAuctionItems.do").forward(request,response);
+    request.getRequestDispatcher("managerGetAuctionItems.do").forward(request,response);
   }
 
   protected void doGet(HttpServletRequest request,

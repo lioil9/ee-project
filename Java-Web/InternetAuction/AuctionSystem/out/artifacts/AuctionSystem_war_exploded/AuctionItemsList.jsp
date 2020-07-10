@@ -19,7 +19,7 @@
     </div>
     <%--搜索框begin--%>
 
-    <form action="getAuctionItems.do" method="post">
+    <form action="userGetAuctionItems.do" method="post">
         <div class="forms">
             <label for="name">名称</label>
             <input name="name" type="text" class="nwinput" id="name"/>

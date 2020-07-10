@@ -34,7 +34,7 @@ public class UserLoginServlet extends HttpServlet {
         Integer page = 1;
         request.setAttribute("identity","user");
         request.setAttribute("page", page);
-        request.getRequestDispatcher("getAuctionItems.do").forward(request,response);
+        request.getRequestDispatcher("userGetAuctionItems.do").forward(request,response);
         return;
       }
 

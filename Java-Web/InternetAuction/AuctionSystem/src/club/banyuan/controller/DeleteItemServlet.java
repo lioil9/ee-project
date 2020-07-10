@@ -26,7 +26,7 @@ public class DeleteItemServlet extends HttpServlet {
       itemService.deleteAuctionItem(itemId);
       request.setAttribute("page", 1);
       request.setAttribute("identity", "manager");
-      request.getRequestDispatcher("getAuctionItems.do").forward(request, response);
+      request.getRequestDispatcher("managerGetAuctionItems.do").forward(request, response);
 
     } catch (SQLException throwables) {
       throwables.printStackTrace();

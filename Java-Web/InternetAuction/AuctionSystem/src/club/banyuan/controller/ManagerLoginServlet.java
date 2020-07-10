@@ -39,7 +39,7 @@ public class ManagerLoginServlet extends HttpServlet {
         Integer page = 1;
         request.setAttribute("page", page);
         request.setAttribute("identity","manager");
-        request.getRequestDispatcher("getAuctionItems.do").forward(request,response);
+        request.getRequestDispatcher("managerGetAuctionItems.do").forward(request,response);
         return;
       }
     } catch (SQLException throwables) {
