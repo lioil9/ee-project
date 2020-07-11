@@ -16,8 +16,8 @@ public class TestService {
       User user = new User(null,"aaa","123","12312312","12345678910","江苏",233099);
       userDao.addUser(user);
 
-    } catch (SQLException throwables) {
-      throwables.printStackTrace();
+    } catch (SQLException e) {
+      e.printStackTrace();
     }
 
   }

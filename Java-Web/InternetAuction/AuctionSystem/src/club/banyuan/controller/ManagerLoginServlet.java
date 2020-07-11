@@ -44,8 +44,8 @@ public class ManagerLoginServlet extends HttpServlet {
         return;
       }
 
-    } catch (SQLException throwables) {
-      throwables.printStackTrace();
+    } catch (SQLException e) {
+      e.printStackTrace();
     }
     request.getRequestDispatcher("ManagerLogin.html").forward(request,response);
 

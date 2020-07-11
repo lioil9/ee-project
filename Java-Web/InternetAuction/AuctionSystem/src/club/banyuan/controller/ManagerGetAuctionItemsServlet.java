@@ -3,6 +3,7 @@ package club.banyuan.controller;
 import club.banyuan.entity.AuctionItem;
 import club.banyuan.service.IItemService;
 import club.banyuan.service.impl.ItemServiceImpl;
+import club.banyuan.util.FilterDataUtil;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.util.ArrayList;
@@ -26,12 +27,12 @@ public class ManagerGetAuctionItemsServlet extends HttpServlet {
     try {
       IItemService itemService = new ItemServiceImpl();
       HttpSession session = request.getSession();
-      String name = isNull(request, "name", String.class);
+      String name = FilterDataUtil.isNull(request, "name", String.class);
       System.out.println(name);
-      Double startPrice = isNull(request, "startPrice", Double.class);
-      String startTime = isNull(request, "startTime", String.class);
-      String endTime = isNull(request, "endTime", String.class);
-      String remark = isNull(request, "remark", String.class);
+      Double startPrice = FilterDataUtil.isNull(request, "startPrice", Double.class);
+      String startTime = FilterDataUtil.isNull(request, "startTime", String.class);
+      String endTime = FilterDataUtil.isNull(request, "endTime", String.class);
+      String remark = FilterDataUtil.isNull(request, "remark", String.class);
 
       Integer page = 1;
       if (request.getAttribute("page") != null) {
@@ -56,28 +57,5 @@ public class ManagerGetAuctionItemsServlet extends HttpServlet {
     doPost(request, response);
   }
 
-  /**
-   * 判断请求得到的值是否为空，并且对要得到参数指定类型返回，
-   * 将getParameter方法得到的字符串值进行指定类型自动转换
-   * @param request
-   * @param s
-   * @param type
-   * @param <T>
-   * @return
-   */
-  private static <T> T isNull(HttpServletRequest request, String s, Class<T> type) {
-    T result = null;
-    if (request.getParameter(s) == null || request.getParameter(s).isBlank()) {
-      return result;
-    }
-    try {
-      Constructor<T> constructor = type.getConstructor(String.class);
-      constructor.setAccessible(true);
-      result = constructor.newInstance(request.getParameter(s));
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
-    return result;
-  }
 
 }

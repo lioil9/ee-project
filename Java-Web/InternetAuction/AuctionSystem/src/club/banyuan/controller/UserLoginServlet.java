@@ -38,8 +38,8 @@ public class UserLoginServlet extends HttpServlet {
         return;
       }
 
-    } catch (SQLException throwables) {
-      throwables.printStackTrace();
+    } catch (SQLException e) {
+      e.printStackTrace();
     }
     request.getRequestDispatcher("index.html").forward(request,response);
 

@@ -1,11 +1,13 @@
 package club.banyuan.entity;
 
 public class BidRecord {
+
   private Integer id;
   private Integer itemId;
   private String bidTime;
   private Double bidPrice;
   private Integer userId;
+  private String userName;
 
   public Integer getId() {
     return id;
@@ -45,5 +47,13 @@ public class BidRecord {
 
   public void setUserId(Integer userId) {
     this.userId = userId;
+  }
+
+  public String getUserName() {
+    return userName;
+  }
+
+  public void setUserName(String userName) {
+    this.userName = userName;
   }
 }

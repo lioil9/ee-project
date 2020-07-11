@@ -55,6 +55,8 @@ public class UserDaoImpl extends BaseDaoImpl implements IUserDao {
     return user;
   }
 
+
+
   @Override
   public boolean isExist(String userName) {
     String sql = "select * from user where userName = ?";
@@ -71,6 +73,26 @@ public class UserDaoImpl extends BaseDaoImpl implements IUserDao {
     }
 
     return flag;
+  }
+
+  @Override
+  public User getUserById(Integer id) {
+    String sql = "select * from user where id = ?";
+    Object[] parms = new Object[]{id};
+    ResultSet rs = this.executeQuery(sql, parms);
+    User user = null;
+    try {
+      while (rs.next()){
+        user = this.tableToClass(rs);
+      }
+    } catch (Exception e) {
+      e.printStackTrace();
+    } finally {
+      this.closeResource();
+      this.closeResource(rs);
+    }
+
+    return user;
   }
 
   @Override

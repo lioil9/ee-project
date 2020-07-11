@@ -32,8 +32,8 @@ public class UserNameVolatileServlet extends HttpServlet {
         flag = "false";
       }
       writer.write(flag);
-    } catch (SQLException throwables) {
-      throwables.printStackTrace();
+    } catch (SQLException e) {
+      e.printStackTrace();
     }
     writer.flush();
     writer.close();

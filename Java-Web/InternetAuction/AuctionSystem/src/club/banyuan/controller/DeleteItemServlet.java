@@ -28,8 +28,8 @@ public class DeleteItemServlet extends HttpServlet {
       request.setAttribute("identity", "manager");
       request.getRequestDispatcher("managerGetAuctionItems.do").forward(request, response);
 
-    } catch (SQLException throwables) {
-      throwables.printStackTrace();
+    } catch (SQLException e) {
+      e.printStackTrace();
     }
 
   }

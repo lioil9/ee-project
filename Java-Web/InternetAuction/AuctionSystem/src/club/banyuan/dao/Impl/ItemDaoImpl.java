@@ -36,8 +36,8 @@ public class ItemDaoImpl extends BaseDaoImpl implements IItemDao {
       while (rs.next()) {
         auctionItems.add(this.tableToClass(rs));
       }
-    } catch (Exception throwables) {
-      throwables.printStackTrace();
+    } catch (Exception e) {
+      e.printStackTrace();
     } finally {
       this.closeResource();
       this.closeResource(rs);

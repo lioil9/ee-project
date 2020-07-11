@@ -30,4 +30,11 @@ public class UserServiceImpl implements IUserService {
     IUserDao userDao = new UserDaoImpl(connection);
     return userDao.isExist(userName);
   }
+
+  @Override
+  public User getUserById(Integer id) throws SQLException {
+    Connection connection = DataSourceUtil.openConnection();
+    IUserDao userDao = new UserDaoImpl(connection);
+    return userDao.getUserById(id);
+  }
 }
