@@ -23,20 +23,24 @@
         <h1 class="lf">在线拍卖系统</h1>
         <div class="logout right"><a href="#" title="注销">注销</a></div>
     </div>
-    <div class="forms">
-        <label for="name">名称</label>
-        <input name="" type="text" class="nwinput" id="name"/>
-        <label for="names">描述</label>
-        <input name="" type="text" id="names" class="nwinput"/>
-        <label for="time">开始时间</label>
-        <input name="" type="text" id="time" class="nwinput"/>
-        <label for="end-time">结束时间</label>
-        <input name="" type="text" id="end-time" class="nwinput"/>
-        <label for="price">起拍价</label>
-        <input name="" type="text" id="price" class="nwinput"/>
-        <input name="" type="button" value="查询" class="spbg buttombg f14  sale-buttom"/>
-        <input id="addBtn" type="button" value="发布" class="spbg buttombg f14  sale-buttom buttomb"/>
-    </div>
+    <%--搜索框begin--%>
+    <form action="managerGetAuctionItems.do" method="post">
+        <div class="forms">
+            <label for="name">名称</label>
+            <input name="name" type="text" class="nwinput" id="name"/>
+            <label for="names">描述</label>
+            <input name="remark" type="text" id="names" class="nwinput"/>
+            <label for="time">开始时间</label>
+            <input name="startTime" type="text" id="time" class="nwinput"/>
+            <label for="end-time">结束时间</label>
+            <input name="endTime" type="text" id="end-time" class="nwinput"/>
+            <label for="price">起拍价</label>
+            <input name="startPrice" type="text" id="price" class="nwinput"/>
+            <input name="" type="submit" value="查询" class="spbg buttombg f14  sale-buttom"/>
+            <input id="addBtn" type="button"  value="发布" class="spbg buttombg f14  sale-buttom buttomb"/>
+        </div>
+    </form>
+    <%--搜索框end--%>
     <div class="items">
         <ul class="rows even strong">
             <li>名称</li>

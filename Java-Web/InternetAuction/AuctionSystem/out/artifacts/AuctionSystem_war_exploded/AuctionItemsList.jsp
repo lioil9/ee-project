@@ -18,7 +18,6 @@
         <div class="logout right"><a href="#" title="注销">注销</a></div>
     </div>
     <%--搜索框begin--%>
-
     <form action="userGetAuctionItems.do" method="post">
         <div class="forms">
             <label for="name">名称</label>
