@@ -45,7 +45,7 @@ public class UserGetAuctionItemsServlet extends HttpServlet {
       request.setAttribute("auctionItems", auctionItems);
       auctionItems.forEach(s -> System.out.println(s.getName()));
       System.out.println("user");
-      request.getRequestDispatcher("AuctionItemsList.jsp").forward(request, response);
+      request.getRequestDispatcher("user/AuctionItemsList.jsp").forward(request, response);
     } catch (Exception e) {
       e.printStackTrace();
     }

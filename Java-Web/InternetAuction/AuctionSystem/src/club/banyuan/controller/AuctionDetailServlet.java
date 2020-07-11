@@ -33,7 +33,7 @@ public class AuctionDetailServlet extends HttpServlet {
       if(auctionItem != null) {
         request.setAttribute("auctionItem", auctionItem);
         request.setAttribute("bidRecordList", bidRecordList);
-        request.getRequestDispatcher("Auction.jsp").forward(request,response);
+        request.getRequestDispatcher("user/Auction.jsp").forward(request,response);
         return;
       }
     }catch (Exception e){

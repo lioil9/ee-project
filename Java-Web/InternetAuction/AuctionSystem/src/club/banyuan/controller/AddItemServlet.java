@@ -31,7 +31,7 @@ public class AddItemServlet extends HttpServlet {
       auctionItem.setRemark(request.getParameter("remark"));
 
       itemService.addAuctionItem(auctionItem);
-      response.sendRedirect("managerGetAuctionItems.do");
+      response.sendRedirect("manager/managerGetAuctionItems");
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -40,6 +40,6 @@ public class AddItemServlet extends HttpServlet {
   protected void doGet(HttpServletRequest request,
       HttpServletResponse response)
       throws ServletException, IOException {
-
+      doPost(request,response);
   }
 }

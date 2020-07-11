@@ -48,7 +48,6 @@ public class ManagerLoginServlet extends HttpServlet {
       e.printStackTrace();
     }
     request.getRequestDispatcher("ManagerLogin.html").forward(request,response);
-
   }
 
   protected void doGet(HttpServletRequest request,
