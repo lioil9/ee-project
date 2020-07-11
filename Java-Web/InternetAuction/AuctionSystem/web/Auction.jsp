@@ -71,10 +71,10 @@
             </c:if>
             <c:if test="${requestScope.bidRecordList.size() > 0}">
             <c:forEach var="bidRecord" items="${requestScope.bidRecordList}" varStatus="status">
-            <c:if test="${status.index%2 = 0}">
+            <c:if test="${status.index%2 == 0}">
                 <ul class="rows">
             </c:if>
-            <c:if test="${status.index%2 = 1}">
+            <c:if test="${status.index%2 == 1}">
                 <ul class="rows even">
             </c:if>
                     <li>${bidRecord.bidTime}</li>

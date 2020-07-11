@@ -63,7 +63,7 @@
                     <li>${auctionItem.startTime}</li>
                     <li>${auctionItem.endTime}</li>
                     <li>${auctionItem.startPrice}</li>
-                    <li class="borderno red"><a href="#">竞拍</a></li>
+                    <li class="borderno red"><a href="auctionDetail.do?itemId=${auctionItem.id}">竞拍</a></li>
                 </ul>
         </c:forEach>
         </c:if>
