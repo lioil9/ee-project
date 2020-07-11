@@ -18,6 +18,7 @@ public class UserRegisterServlet extends HttpServlet {
   protected void doPost(HttpServletRequest request,
       HttpServletResponse response)
       throws ServletException, IOException {
+    request.setCharacterEncoding("UTF-8");
     User user = new User();
     try {
       System.out.println("doPost");

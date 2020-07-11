@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/InternetAuction/AuctionSystem/AuctionSystem.iml" filepath="$PROJECT_DIR$/InternetAuction/AuctionSystem/AuctionSystem.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Java-Web.iml" filepath="$PROJECT_DIR$/Java-Web.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ShoppingStreet/ShoppingStreet.iml" filepath="$PROJECT_DIR$/ShoppingStreet/ShoppingStreet.iml" />
+      <module fileurl="file://$PROJECT_DIR$/work_7_6/work_7_6.iml" filepath="$PROJECT_DIR$/work_7_6/work_7_6.iml" />
+    </modules>
+  </component>
+</project>

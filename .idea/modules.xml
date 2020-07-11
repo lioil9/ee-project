@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/ee-project.iml" filepath="$PROJECT_DIR$/ee-project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JDBC/work_6_29/jdbcwork/jdbcwork.iml" filepath="$PROJECT_DIR$/JDBC/work_6_29/jdbcwork/jdbcwork.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JDBC/work_6_29/work_6_29.iml" filepath="$PROJECT_DIR$/JDBC/work_6_29/work_6_29.iml" />
+      <module fileurl="file://$PROJECT_DIR$/JDBC/work_6_30/work_6_30.iml" filepath="$PROJECT_DIR$/JDBC/work_6_30/work_6_30.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Java-Web/work_7_1/work_7_1.iml" filepath="$PROJECT_DIR$/Java-Web/work_7_1/work_7_1.iml" />
+    </modules>
+  </component>
+</project>

@@ -31,9 +31,7 @@ public class UserLoginServlet extends HttpServlet {
           Cookie cookie = new Cookie("userName",userName);
           response.addCookie(cookie);
         }
-        Integer page = 1;
-        request.setAttribute("identity","user");
-        request.setAttribute("page", page);
+        request.setAttribute("page", 1);
         request.getRequestDispatcher("userGetAuctionItems.do").forward(request,response);
         return;
       }
