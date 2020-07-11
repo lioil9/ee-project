@@ -3,9 +3,13 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/InternetAuction/AuctionSystem/AuctionSystem.iml" filepath="$PROJECT_DIR$/InternetAuction/AuctionSystem/AuctionSystem.iml" />
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/Java-Web.iml" filepath="$PROJECT_DIR$/Java-Web.iml" />
       <module fileurl="file://$PROJECT_DIR$/ShoppingStreet/ShoppingStreet.iml" filepath="$PROJECT_DIR$/ShoppingStreet/ShoppingStreet.iml" />
       <module fileurl="file://$PROJECT_DIR$/work_7_6/work_7_6.iml" filepath="$PROJECT_DIR$/work_7_6/work_7_6.iml" />
+=======
+      <module fileurl="file://$PROJECT_DIR$/.idea/Java-Web.iml" filepath="$PROJECT_DIR$/.idea/Java-Web.iml" />
+>>>>>>> 14929d07846218e7cee366b22d06560938728c0f
     </modules>
   </component>
 </project>
