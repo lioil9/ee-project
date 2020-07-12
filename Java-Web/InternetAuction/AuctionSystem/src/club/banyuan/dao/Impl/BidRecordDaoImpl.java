@@ -55,6 +55,25 @@ public class BidRecordDaoImpl extends BaseDaoImpl implements IBidRecordDao {
   }
 
   @Override
+  public Double getMaxBidRecord(Integer itemId) {
+    String sql = "select max(bidPrice) as bidPrice from bidRecord where itemId = ?";
+    Object[] parms = new Object[]{itemId};
+    ResultSet rs = this.executeQuery(sql,parms);
+    Double maxPrice = null;
+    try{
+      while (rs.next()){
+        maxPrice = (double) rs.getFloat("bidPrice");
+      }
+    }catch (Exception e){
+      e.printStackTrace();
+    }finally {
+      this.closeResource();
+      this.closeResource(rs);
+    }
+    return maxPrice;
+  }
+
+  @Override
   public BidRecord tableToClass(ResultSet rs) throws Exception {
     SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     BidRecord bidRecord = new BidRecord();

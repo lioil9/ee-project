@@ -63,7 +63,12 @@
             <label for="sale">出价：</label>
             <input name="itemId" style="display: none" value="${requestScope.auctionItem.id}"/>
             <input name="userId" style="display: none" value="${sessionScope.user.id}"/>
+            <c:if test="${requestScope.maxPrice == 0}">
             <input name="bidPrice" type="text" class="inputwd" id="sale" value="${requestScope.auctionItem.startPrice}"/>
+            </c:if>
+            <c:if test="${requestScope.maxPrice > 0}">
+            <input name="bidPrice" type="text" class="inputwd" id="sale" value="${requestScope.maxPrice}"/>
+            </c:if>
             <input name="" type="submit" value="竞 拍" class="spbg buttombg f14  sale-buttom"/>
         </p>
         </form>

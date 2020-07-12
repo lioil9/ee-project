@@ -26,13 +26,16 @@ public class AuctionDetailServlet extends HttpServlet {
     IBidRecordService bidRecordService = new BidRecordServiceImpl();
     IItemService itemService = new ItemServiceImpl();
     AuctionItem auctionItem = null;
+    Double maxPrice = null;
     List<BidRecord> bidRecordList = new ArrayList<>();
     try {
       bidRecordList = bidRecordService.getBidRecord(itemId);
+      maxPrice = bidRecordService.getMaxPrice(itemId);
       auctionItem = itemService.getAuctionItemById(itemId);
       if(auctionItem != null) {
         request.setAttribute("auctionItem", auctionItem);
         request.setAttribute("bidRecordList", bidRecordList);
+        request.setAttribute("maxPrice", maxPrice);
         request.getRequestDispatcher("user/Auction.jsp").forward(request,response);
         return;
       }

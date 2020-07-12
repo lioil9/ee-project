@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="35038560-4108-4e9e-9aff-5d688bb56bb6" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/src/club/banyuan/controller/GetSoldItemsServlet.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/src/club/banyuan/dao/ISoldItemDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/src/club/banyuan/dao/Impl/SoldItemDaoImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/src/club/banyuan/entity/SoldItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/artifacts/AuctionSystem_war_exploded/Auction.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/artifacts/AuctionSystem_war_exploded/WEB-INF/classes/club/banyuan/controller/AddItemServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/artifacts/AuctionSystem_war_exploded/WEB-INF/classes/club/banyuan/controller/AddItemServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/artifacts/AuctionSystem_war_exploded/WEB-INF/classes/club/banyuan/controller/AuctionDetailServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/artifacts/AuctionSystem_war_exploded/WEB-INF/classes/club/banyuan/controller/AuctionDetailServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/artifacts/AuctionSystem_war_exploded/WEB-INF/classes/club/banyuan/controller/ChangeItemServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/artifacts/AuctionSystem_war_exploded/WEB-INF/classes/club/banyuan/controller/ChangeItemServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/artifacts/AuctionSystem_war_exploded/WEB-INF/classes/club/banyuan/controller/DeleteItemServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/artifacts/AuctionSystem_war_exploded/WEB-INF/classes/club/banyuan/controller/DeleteItemServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/artifacts/AuctionSystem_war_exploded/WEB-INF/classes/club/banyuan/controller/ManagerLoginServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/artifacts/AuctionSystem_war_exploded/WEB-INF/classes/club/banyuan/controller/ManagerLoginServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/artifacts/AuctionSystem_war_exploded/WEB-INF/classes/club/banyuan/dao/IBidRecordDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/artifacts/AuctionSystem_war_exploded/WEB-INF/classes/club/banyuan/dao/IBidRecordDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/artifacts/AuctionSystem_war_exploded/WEB-INF/classes/club/banyuan/dao/Impl/BidRecordDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/artifacts/AuctionSystem_war_exploded/WEB-INF/classes/club/banyuan/dao/Impl/BidRecordDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/artifacts/AuctionSystem_war_exploded/WEB-INF/classes/club/banyuan/service/IBidRecordService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/artifacts/AuctionSystem_war_exploded/WEB-INF/classes/club/banyuan/service/IBidRecordService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/artifacts/AuctionSystem_war_exploded/WEB-INF/classes/club/banyuan/service/impl/BidRecordServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/artifacts/AuctionSystem_war_exploded/WEB-INF/classes/club/banyuan/service/impl/BidRecordServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/artifacts/AuctionSystem_war_exploded/user/Auction.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/artifacts/AuctionSystem_war_exploded/user/Auction.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/artifacts/AuctionSystem_war_exploded/user/AuctionResult.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/artifacts/AuctionSystem_war_exploded/user/AuctionResult.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/production/AuctionSystem/club/banyuan/controller/AddItemServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/production/AuctionSystem/club/banyuan/controller/AddItemServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/production/AuctionSystem/club/banyuan/controller/AuctionDetailServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/production/AuctionSystem/club/banyuan/controller/AuctionDetailServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/production/AuctionSystem/club/banyuan/controller/ChangeItemServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/production/AuctionSystem/club/banyuan/controller/ChangeItemServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/production/AuctionSystem/club/banyuan/controller/DeleteItemServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/production/AuctionSystem/club/banyuan/controller/DeleteItemServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/production/AuctionSystem/club/banyuan/controller/ManagerLoginServlet.class" beforeDir="false" afterPath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/production/AuctionSystem/club/banyuan/controller/ManagerLoginServlet.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/production/AuctionSystem/club/banyuan/dao/IBidRecordDao.class" beforeDir="false" afterPath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/production/AuctionSystem/club/banyuan/dao/IBidRecordDao.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/production/AuctionSystem/club/banyuan/dao/Impl/BidRecordDaoImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/production/AuctionSystem/club/banyuan/dao/Impl/BidRecordDaoImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/production/AuctionSystem/club/banyuan/service/IBidRecordService.class" beforeDir="false" afterPath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/production/AuctionSystem/club/banyuan/service/IBidRecordService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/production/AuctionSystem/club/banyuan/service/impl/BidRecordServiceImpl.class" beforeDir="false" afterPath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/out/production/AuctionSystem/club/banyuan/service/impl/BidRecordServiceImpl.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/src/club/banyuan/controller/AuctionDetailServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/src/club/banyuan/controller/AuctionDetailServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/src/club/banyuan/dao/IBidRecordDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/src/club/banyuan/dao/IBidRecordDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/src/club/banyuan/dao/Impl/BidRecordDaoImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/src/club/banyuan/dao/Impl/BidRecordDaoImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/src/club/banyuan/service/IBidRecordService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/src/club/banyuan/service/IBidRecordService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/src/club/banyuan/service/impl/BidRecordServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/src/club/banyuan/service/impl/BidRecordServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/web/user/Auction.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/web/user/Auction.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/web/user/AuctionResult.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/web/user/AuctionResult.jsp" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1eXv9jjgNfKScV9Ao9RGXZwsWYE" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="35038560-4108-4e9e-9aff-5d688bb56bb6" name="Default Changelist" comment="" />
+      <created>1594480602763</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1594480602763</updated>
+      <workItem from="1594480610971" duration="397000" />
+      <workItem from="1594541121587" duration="2045000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+</project>

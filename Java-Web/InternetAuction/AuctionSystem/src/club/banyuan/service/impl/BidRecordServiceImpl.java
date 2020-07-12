@@ -24,4 +24,11 @@ public class BidRecordServiceImpl implements IBidRecordService {
     IBidRecordDao bidRecordDao = new BidRecordDaoImpl(connection);
     return bidRecordDao.addBidRecord(bidRecord) > 0;
   }
+
+  @Override
+  public Double getMaxPrice(Integer itemId) throws SQLException {
+    Connection connection = DataSourceUtil.openConnection();
+    IBidRecordDao bidRecordDao = new BidRecordDaoImpl(connection);
+    return bidRecordDao.getMaxBidRecord(itemId);
+  }
 }
