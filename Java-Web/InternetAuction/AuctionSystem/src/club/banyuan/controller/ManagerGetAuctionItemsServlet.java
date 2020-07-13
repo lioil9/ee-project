@@ -45,6 +45,7 @@ public class ManagerGetAuctionItemsServlet extends HttpServlet {
       auctionItems.forEach(s -> System.out.println(s.getName()));
       System.out.println("manager");
       request.getRequestDispatcher("manager/ManagerItems.jsp").forward(request, response);
+
     } catch (Exception e) {
       e.printStackTrace();
     }

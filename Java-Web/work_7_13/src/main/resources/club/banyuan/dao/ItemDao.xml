@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="club.banyuan.dao.ItemDao">
+
+  <resultMap id="itemMap" type="AuctionItem">
+    <id column="id" property="id"/>
+    <result column="name" property="name"/>
+    <result column="startPrice" property="startPrice"/>
+    <result column="basePrice" property="basePrice"/>
+    <result column="startTime" property="startTime"/>
+    <result column="endTime" property="endTime"/>
+    <result column="remark" property="remark"/>
+    <result column="isSold" property="isSold"/>
+    <collection property="bidRecords" ofType="BidRecord">
+      <id column="recordId" property="id"/>
+      <result column="itemId" property="itemId"/>
+      <result column="bidTime" property="bidTime"/>
+      <result column="bidPrice" property="bidPrice"/>
+      <result column="userId" property="userId"/>
+    </collection>
+  </resultMap>
+
+  <select id="getAuctionItemAndBidOrders" parameterType="int" resultMap="itemMap">
+    select a.*,b.id as recordId,b.itemId,b.bidTime,b.bidPrice,b.userId from auctionItem a ,bidRecord b where a.id = b.ItemId and a.id=#{id}
+  </select>
+
+
+</mapper>
