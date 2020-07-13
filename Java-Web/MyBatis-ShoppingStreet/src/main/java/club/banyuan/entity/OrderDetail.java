@@ -56,4 +56,15 @@ public class OrderDetail {
   public void setCost(Double cost) {
     this.cost = cost;
   }
+
+  @Override
+  public String toString() {
+    return "OrderDetail{" +
+        "id=" + id +
+        ", orderId=" + orderId +
+        ", productId=" + productId +
+        ", quantity=" + quantity +
+        ", cost=" + cost +
+        '}';
+  }
 }

@@ -15,8 +15,8 @@
     <result column="isDelete" property="isDelete"/>
   </resultMap>
 
-  <select id="getProductByName" parameterType="String" resultType="productMap">
-    select * from product where name like #{%name%} or description like #{%name%}
+  <select id="getProductByName" parameterType="String" resultMap="productMap">
+    select * from product where name like "%"#{name}"%" or description like "%"#{name}"%"
   </select>
 
   <select id="getProductById" parameterType="int" resultType="Product">

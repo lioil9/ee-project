@@ -20,51 +20,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="35038560-4108-4e9e-9aff-5d688bb56bb6" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/.idea/google-java-format.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/MyBatis-ShoppingStreet.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/java/club/banyuan/dao/IOrderDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/java/club/banyuan/dao/IOrderDetailDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/java/club/banyuan/dao/IProductDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/java/club/banyuan/dao/IUserAddressDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/java/club/banyuan/dao/IUserDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/java/club/banyuan/entity/Order.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/java/club/banyuan/entity/OrderDetail.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/java/club/banyuan/entity/Product.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/java/club/banyuan/entity/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/java/club/banyuan/entity/UserAddress.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/java/club/banyuan/vo/LoginVo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/resources/SqlMapConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/resources/club/banyuan/dao/OrderDao.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/resources/club/banyuan/dao/OrderDetailDao.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/resources/club/banyuan/dao/ProductDao.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/resources/club/banyuan/dao/UserAddressDao.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/resources/club/banyuan/dao/UserDao.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/resources/db.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/test/java/club/banyuan/dao/IOrderDaoTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/test/java/club/banyuan/dao/IProductDaoTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/test/java/club/banyuan/dao/IUserDaoTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/google-java-format.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../work_7_13/src/main/java/club/banyuan/MybatisTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../work_7_13/src/main/java/club/banyuan/dao/ItemDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../work_7_13/src/main/java/club/banyuan/dao/UserDao.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../work_7_13/src/main/java/club/banyuan/entity/AuctionItem.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../work_7_13/src/main/java/club/banyuan/entity/BidRecord.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../work_7_13/src/main/java/club/banyuan/entity/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../work_7_13/src/main/resources/SqlMapConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../work_7_13/src/main/resources/club/banyuan/dao/ItemDao.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../work_7_13/src/main/resources/club/banyuan/dao/UserDao.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../work_7_13/src/main/resources/db.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../work_7_13/src/main/resources/log4j.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/src/club/banyuan/controller/GetSoldItemsServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/src/club/banyuan/controller/GetAuctionResultServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/src/club/banyuan/controller/ManagerGetAuctionItemsServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../InternetAuction/AuctionSystem/src/club/banyuan/controller/ManagerGetAuctionItemsServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/test/java/club/banyuan/dao/IOrderDetailDaoTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/test/java/club/banyuan/dao/IUserAddressDaoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/java/club/banyuan/dao/IOrderDetailDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/java/club/banyuan/dao/IOrderDetailDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/java/club/banyuan/entity/UserAddress.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/java/club/banyuan/entity/UserAddress.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/resources/SqlMapConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/resources/SqlMapConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/resources/club/banyuan/dao/OrderDetailDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/resources/club/banyuan/dao/OrderDetailDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/resources/club/banyuan/dao/ProductDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/resources/club/banyuan/dao/ProductDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/resources/club/banyuan/dao/UserAddressDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/resources/club/banyuan/dao/UserAddressDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/test/java/club/banyuan/dao/IProductDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/test/java/club/banyuan/dao/IProductDaoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/test/java/club/banyuan/dao/IUserDaoTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/src/main/test/java/club/banyuan/dao/IUserDaoTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/target/classes/META-INF/MyBatis-ShoppingStreet.kotlin_module" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/target/classes/SqlMapConfig.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/target/classes/SqlMapConfig.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/target/classes/club/banyuan/dao/ProductDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/target/classes/club/banyuan/dao/ProductDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/target/classes/club/banyuan/dao/UserAddressDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/target/classes/club/banyuan/dao/UserAddressDao.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/target/classes/club/banyuan/entity/UserAddress.class" beforeDir="false" afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/target/classes/club/banyuan/entity/UserAddress.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/target/test-classes/club/banyuan/dao/IProductDaoTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/target/test-classes/club/banyuan/dao/IProductDaoTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/target/test-classes/club/banyuan/dao/IUserDaoTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/../MyBatis-ShoppingStreet/target/test-classes/club/banyuan/dao/IUserDaoTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/ShoppingStreet.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/google-java-format.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,5 +96,6 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
 </project>

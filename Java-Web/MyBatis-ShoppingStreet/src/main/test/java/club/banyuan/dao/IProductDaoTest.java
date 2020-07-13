@@ -50,6 +50,7 @@ public class IProductDaoTest {
 
   @Test
   public void getProductById() {
-
+    Product product = productDao.getProductById(744);
+    System.out.println(product);
   }
 }

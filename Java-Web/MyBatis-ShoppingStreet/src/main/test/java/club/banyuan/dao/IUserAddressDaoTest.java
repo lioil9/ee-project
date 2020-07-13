@@ -2,10 +2,12 @@ package club.banyuan.dao;
 
 import static org.junit.Assert.*;
 
-import club.banyuan.entity.User;
-import club.banyuan.vo.LoginVo;
+import club.banyuan.entity.UserAddress;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.List;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -14,10 +16,12 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-public class IUserDaoTest {
+public class IUserAddressDaoTest {
+
   InputStream ins;
   SqlSession session;
-  IUserDao userDao;
+  IUserAddressDao userAddressDao;
+
   @Before
   public void init() throws IOException {
     // 加载配置文件
@@ -30,7 +34,7 @@ public class IUserDaoTest {
     session = sqlSessionFactory.openSession();
     // 获取接口的实现类对象
     // 动态代理设计模式，获取接口的实现类对象
-    userDao = session.getMapper(IUserDao.class);
+    userAddressDao = session.getMapper(IUserAddressDao.class);
   }
 
   @After
@@ -41,23 +45,26 @@ public class IUserDaoTest {
   }
 
   @Test
-  public void add() {
-    User user = new User();
-    user.setLoginName("hello");
-    user.setPassword("123");
-    System.out.println(userDao.add(user));
-    System.out.println(user);
+  public void getAddress() {
+    List<UserAddress> userAddressList = userAddressDao.getAddress(22);
+    for (UserAddress userAddress : userAddressList) {
+      System.out.println(userAddress);
+    }
 
   }
 
   @Test
-  public void getLoginUser() {
-    LoginVo loginVo = new LoginVo("aaa","123");
-    System.out.println(userDao.getLoginUser(loginVo));
+  public void addAddress() {
+    SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    UserAddress userAddress = new UserAddress(null, 22, "江苏省南京市溧水区", df.format(new Date()), 0,
+        "公司");
+    System.out.println(userAddressDao.addAddress(userAddress));
+    System.out.println(userAddress);
   }
 
   @Test
-  public void isExist() {
-    System.out.println(userDao.isExist("cgn"));
+  public void getDefaultAddress() {
+    UserAddress userAddress = userAddressDao.getDefaultAddress(22);
+    System.out.println(userAddress);
   }
 }
