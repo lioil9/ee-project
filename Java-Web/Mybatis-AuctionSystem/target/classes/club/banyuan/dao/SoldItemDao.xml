@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="club.banyuan.dao.ISoldItemDao">
+  <resultMap id="soldItemMap" type="SoldItem">
+    <id column="id" property="id"/>
+    <result column="itemId" property="itemId"/>
+    <result column="price" property="price"/>
+    <result column="userId" property="userId"/>
+    <association property="auctionItem" javaType="AuctionItem" select="club.banyuan.dao.IItemDao.getAuctionItemById" column="itemId">
+    </association>
+    <association property="user" javaType="User" select="club.banyuan.dao.IUserDao.getUserById" column="userId">
+    </association>
+  </resultMap>
+
+  <insert id="add" parameterType="SoldItem">
+    <selectKey keyColumn="id" keyProperty="id" resultType="int">
+      select last_insert_id()
+    </selectKey>
+    insert into soldItem (itemId,price,userId) values (#{itemId},#{price},#{userId})
+  </insert>
+
+  <select id="getAllSoldItem" resultMap="soldItemMap">
+    select * from soldItem
+  </select>
+
+</mapper>
