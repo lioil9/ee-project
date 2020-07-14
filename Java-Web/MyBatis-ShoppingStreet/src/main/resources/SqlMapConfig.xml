@@ -4,6 +4,12 @@
 <configuration>
   <properties resource="db.properties"></properties>
 
+  <settings>
+    <setting name="logImpl" value="STDOUT_LOGGING"/>
+    <setting name="lazyLoadingEnabled" value="true"/>
+    <setting name="aggressiveLazyLoading" value="false"/>
+  </settings>
+
   <typeAliases>
     <package name="club.banyuan.entity"/>
     <package name="club.banyuan.vo"/>

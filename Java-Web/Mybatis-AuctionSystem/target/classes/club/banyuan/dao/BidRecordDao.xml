@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="club.banyuan.dao.IBidRecordDao">
+  <resultMap id="bidRecordMap" type="BidRecord">
+    <id column="id" property="id"/>
+    <result column="itemId" property="itemId"/>
+    <result column="bidTime" property="bidTime"/>
+    <result column="bidPrice" property="bidPrice"/>
+    <result column="userId" property="userId"/>
+    <result column="userName" property="userName"/>
+  </resultMap>
+
+  <select id="getBidRecordByItemId" parameterType="int" resultMap="bidRecordMap">
+    select * from bidRecord where itemId = #{itemId}
+  </select>
+
+  <insert id="addBidRecord" parameterType="BidRecord">
+    <selectKey keyColumn="id" keyProperty="id" resultType="int">
+      select last_insert_id()
+    </selectKey>
+    insert into bidRecord (itemId,bidTime,bidPrice,userId,userName) values (#{itemId},#{bidTime},#{bidPrice},#{userId},#{userName})
+  </insert>
+
+  <select id="getMaxBidRecord" parameterType="int" resultType="double">
+    select max(bidPrice) as bidPrice from bidRecord where itemId = #{itemId}
+  </select>
+
+</mapper>

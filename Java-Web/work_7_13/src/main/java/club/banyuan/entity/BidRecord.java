@@ -7,6 +7,7 @@ public class BidRecord {
   private String bidTime;
   private Double bidPrice;
   private Integer userId;
+  public User user;
 
   public Integer getId() {
     return id;
@@ -46,6 +47,14 @@ public class BidRecord {
 
   public void setUserId(Integer userId) {
     this.userId = userId;
+  }
+
+  public User getUser() {
+    return user;
+  }
+
+  public void setUser(User user) {
+    this.user = user;
   }
 
   @Override

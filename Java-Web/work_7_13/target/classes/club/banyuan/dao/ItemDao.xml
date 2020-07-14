@@ -21,6 +21,7 @@
     </collection>
   </resultMap>
 
+
   <select id="getAuctionItemAndBidOrders" parameterType="int" resultMap="itemMap">
     select a.*,b.id as recordId,b.itemId,b.bidTime,b.bidPrice,b.userId from auctionItem a ,bidRecord b where a.id = b.ItemId and a.id=#{id}
   </select>

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="club.banyuan.dao.IBidRecordDao">
+
+  <resultMap id="bidRecordMap" type="BidRecord">
+    <id column="id" property="id"/>
+    <result column="itemId" property="itemId"/>
+    <result column="bidTime" property="bidTime"/>
+    <result column="bidPrice" property="bidPrice"/>
+    <result column="userId" property="userId"/>
+  </resultMap>
+
+  <resultMap id="bidRecordMap2" type="BidRecord">
+    <id column="id" property="id"/>
+    <result column="itemId" property="itemId"/>
+    <result column="bidTime" property="bidTime"/>
+    <result column="bidPrice" property="bidPrice"/>
+    <result column="userId" property="userId"/>
+    <association property="user" select="club.banyuan.dao.UserDao.getUserById" javaType="User" column="userId">
+    </association>
+  </resultMap>
+
+
+
+  <select id="getBidRecord" parameterType="int" resultMap="bidRecordMap">
+    select * from bidRecord where itemId = #{itemId}
+  </select>
+
+  <select id="getBidRecordByUserId" parameterType="int" resultMap="bidRecordMap2">
+    select * from bidRecord where userId = #{userId}
+  </select>
+
+</mapper>
