@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet(name = "GetAuctionResultServlet", urlPatterns = "get")
+@WebServlet(name = "GetAuctionResultServlet", urlPatterns = "/getAuctionResult.do")
 public class GetAuctionResultServlet extends HttpServlet {
 
   protected void doPost(HttpServletRequest request,

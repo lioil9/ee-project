@@ -32,6 +32,8 @@
     <div class="sale">
         <h1 class="lf">在线拍卖系统</h1>
         <div class="logout right"><a href="#" title="注销">注销</a></div>
+        <div class="login right">当前用户：<span class="blue strong"><a
+                href="#">${sessionScope.user.userName}</a>&nbsp;&nbsp;</span></div>
     </div>
     <div class="items sg-font lf">
         <ul class="rows">

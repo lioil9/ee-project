@@ -6,7 +6,8 @@
 <head>
     <%
         String path = request.getContextPath();
-        String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+        String basePath = request.getScheme() + "://" + request.getServerName() + ":" + request
+                .getServerPort() + path + "/";
     %>
     <base href="<%=basePath%>"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
@@ -21,6 +22,8 @@
     <div class="sale">
         <h1 class="lf">在线拍卖系统</h1>
         <div class="logout right"><a href="#" title="注销">注销</a></div>
+        <div class="login right">当前用户：<span class="blue strong"><a
+                href="#">${sessionScope.user.userName}</a>&nbsp;&nbsp;</span></div>
     </div>
     <%--搜索框begin--%>
     <form action="userGetAuctionItems.do" method="post">
@@ -57,33 +60,34 @@
         </c:if>
         <c:if test="${requestScope.auctionItems.size()>0}">
         <c:forEach var="auctionItem" items="${requestScope.auctionItems}" varStatus="status">
-            <c:if test="${status.index%2 == 0}">
-            <ul class="rows">
+        <c:if test="${status.index%2 == 0}">
+        <ul class="rows">
             </c:if>
             <c:if test="${status.index%2 == 1}">
             <ul class="rows even">
+                </c:if>
+                <li><a href="国书" title="">${auctionItem.name}</a></li>
+                <li class="list-wd">${auctionItem.remark}</li>
+                <li>${auctionItem.startTime}</li>
+                <li>${auctionItem.endTime}</li>
+                <li>${auctionItem.startPrice}</li>
+                <li class="borderno red"><a href="auctionDetail.do?itemId=${auctionItem.id}">竞拍</a>
+                </li>
+            </ul>
+            </c:forEach>
             </c:if>
-                    <li><a href="国书" title="">${auctionItem.name}</a></li>
-                    <li class="list-wd">${auctionItem.remark}</li>
-                    <li>${auctionItem.startTime}</li>
-                    <li>${auctionItem.endTime}</li>
-                    <li>${auctionItem.startPrice}</li>
-                    <li class="borderno red"><a href="auctionDetail.do?itemId=${auctionItem.id}">竞拍</a></li>
-                </ul>
-        </c:forEach>
-        </c:if>
-                <div class="page">
-                    <a href="#" title="">首页</a>
-                    <a href="#" title="">上一页</a>
-                    <span class="red">前5页</span>
-                    <a href="#" title="">1</a>
-                    <a href="#" title="">2</a>
-                    <a href="#" title="">3</a>
-                    <a href="#" title="">4</a>
-                    <a href="#" title="">5</a>
-                    <a href="#" title="">下一页</a>
-                    <a href="#" title="">尾页</a>
-                </div>
+            <div class="page">
+                <a href="#" title="">首页</a>
+                <a href="#" title="">上一页</a>
+                <span class="red">前5页</span>
+                <a href="#" title="">1</a>
+                <a href="#" title="">2</a>
+                <a href="#" title="">3</a>
+                <a href="#" title="">4</a>
+                <a href="#" title="">5</a>
+                <a href="#" title="">下一页</a>
+                <a href="#" title="">尾页</a>
+            </div>
     </div>
     <%--  商品展示页面end  --%>
     <!-- main end-->

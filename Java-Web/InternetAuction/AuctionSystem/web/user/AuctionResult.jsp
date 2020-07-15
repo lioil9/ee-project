@@ -18,8 +18,9 @@
 <!-- main begin-->
   <div class="sale">
     <h1 class="lf">拍卖结束的商品</h1>
-    <div class="right rulse">当前用户是：<span class="blue strong"><a href="#" title="张三">张三</a></span></div>
-    <div class="cl"></div>
+    <div class="logout right"><a href="#" title="注销">注销</a></div>
+    <div class="login right">当前用户：<span class="blue strong"><a
+            href="#">${sessionScope.user.userName}</a>&nbsp;&nbsp;</span></div>
   </div>
 <div class="items">
       <ul class="rows even strong">
