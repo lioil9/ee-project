@@ -6,24 +6,15 @@ public class User {
   private String loginName;
   private String userName;
   private String password;
-  private String identityCode;
-  private Integer sex;
-  private String email;
-  private String mobile;
 
   public User() {
   }
 
-  public User(Integer id, String loginName, String userName, String password,
-      String identityCode, Integer sex, String email, String mobile) {
+  public User(Integer id, String loginName, String userName, String password) {
     this.id = id;
     this.loginName = loginName;
     this.userName = userName;
     this.password = password;
-    this.identityCode = identityCode;
-    this.sex = sex;
-    this.email = email;
-    this.mobile = mobile;
   }
 
   public Integer getId() {
@@ -58,38 +49,6 @@ public class User {
     this.password = password;
   }
 
-  public Integer getSex() {
-    return sex;
-  }
-
-  public void setSex(Integer sex) {
-    this.sex = sex;
-  }
-
-  public String getEmail() {
-    return email;
-  }
-
-  public void setEmail(String email) {
-    this.email = email;
-  }
-
-  public String getMobile() {
-    return mobile;
-  }
-
-  public void setMobile(String mobile) {
-    this.mobile = mobile;
-  }
-
-  public String getIdentityCode() {
-    return identityCode;
-  }
-
-  public void setIdentityCode(String identityCode) {
-    this.identityCode = identityCode;
-  }
-
   @Override
   public String toString() {
     return "User{" +
@@ -97,10 +56,6 @@ public class User {
         ", loginName='" + loginName + '\'' +
         ", userName='" + userName + '\'' +
         ", password='" + password + '\'' +
-        ", identityCode='" + identityCode + '\'' +
-        ", sex=" + sex +
-        ", email='" + email + '\'' +
-        ", mobile='" + mobile + '\'' +
         '}';
   }
 }
