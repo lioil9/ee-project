@@ -11,6 +11,9 @@
     <result column="startTime" property="startTime"/>
     <result column="endTime" property="endTime"/>
     <result column="remark" property="remark"/>
+    <collection property="bidRecords" ofType="BidRecord"
+      select="club.banyuan.dao.IBidRecordDao.getBidRecordByItemId" column="id">
+    </collection>
   </resultMap>
 
   <select id="getAuctionItems" parameterType="AuctionItem" resultMap="auctionItemMap">
@@ -41,14 +44,15 @@
     (#{name},#{startPrice},#{basePrice},#{startTime},#{endTime},#{remark})
   </insert>
 
-  <select id="getAuctionItemById" parameterType="int" resultType="AuctionItem">
+
+  <select id="getAuctionItemById" parameterType="int" resultMap="auctionItemMap">
     select * from auctionItem where id = #{id}
   </select>
 
   <update id="changeAuctionItem" parameterType="AuctionItem">
     update auctionItem set name=#{name}, startPrice=#{startPrice}, basePrice=#{basePrice}, startTime=#{startTime}, endTime=#{endTime}, remark=#{remark} where id = #{id}
   </update>
-  
+
   <delete id="deleteAuctionItem" parameterType="int">
     delete from auctionItem where id = #{id}
   </delete>

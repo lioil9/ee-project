@@ -3,6 +3,7 @@ package club.banyuan.dao;
 import static org.junit.Assert.*;
 
 import club.banyuan.entity.AuctionItem;
+import club.banyuan.entity.BidRecord;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
@@ -55,7 +56,12 @@ public class IItemDaoTest {
   }
 
   @Test
-  public void getAuctionItemById() {}
+  public void getAuctionItemById() {
+    AuctionItem auctionItem = itemDao.getAuctionItemById(2);
+    for (BidRecord bidRecord : auctionItem.getBidRecords()) {
+      System.out.println(bidRecord);
+    }
+  }
 
   @Test
   public void changeAuctionItem() {}

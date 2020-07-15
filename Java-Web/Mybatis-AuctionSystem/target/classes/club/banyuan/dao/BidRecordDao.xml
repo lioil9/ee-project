@@ -8,7 +8,8 @@
     <result column="bidTime" property="bidTime"/>
     <result column="bidPrice" property="bidPrice"/>
     <result column="userId" property="userId"/>
-    <result column="userName" property="userName"/>
+    <association property="user" javaType="User" select="club.banyuan.dao.IUserDao.getUserById" column="userId">
+    </association>
   </resultMap>
 
   <select id="getBidRecordByItemId" parameterType="int" resultMap="bidRecordMap">
@@ -19,7 +20,7 @@
     <selectKey keyColumn="id" keyProperty="id" resultType="int">
       select last_insert_id()
     </selectKey>
-    insert into bidRecord (itemId,bidTime,bidPrice,userId,userName) values (#{itemId},#{bidTime},#{bidPrice},#{userId},#{userName})
+    insert into bidRecord (itemId,bidTime,bidPrice,userId) values (#{itemId},#{bidTime},#{bidPrice},#{userId})
   </insert>
 
   <select id="getMaxBidRecord" parameterType="int" resultType="double">
