@@ -1,6 +1,4 @@
-/out/
-*/out/*
-*/target/*
-/target/*
+out/
+target/
 
 !.gitignore
