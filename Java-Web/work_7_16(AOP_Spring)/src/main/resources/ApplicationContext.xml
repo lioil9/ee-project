@@ -6,6 +6,7 @@
   http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/aop https://www.springframework.org/schema/aop/spring-aop.xsd">
 
   <bean id="userDaoImpl" class="club.banyuan.dao.Impl.UserDaoImpl"/>
+  <bean id="userDaoAroundImpl" class="club.banyuan.dao.Impl.UserDaoAroundImpl"/>
   <bean id="tool" class="club.banyuan.utils.Tool"/>
 <!--  <bean id="user" class="club.banyuan.entity.User"/>-->
 
@@ -16,8 +17,19 @@
     <aop:aspect id="aspect" ref="tool">
       <aop:before method="addBefore" pointcut-ref="pt"/>
       <aop:after method="addAfter" pointcut-ref="pt"/>
+      <aop:after-throwing method="addBefore" pointcut-ref="pt"/>
+      <aop:after-returning method="addAfter" pointcut-ref="pt"/>
     </aop:aspect>
-
   </aop:config>
+
+  <aop:config>
+    <aop:pointcut id="ptAround" expression="execution(* club.banyuan.dao.Impl.UserDaoAroundImpl.*(..))"/>
+    <aop:aspect id="aspectAround" ref="tool">
+      <aop:around method="addAround" pointcut-ref="ptAround"/>
+    </aop:aspect>
+  </aop:config>
+
+
+
 
 </beans>

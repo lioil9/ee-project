@@ -20,6 +20,11 @@ public class IUserDaoTest {
     userDao.printAll();
     System.out.println("-------------------");
     System.out.println(userDao.add(new User()));
-    ((UserDaoImpl)userDao).count();
+//    ((UserDaoImpl)userDao).count();
+    System.out.println("-----------------------");
+    IUserDao userDao1 = (IUserDao) ctx.getBean("userDaoAroundImpl");
+    userDao1.printAll();
+    System.out.println("-----------------------");
+    System.out.println(userDao1.add(new User()));
   }
 }
