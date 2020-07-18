@@ -122,6 +122,7 @@
         </span>
         <!--End 所在收货地区 End-->
         <span class="fr">
+            <div>1${sessionScope.user.loginName}1</div>
             <c:if test="${sessionScope.user != null}">
                 <span class="fl">
                 <div class="ss_list">
