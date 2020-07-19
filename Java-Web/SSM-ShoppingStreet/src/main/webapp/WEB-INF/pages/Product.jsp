@@ -134,12 +134,12 @@
                         User user = (User) userObj;
                 %>
                <div class="ss_list">
-                    <a href="<%=request.getContextPath()%>/user/Member.jsp"><%=user.getLoginName()%></a>
+                    <a href="user/member"><%=user.getLoginName()%></a>
                     <div class="ss_list_bg">
                     	<div class="s_city_t"></div>
                         <div class="ss_list_c">
                         	<ul>
-                            	<li><a href="<%=request.getContextPath()%>/logout.do">退出登录</a></li>
+                            	<li><a href="<%=request.getContextPath()%>/">退出登录</a></li>
                             </ul>
                         </div>
                     </div>
@@ -198,9 +198,9 @@
     </div>
 </div>
 <div class="top">
-    <div class="logo"><a href="Index.html"><img src="images/logo.png" /></a></div>
+    <div class="logo"><a href="index"><img src="images/logo.png" /></a></div>
     <div class="search">
-    	<form>
+    	<form action="addCart">
         	<input type="text" value="" class="s_ipt" />
             <input type="submit" value="搜索" class="s_btn" />
         </form>                      
@@ -585,7 +585,7 @@
                 </div>
                 <div class="d_care"><a onclick="ShowDiv('MyDiv','fade')">关注商品</a></div>
             </div>
-            <form id="quantityForm" action="addCart.do" method="post">
+            <form id="quantityForm" action="addCart" method="post">
             <div class="des_join">
             	<div class="j_nums">
                         <input type="hidden" name="pid" value="${product.id}"/>

@@ -3,7 +3,7 @@
 <%@ page import="java.util.Map" %>
 <%@ page import="club.banyuan.entity.User" %>
 <%@ page import="java.util.Map.Entry" %>
-<%@page contentType="text/html; charset=UTF-8" language="java" %>
+<%@page isELIgnored="false" contentType="text/html; charset=UTF-8" language="java" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -125,13 +125,13 @@
                         User user = (User) userObj;
                 %>
                <div class="ss_list">
-                    <a href="<%=request.getContextPath()%>/user/Member.jsp"><%=user
+                    <a href="user/member"><%=user
                             .getLoginName()%></a>
                     <div class="ss_list_bg">
                     	<div class="s_city_t"></div>
                         <div class="ss_list_c">
                         	<ul>
-                            	<li><a href="<%=request.getContextPath()%>/logout.do">退出登录</a></li>
+                            	<li><a href="user/logout">退出登录</a></li>
                             </ul>
                         </div>
                     </div>
@@ -191,7 +191,7 @@
     </div>
 </div>
 <div class="top">
-    <div class="logo"><a href="<%=request.getContextPath()%>/index.jsp"><img src="images/logo.png"/></a>
+    <div class="logo"><a href="index"><img src="images/logo.png"/></a>
     </div>
     <div class="search">
         <form>
@@ -544,7 +544,7 @@
         </div>
         <!--End 商品分类详情 End-->
         <ul class="menu_r">
-            <li><a href="<%=request.getContextPath()%>/index.jsp">首页</a></li>
+            <li><a href="index">首页</a></li>
             <li><a href="Food.html">美食</a></li>
             <li><a href="Fresh.html">生鲜</a></li>
             <li><a href="HomeDecoration.html">家居</a></li>
@@ -590,8 +590,8 @@
                 </tr>
                 <tr>
                     <td>
-                        <a href="<%=request.getContextPath()%>/index.jsp">首页</a> &nbsp; &nbsp; <a
-                            href="<%=request.getContextPath()%>/user/Member.jsp">用户中心</a>
+                        <a href="index">首页</a> &nbsp; &nbsp; <a
+                            href="user/member">用户中心</a>
                     </td>
                 </tr>
             </table>

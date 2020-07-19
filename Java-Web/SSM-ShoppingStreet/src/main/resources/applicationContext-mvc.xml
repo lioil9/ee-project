@@ -25,6 +25,7 @@
       <mvc:resources location="js/" mapping="js/**"/>
 
   <!--  控制可通过path路径直接访问jsp页面  -->
+  <mvc:view-controller view-name="index" path="/index" />
   <mvc:view-controller view-name="Regist" path="/register" />
   <mvc:view-controller view-name="Login" path="/login" />
   <mvc:annotation-driven></mvc:annotation-driven>

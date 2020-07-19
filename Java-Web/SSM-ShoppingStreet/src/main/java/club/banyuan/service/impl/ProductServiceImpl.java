@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Service
-public class ProductService implements IProductService {
+public class ProductServiceImpl implements IProductService {
   @Autowired
   private IProductDao productDao;
 

@@ -12,6 +12,7 @@ public class User {
   private Integer sex;
   private String email;
   private String mobile;
+  private UserAddress userDefaultAddress;
 
   public User() {
   }
@@ -90,6 +91,14 @@ public class User {
 
   public void setIdentityCode(String identityCode) {
     this.identityCode = identityCode;
+  }
+
+  public UserAddress getUserDefaultAddress() {
+    return userDefaultAddress;
+  }
+
+  public void setUserDefaultAddress(UserAddress userDefaultAddress) {
+    this.userDefaultAddress = userDefaultAddress;
   }
 
   @Override

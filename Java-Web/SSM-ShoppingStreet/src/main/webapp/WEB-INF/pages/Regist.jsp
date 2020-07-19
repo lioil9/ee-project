@@ -117,13 +117,13 @@
                         User user = (User) userObj;
                 %>
                <div class="ss_list">
-                    <a href="<%=request.getContextPath()%>/user/Member.jsp"><%=user
+                    <a href="user/member"><%=user
                             .getLoginName()%></a>
                     <div class="ss_list_bg">
                     	<div class="s_city_t"></div>
                         <div class="ss_list_c">
                         	<ul>
-                            	<li><a href="<%=request.getContextPath()%>/logout.do">退出登录</a></li>
+                            	<li><a href="user/logout">退出登录</a></li>
                             </ul>
                         </div>
                     </div>
@@ -147,7 +147,7 @@
 <!--Begin Login Begin-->
 <div class="log_bg">
     <div class="top">
-        <div class="logo"><a href="index.jsp"><img src="images/logo.png"/></a></div>
+        <div class="logo"><a href="index"><img src="images/logo.png"/></a></div>
     </div>
     <div class="regist">
         <div class="log_img"><img src="images/l_img.png" width="611" height="425"/></div>

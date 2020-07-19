@@ -3,10 +3,15 @@
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.HashMap" %>
 <%@ page import="java.util.Map.Entry" %>
-<%@page contentType="text/html; charset=UTF-8" language="java" %>
+<%@page isELIgnored="false" contentType="text/html; charset=UTF-8" language="java" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+    <%
+        String path = request.getContextPath();
+        String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
+    %>
+    <base href="<%=basePath%>"/>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <link type="text/css" rel="stylesheet" href="../css/style.css"/>
     <!--[if IE 6]>
@@ -113,12 +118,12 @@
         <span class="fr">
         	<span class="fl">
                <div class="ss_list">
-                    <a href="<%=request.getContextPath()%>/user/Member.jsp">${sessionScope.user.loginName}</a>
+                    <a href="user/member">${sessionScope.user.loginName}</a>
                     <div class="ss_list_bg">
                     	<div class="s_city_t"></div>
                         <div class="ss_list_c">
                         	<ul>
-                            	<li><a href="<%=request.getContextPath()%>/logout.do">退出登录</a></li>
+                            	<li><a href="user/logout">退出登录</a></li>
                             </ul>
                         </div>
                     </div>
@@ -173,7 +178,7 @@
 </div>
 <div class="m_top_bg">
     <div class="top">
-        <div class="m_logo"><a href="<%=request.getContextPath()%>/index.jsp"><img
+        <div class="m_logo"><a href="index"><img
                 src="images/logo1.png"/></a></div>
         <div class="m_search">
             <form>

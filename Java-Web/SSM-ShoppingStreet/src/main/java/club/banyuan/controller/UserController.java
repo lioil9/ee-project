@@ -2,10 +2,12 @@ package club.banyuan.controller;
 
 import club.banyuan.entity.User;
 import club.banyuan.service.IUserService;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import org.springframework.web.bind.support.SessionStatus;
 
@@ -51,7 +53,16 @@ public class UserController {
     return "Login";
   }
 
+  @RequestMapping("/user/member")
+  public String getUserMember(HttpSession session){
+    if(session.getAttribute("user") == null){
+      return "Login";
+    }
+    return "user/Member";
+  }
+
   @RequestMapping("/user/loginNameValidate")
+  @ResponseBody
   public String registerValidate(String loginName){
     System.out.println(loginName);
     String result = "true";

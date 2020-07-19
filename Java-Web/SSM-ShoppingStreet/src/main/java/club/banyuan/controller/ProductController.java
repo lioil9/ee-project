@@ -2,7 +2,10 @@ package club.banyuan.controller;
 
 import club.banyuan.entity.Product;
 import club.banyuan.service.IProductService;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -36,5 +39,28 @@ public class ProductController {
     }
     return "Product";
   }
+
+  @RequestMapping("/addCart")
+  public String addCart(Integer pid, Integer quantity, HttpSession session){
+    try {
+      Product product = productService.searchProductById(pid);
+      Map<Product, Integer> cart;
+      if (session.getAttribute("cart") == null) {
+        cart = new HashMap<>();
+      } else {
+        cart = (Map<Product, Integer>) session.getAttribute("cart");
+      }
+      if (cart.containsKey(product)) {
+        cart.replace(product, cart.get(product) + quantity);
+      } else {
+        cart.put(product, quantity);
+      }
+      session.setAttribute("cart", cart);
+    }catch (Exception e){
+      e.printStackTrace();
+    }
+    return "user/BuyCar";
+  }
+
 
 }
