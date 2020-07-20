@@ -6,7 +6,7 @@
 <%@ page import="java.util.Map.Entry" %>
 <%@ page import="java.util.List" %>
 <%@ page import="club.banyuan.entity.UserAddress" %>
-<%@page contentType="text/html; charset=UTF-8" language="java" %>
+<%@page isELIgnored="false" contentType="text/html; charset=UTF-8" language="java" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -247,8 +247,8 @@
             <div class="left_m">
                 <div class="left_m_t t_bg1">订单中心</div>
                 <ul>
-                    <li><a href="getOrder.do">我的订单</a></li>
-                    <li><a href="<%=request.getContextPath()%>/user/Member_Address.jsp" class="now">收货地址</a></li>
+                    <li><a href="getOrderList">我的订单</a></li>
+                    <li><a href="user/getAddress" class="now">收货地址</a></li>
                     <li><a href="#">缺货登记</a></li>
                     <li><a href="#">跟踪订单</a></li>
                 </ul>
@@ -286,65 +286,58 @@
             <div class="mem_tit">收货地址</div>
 
             <div style="max-height: 391px; overflow: scroll">
-                <%
-                    User user = (User) session.getAttribute("user");
-                    IUserAddressService userAddressService = new UserAddressServiceImpl();
-                    List<UserAddress> userAddresses = userAddressService.getAddress(user.getId());
-                    if (userAddresses.isEmpty()) {
-                        out.print("<div style=\"margin-left:20px\">还未添加收货地址，请在下方添加</div>");
-                    } else {
-                        for (UserAddress userAddress : userAddresses) {
-
-                %>
+                <c:if test="${empty userAddressList}">
+                    <div style="margin-left:20px">还未添加收货地址，请在下方添加</div>
+                </c:if>
+                <c:if test="${!empty userAddressList}">
+                    <c:forEach var="userAddress" items="${userAddressList}">
                 <div class="address">
                     <div class="a_close"><a href="#"><img src="images/a_close.png"/></a></div>
                     <table border="0" class="add_t" align="center"
                            style="width:98%; margin:10px auto;" cellspacing="0" cellpadding="0">
                         <tr>
-                            <td colspan="2" style="font-size:14px; color:#ff4e00;"><%=userAddress
-                                    .getRemark()%>
+                            <td colspan="2" style="font-size:14px; color:#ff4e00;">${userAddress.remark}
                             </td>
                         </tr>
                         <tr>
                             <td align="right" width="80">收货人姓名：</td>
-                            <td><%=user.getUserName()%>
+                            <td>${sessionScope.user.userName}
                             </td>
                         </tr>
                         <tr>
                             <td align="right">配送区域：</td>
-                            <td><%=userAddress.getAddress()%>
+                            <td>${userAddress.address}
                             </td>
                         </tr>
                         <tr>
                             <td align="right">详细地址：</td>
-                            <td><%=userAddress.getAddress()%>
+                            <td>${userAddress.address}
                             </td>
                         </tr>
                         <tr>
                             <td align="right">手机：</td>
-                            <td><%=user.getMobile()%>
+                            <td>${sessionScope.user.mobile}
                             </td>
                         </tr>
                         <tr>
                             <td align="right">电话：</td>
-                            <td><%=user.getMobile()%>
+                            <td>${sessionScope.user.mobile}
                             </td>
                         </tr>
                         <tr>
                             <td align="right">电子邮箱：</td>
-                            <td><%=user.getEmail()%>
+                            <td>${sessionScope.user.email}
                             </td>
                         </tr>
                         <tr>
                             <td align="right">默认地址</td>
                             <td>
-                                <%
-                                   if(userAddress.getIsDefault()==1){
-                                     out.print("是");
-                                   }else {
-                                     out.print("否");
-                                   }
-                                %>
+                                <c:if test="${userAddress.isDefault == 1}">
+                                    是
+                                </c:if>
+                                <c:if test="${userAddress.isDefault == 0}">
+                                    否
+                                </c:if>
                             </td>
                         </tr>
                     </table>
@@ -354,12 +347,9 @@
                             href="#" style="color:#ff4e00;">编辑</a>&nbsp; &nbsp; &nbsp; &nbsp;
                     </p>
 
-
                 </div>
-                <%
-                        }
-                    }
-                %>
+                    </c:forEach>
+                </c:if>
             </div>
 
             <div class="mem_tit">
@@ -394,7 +384,7 @@
                 </tr>
                 <tr>
                     <td align="right">手机</td>
-                    <td style="font-family:'宋体';"><input type="text" value="<%=user.getMobile()%>"
+                    <td style="font-family:'宋体';"><input type="text" value="${sessionScope.user.mobile}"
                                                          class="add_ipt"/>（必填）
                     </td>
                     <td align="right">备注</td>

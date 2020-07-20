@@ -25,19 +25,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54aa1acd-59b1-4f4e-a54f-9dc885596ce2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../SSM-ShoppingStreet/src/main/java/club/banyuan/controller/OrderController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../SSM-ShoppingStreet/src/main/java/club/banyuan/service/IOrderDetailService.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../SSM-ShoppingStreet/src/main/java/club/banyuan/service/IOrderService.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../SSM-ShoppingStreet/src/main/java/club/banyuan/service/impl/OrderDetailServiceImpl.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../SSM-ShoppingStreet/src/main/java/club/banyuan/service/impl/OrderServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Mybatis-AuctionSystem/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Mybatis-AuctionSystem/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SSM-ShoppingStreet/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SSM-ShoppingStreet/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SSM-ShoppingStreet/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SSM-ShoppingStreet/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SSM-ShoppingStreet/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SSM-ShoppingStreet/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SSM-ShoppingStreet/src/main/java/club/banyuan/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SSM-ShoppingStreet/src/main/java/club/banyuan/controller/OrderController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SSM-ShoppingStreet/src/main/java/club/banyuan/controller/ProductController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SSM-ShoppingStreet/src/main/java/club/banyuan/controller/ProductController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SSM-ShoppingStreet/src/main/java/club/banyuan/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SSM-ShoppingStreet/src/main/java/club/banyuan/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SSM-ShoppingStreet/src/main/java/club/banyuan/entity/Order.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SSM-ShoppingStreet/src/main/java/club/banyuan/entity/Order.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SSM-ShoppingStreet/src/main/java/club/banyuan/entity/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SSM-ShoppingStreet/src/main/java/club/banyuan/entity/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SSM-ShoppingStreet/src/main/java/club/banyuan/entity/UserAddress.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SSM-ShoppingStreet/src/main/java/club/banyuan/entity/UserAddress.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SSM-ShoppingStreet/src/main/java/club/banyuan/service/IUserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SSM-ShoppingStreet/src/main/java/club/banyuan/service/IUserService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SSM-ShoppingStreet/src/main/java/club/banyuan/service/impl/ProductService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SSM-ShoppingStreet/src/main/java/club/banyuan/service/impl/ProductServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../SSM-ShoppingStreet/src/main/java/club/banyuan/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SSM-ShoppingStreet/src/main/java/club/banyuan/service/impl/UserServiceImpl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SSM-ShoppingStreet/src/main/resources/applicationContext-mvc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SSM-ShoppingStreet/src/main/resources/applicationContext-mvc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SSM-ShoppingStreet/src/main/resources/club/banyuan/dao/UserDao.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../SSM-ShoppingStreet/src/main/resources/club/banyuan/dao/UserDao.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../SSM-ShoppingStreet/src/main/webapp/WEB-INF/pages/CategoryList.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../SSM-ShoppingStreet/src/main/webapp/WEB-INF/pages/CategoryList.jsp" afterDir="false" />
@@ -138,7 +141,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1595054935287</updated>
-      <workItem from="1595054940304" duration="2596000" />
+      <workItem from="1595054940304" duration="2734000" />
     </task>
     <servers />
   </component>

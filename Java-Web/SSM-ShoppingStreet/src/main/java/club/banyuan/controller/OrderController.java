@@ -19,6 +19,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class OrderController {
   @Autowired
   private IOrderService orderService;
+  @Autowired
+  private HttpSession session;
+  @Autowired
+  private Order order;
+
 
   @RequestMapping("/confirmOrder")
   public String confirm(HttpSession session){
@@ -57,5 +62,17 @@ public class OrderController {
       }
       return "user/BuyCar_Three";
   }
+
+  @RequestMapping("/getOrderList")
+  public String getOrderList(Model model){
+    try{
+      User user = (User) session.getAttribute("user");
+      model.addAttribute("userOrders",orderService.getOrderByUserId(user.getId()));
+    } catch (Exception e){
+      e.printStackTrace();
+    }
+    return "user/Member_Order";
+  }
+
 
 }
