@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+  http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!-- 创建数据库的连接池的bean -->
+  <bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+    <property name="driverClass" value="com.mysql.cj.jdbc.Driver"/>
+    <property name="jdbcUrl" value="jdbc:mysql://localhost:3306/shoppingStreet?useSSL=false&amp;serverTimezone=UTC"/>
+    <property name="user" value="root"/>
+    <property name="password" value="lioilroot"/>
+<!--  以下为自定义配置，可选择，一般有默认配置  -->
+    <!--连接池启动的时候默认创建的连接数量 -->
+    <property name="initialPoolSize" value="3"/>
+    <!--连接池最多可以管理的连接对象个数 -->
+    <property name="maxPoolSize" value="100"/>
+    <!--连接池中最多能够管理的statement对象 -->
+    <property name="maxStatements" value="1000"/>
+    <!--一旦连接池中现有的连接数量不够，每次增长的连接数目：5 ，但是连接池中的连接数量 -->
+    <!--最多不可超过maxPoolSize中设置的连接数目 -->
+    <property name="acquireIncrement" value="5"/>
+  </bean>
+
+<!--  用spring来管理myBatis对数据库进行操作的SqlSessionFactory对象  -->
+  <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    <!--  将构建好的数据库连接池bean加载到SqlSessionFactory中  -->
+    <property name="dataSource" ref="dataSource"/>
+    <!--  配置mybatis要对应创建的实体类  -->
+    <property name="typeAliasesPackage" value="club.banyuan.entity"/>
+    <!--    加载mybatis对应的配置文件  -->
+    <property name="mapperLocations" value="classpath*:club/banyuan/dao/**/*.xml"/>
+  </bean>
+
+  <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+    <!--  指定dao接口的位置，并加载SqlSessionFactory对象  -->
+    <property name="basePackage" value="club.banyuan.dao"/>
+    <property name="sqlSessionFactoryBeanName" value="sqlSessionFactory"/>
+  </bean>
+
+
+</beans>

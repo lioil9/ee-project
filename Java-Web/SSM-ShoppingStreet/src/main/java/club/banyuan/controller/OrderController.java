@@ -21,8 +21,6 @@ public class OrderController {
   private IOrderService orderService;
   @Autowired
   private HttpSession session;
-  @Autowired
-  private Order order;
 
 
   @RequestMapping("/confirmOrder")

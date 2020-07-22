@@ -1,0 +1,28 @@
+{
+  "properties": [
+    {
+      "name": "devtools",
+      "type": "java.lang.String",
+      "description": "Description for devtools."
+    },
+    {
+      "name": "freemarker",
+      "type": "java.lang.String",
+      "description": "Description for freemarker."
+    },
+    {
+      "name": "freemarker",
+      "type": "java.lang.String",
+      "description": "Description for freemarker."
+    },
+    {
+      "name": "additional-paths",
+      "type": "java.lang.String",
+      "description": "Description for additional-paths."
+    },
+    {
+      "name": "additional-paths",
+      "type": "java.lang.String",
+      "description": "Description for additional-paths."
+    }
+  ] }
