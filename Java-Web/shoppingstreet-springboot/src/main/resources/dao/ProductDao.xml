@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="club.banyuan.dao.IProductDao">
+  <resultMap id="productMap" type="Product">
+    <id column="id" property="id"/>
+    <result column="name" property="name"/>
+    <result column="description" property="description"/>
+    <result column="price" property="price"/>
+    <result column="stock" property="stock"/>
+    <result column="categoryLevel1Id" property="categoryLevel1Id"/>
+    <result column="categoryLevel2Id" property="categoryLevel2Id"/>
+    <result column="categoryLevel3Id" property="categoryLevel3Id"/>
+    <result column="fileName" property="fileName"/>
+    <result column="isDelete" property="isDelete"/>
+  </resultMap>
+
+  <select id="getProductByName" parameterType="String" resultMap="productMap">
+    select * from product where name like "%"#{name}"%" or description like "%"#{name}"%"
+  </select>
+
+  <select id="getProductById" parameterType="int" resultType="Product">
+    select * from product where id = #{id}
+  </select>
+
+
+</mapper>
