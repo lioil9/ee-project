@@ -68,7 +68,7 @@ public class OrderController {
     } catch (Exception e){
       e.printStackTrace();
     }
-    return "user/Member_Order";
+    return "Member_Order";
   }
 
 

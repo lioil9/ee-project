@@ -5,7 +5,7 @@ spring:
       exclude: META-INF/**
       add-properties: src/main/java
   freemarker:
-    cache: false
+    cache: falseadditional-paths: src/main/javaadditional-paths: src/main/java
   thymeleaf:
     enabled: true  #开启thymeleaf视图解析
     encoding: utf-8  #编码

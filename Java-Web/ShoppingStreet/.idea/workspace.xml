@@ -25,9 +25,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="54aa1acd-59b1-4f4e-a54f-9dc885596ce2" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../uploadtest/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../uploadtest/uploadtest.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../SSM-ShoppingStreet/src/main/java/club/banyuan/controller/OrderController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../SSM-ShoppingStreet/src/main/java/club/banyuan/controller/OrderController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -114,6 +111,7 @@
       <option name="presentableId" value="Default" />
       <updated>1595054935287</updated>
       <workItem from="1595054940304" duration="3338000" />
+      <workItem from="1595517557580" duration="22000" />
     </task>
     <servers />
   </component>

@@ -16,5 +16,10 @@ public class MainController {
     return "Login";
   }
 
+  @RequestMapping("/getRegister")
+  public String getRegister(){
+    return "Regist";
+  }
+
 
 }

@@ -76,7 +76,7 @@ public class UserController {
     if (session.getAttribute("user") == null) {
       return "Login";
     }
-    return "user/Member";
+    return "Member";
   }
 
   @RequestMapping("/user/getAddress")
@@ -88,6 +88,6 @@ public class UserController {
     } catch (Exception e) {
       e.printStackTrace();
     }
-    return "user/Member_Address";
+    return "Member_Address";
   }
 }
