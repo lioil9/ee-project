@@ -1,14 +1,15 @@
 package club.banyuan;
 
-import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import tk.mybatis.spring.annotation.MapperScan;
 
 @SpringBootApplication
-public class ShoppingstreetSpringbootApplication {
+@MapperScan(basePackages = "club.banyuan.mapper")
+public class ShoppingstreetBootApplication {
 
   public static void main(String[] args) {
-    SpringApplication.run(ShoppingstreetSpringbootApplication.class, args);
+    SpringApplication.run(ShoppingstreetBootApplication.class, args);
   }
 
 }

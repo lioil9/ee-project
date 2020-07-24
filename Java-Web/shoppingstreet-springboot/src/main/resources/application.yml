@@ -1,0 +1,28 @@
+spring:
+#  数据库连接信息
+  datasource:
+    url: jdbc:mysql://localhost:3306/shoppingStreet?useSSL=false&serverTimezone=UTC
+    username: root
+    password: lioilroot
+#  thymeleaf模版信息
+  thymeleaf:
+    enabled: true
+    cache: false
+    encoding: UTF-8
+    prefix: classpath:/templates/
+    mode: HTML
+    suffix: .html
+  freemarker:
+    cache: false
+#  热部署配置信息
+  devtools:
+    livereload:
+      enabled: true
+    restart:
+      additional-paths: src/main/java
+      exclude: META-INF/**
+#  mybatis配置信息
+mybatis:
+  config-location: classpath:mybatis-config.xml
+  mapper-locations: classpath:dao/*.xml
+  type-aliases-package: club.banyuan.entity

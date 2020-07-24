@@ -1,0 +1,10 @@
+mybatis:
+  type-aliases-package: club.banyuan.entity
+  mapper-locations: classpath*:club/banyuan/mapper/*.xml
+#  config-location: classpath:mybatis-config.xml
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/shoppingstreet?&useSSL=false&serverTimezone=UTC
+    username: root
+    password: lioilroot

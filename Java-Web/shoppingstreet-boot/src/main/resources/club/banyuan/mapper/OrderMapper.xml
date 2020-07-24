@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="club.banyuan.mapper.OrderMapper">
+  <resultMap id="BaseResultMap" type="club.banyuan.entity.Order">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="userId" jdbcType="INTEGER" property="userid" />
+    <result column="loginName" jdbcType="VARCHAR" property="loginname" />
+    <result column="userAddress" jdbcType="VARCHAR" property="useraddress" />
+    <result column="createTime" jdbcType="TIMESTAMP" property="createtime" />
+    <result column="cost" jdbcType="REAL" property="cost" />
+    <result column="serialNumber" jdbcType="VARCHAR" property="serialnumber" />
+  </resultMap>
+
+</mapper>
