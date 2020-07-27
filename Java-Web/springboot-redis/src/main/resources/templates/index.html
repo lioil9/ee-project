@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>redis</title>
+  <link type="text/css" href="/style.css">
+  <script type="text/javascript" src="/jquery-1.8.2.min.js"></script>
+</head>
+<script>
+  $(function () {
+    $.get("/getAllProvince",{},function (data) {
+        var provinceList = JSON.parse(data);
+        var name = "";
+        $(provinceList).each(function () {
+            name += "<div>"+this.pname+"</div>";
+        })
+        $('#pName').html(name);
+    })
+  })
+</script>
+<body>
+
+<span class="s_city_b">
+        	<span class="fl">送货至：</span>
+            <span class="s_city">
+              <div id="pName"></div>
+            </span>
+        </span>
+</body>
+</html>

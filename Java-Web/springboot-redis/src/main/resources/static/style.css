@@ -1,0 +1,33 @@
+.s_city_b{
+    width:150px; height:35px; float:left;
+}
+.s_city{
+    height:35px; background:url(../images/t_arrow.gif) no-repeat right center; float:left; padding-right:15px; cursor:pointer; position:relative;
+}
+.s_city:hover .s_city_bg{
+    display:block;
+}
+.s_city_bg{
+    width:254px; overflow:hidden; position:absolute; left:-50px; top:29px; z-index:900; display:none;
+}
+.s_city_t{
+    width:9px; height:7px; line-height:7px; overflow:hidden; background:url(../images/c_t.gif) no-repeat center top; position:absolute; left:55px; top:0;
+}
+.s_city_c{
+    width:252px; height:460px; overflow:hidden; background-color:#FFF; font-family:"Microsoft YaHei"; margin-top:6px; border:1px solid #cdcdcd;
+}
+.s_city_c h2{
+    width:230px; height:29px; line-height:29px; overflow:hidden; font-size:14px; font-weight:normal; text-align:left; margin-top:5px; border-bottom:1px dotted #666666;
+}
+table.c_tab tr th{
+    line-height:26px; font-weight:normal; color:#000; width:20px; text-transform:uppercase;
+}
+.c_h span{
+    line-height:26px; float:left; display:inline; padding:0 3px; margin-right:3px; cursor:pointer;
+}
+.c_h span:hover{
+    color:#ff4e00;
+}
+.c_h span.c_check{
+    color:#FFF; background-color:#ff4e00;
+}

@@ -1,0 +1,12 @@
+spring:
+  datasource:
+    driverClassName: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/shoppingStreet?useSSL=false&serverTimezone=UTC
+    username: root
+    password: lioilroot
+  redis:
+    host: localhost
+    port: 6379
+mybatis:
+  type-aliases-package: club.banyuan.entity
+  mapper-locations: classpath*:club/banyuan/mapper/*.xml
