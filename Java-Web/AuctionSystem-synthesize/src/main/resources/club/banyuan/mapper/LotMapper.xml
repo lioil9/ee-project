@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="club.banyuan.mapper.LotMapper" >
+  <resultMap id="BaseResultMap" type="club.banyuan.entity.Lot" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="lotId" property="lotid" jdbcType="INTEGER" />
+    <result column="lotName" property="lotname" jdbcType="VARCHAR" />
+    <result column="beginPrice" property="beginprice" jdbcType="DOUBLE" />
+    <result column="floorPrice" property="floorprice" jdbcType="DOUBLE" />
+    <result column="beginTime" property="begintime" jdbcType="TIMESTAMP" />
+    <result column="endTime" property="endtime" jdbcType="TIMESTAMP" />
+    <result column="image" property="image" jdbcType="VARCHAR" />
+    <result column="descript" property="descript" jdbcType="VARCHAR" />
+  </resultMap>
+</mapper>

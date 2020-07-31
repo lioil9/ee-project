@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="club.banyuan.mapper.OfferMapper" >
+  <resultMap id="BaseResultMap" type="club.banyuan.entity.Offer" >
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="offerId" property="offerid" jdbcType="INTEGER" />
+    <result column="userid" property="userid" jdbcType="INTEGER" />
+    <result column="offerTime" property="offertime" jdbcType="TIMESTAMP" />
+    <result column="price" property="price" jdbcType="DOUBLE" />
+    <result column="lotid" property="lotid" jdbcType="INTEGER" />
+  </resultMap>
+</mapper>
