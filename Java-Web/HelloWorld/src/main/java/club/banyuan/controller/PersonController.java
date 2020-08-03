@@ -4,6 +4,8 @@ import club.banyuan.dto.Person;
 import club.banyuan.dto.Result;
 import club.banyuan.service.PersonService;
 import club.utils.ResultUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,11 +15,18 @@ import java.util.List;
 @RequestMapping("/person")
 public class PersonController {
 
+    private static final Logger log = LoggerFactory.getLogger(PersonController.class);
+
     @Autowired
     private PersonService personService;
 
     @GetMapping("/total")
     public Result<?> total(){
+        log.debug("this is a debug message");
+        log.info("this is a info message");
+        log.warn("this is a warn message");
+        log.error("this is a error message");
+
         String data = "Person 记录表数为：" + personService.total();
         return ResultUtil.success(data);
     }
