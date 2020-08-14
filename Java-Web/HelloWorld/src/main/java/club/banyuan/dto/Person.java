@@ -1,7 +1,10 @@
 package club.banyuan.dto;
 
+import javax.validation.constraints.NotBlank;
+
 public class Person {
     private Integer id;
+    @NotBlank(message = "姓名不能为空")
     private String name;
     private Integer age;
 

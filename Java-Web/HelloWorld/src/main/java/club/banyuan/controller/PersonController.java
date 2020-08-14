@@ -3,12 +3,13 @@ package club.banyuan.controller;
 import club.banyuan.dto.Person;
 import club.banyuan.dto.Result;
 import club.banyuan.service.PersonService;
-import club.utils.ResultUtil;
+import club.banyuan.utils.ResultUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -43,8 +44,9 @@ public class PersonController {
         return ResultUtil.success(data);
     }
 
+// @Valid 在相关的实体类的相关字段添加用于充当验证条件的注解
     @PostMapping("/add")
-    public Result<?> addPerson(@RequestBody Person person){
+    public Result<?> addPerson(@RequestBody @Valid Person person){
         personService.insert(person);
         return ResultUtil.success();
     }

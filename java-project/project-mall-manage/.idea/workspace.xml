@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="72b83ae4-8abf-4a61-a5d9-acf7bff20639" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/../../Java-Web/HelloWorld/src/main/java/club/banyuan/config/RedisConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Java-Web/HelloWorld/src/main/java/club/banyuan/handler/GlobalExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../../Java-Web/HelloWorld/src/main/java/club/banyuan/utils/RedisUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/config/AuthAccessDeniedHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/config/AuthFailureHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/config/AuthSuccessHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/config/MyPasswordEncoder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/config/RedisConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/config/WebSecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/controller/AdminController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/controller/ArticleController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/controller/CategoryController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/controller/MainController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/controller/UserController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/controller/UserManagerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/dto/ArticleDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/dto/CategoryDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/dto/LoginUserDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/dto/Result.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/dto/RoleDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/dto/TagDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/dto/UserBaseDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/dto/UserDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/entity/ArticleEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/entity/CategoryEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/entity/RoleEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/entity/TagEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/entity/UserEntity.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/mapper/ArticleMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/mapper/CategoryMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/mapper/RoleMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/mapper/TagMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/mapper/UserMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/service/ArticleService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/service/CategoryService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/service/impl/ArticleServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/service/impl/CategoryServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/service/impl/LoginService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/task/DataStatisticsTask.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/utils/RedisUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/java/club/banyuan/blog/utils/UserUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/resources/mapper/ArticleMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/resources/mapper/CategoryMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/resources/mapper/RoleMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/resources/mapper/TagMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/resources/static/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/resources/static/static/css/app.bc863c01bd283b4b819e7aecef3aac7f.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/resources/static/static/css/app.bc863c01bd283b4b819e7aecef3aac7f.css.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/resources/static/static/fonts/element-icons.6f0a763.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/resources/static/static/fonts/fontawesome-webfont.674f50d.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/resources/static/static/fonts/fontawesome-webfont.af7ae50.woff2" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/resources/static/static/fonts/fontawesome-webfont.b06871f.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/resources/static/static/fonts/fontawesome-webfont.fee66e7.woff" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/resources/static/static/fonts/fontello.068ca2b.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/resources/static/static/fonts/fontello.e73a064.eot" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/resources/static/static/img/fontawesome-webfont.912ec66.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/resources/static/static/img/fontello.9354499.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/resources/static/static/js/app.68f5c35407ca9cd40d8b.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/resources/static/static/js/app.68f5c35407ca9cd40d8b.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/resources/static/static/js/manifest.fc113b1d276302e2cab1.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/resources/static/static/js/manifest.fc113b1d276302e2cab1.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/resources/static/static/js/vendor.dd31c3932b33cfeec940.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/main/resources/static/static/js/vendor.dd31c3932b33cfeec940.js.map" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BlogManageSys/blog/src/test/java/club/banyuan/blog/service/impl/CategoryServiceImplTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MyBlogSys/myblog/src/main/java/club/banyuan/myblog/config/AuthFailureHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MyBlogSys/myblog/src/main/java/club/banyuan/myblog/config/AuthSuccessHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MyBlogSys/myblog/src/main/java/club/banyuan/myblog/config/MyPasswordEncoder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MyBlogSys/myblog/src/main/java/club/banyuan/myblog/config/WebMvcConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MyBlogSys/myblog/src/main/java/club/banyuan/myblog/config/WebSecurityConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MyBlogSys/myblog/src/main/java/club/banyuan/myblog/dto/LoginUserDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MyBlogSys/myblog/src/main/java/club/banyuan/myblog/dto/Result.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MyBlogSys/myblog/src/main/java/club/banyuan/myblog/filter/MyAuthenticationFilter.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MyBlogSys/myblog/src/main/java/club/banyuan/myblog/service/impl/LoginService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MyBlogSys/myblog/src/main/java/club/banyuan/myblog/utils/CodeGeneratorUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MyBlogSys/myblog/src/main/java/club/banyuan/myblog/utils/ResultUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../MyBlogSys/myblog/src/main/java/club/banyuan/myblog/utils/UserUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Java-Web/AuctionSystem-synthesize/src/main/java/club/banyuan/config/SpringSecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Java-Web/AuctionSystem-synthesize/src/main/java/club/banyuan/config/SpringSecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Java-Web/HelloWorld/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Java-Web/HelloWorld/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Java-Web/HelloWorld/src/main/java/club/banyuan/controller/PersonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Java-Web/HelloWorld/src/main/java/club/banyuan/controller/PersonController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Java-Web/HelloWorld/src/main/java/club/banyuan/dto/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Java-Web/HelloWorld/src/main/java/club/banyuan/dto/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Java-Web/HelloWorld/src/main/java/club/banyuan/service/impl/PersonServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Java-Web/HelloWorld/src/main/java/club/banyuan/service/impl/PersonServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Java-Web/HelloWorld/src/main/java/club/banyuan/service/impl/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Java-Web/HelloWorld/src/main/java/club/banyuan/service/impl/UserServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Java-Web/HelloWorld/src/main/java/club/utils/DateUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Java-Web/HelloWorld/src/main/java/club/banyuan/utils/DateUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Java-Web/HelloWorld/src/main/java/club/utils/ResultUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../../Java-Web/HelloWorld/src/main/java/club/banyuan/utils/ResultUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../../Java-Web/HelloWorld/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../../Java-Web/HelloWorld/src/main/resources/application.yml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
+  </component>
+  <component name="ProjectId" id="1ftulhE5xHhBGLiUvGVcXJ4oSFr" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="autoscrollFromSource" value="true" />
+    <option name="autoscrollToSource" value="true" />
+    <option name="showExcludedFiles" value="false" />
+    <option name="showLibraryContents" value="true" />
+    <option name="showMembers" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+  </component>
+  <component name="RunManager">
+    <configuration name="ProjectMallManageApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+      <module name="project-mall-manage" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="club.banyuan.mall.ProjectMallManageApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="72b83ae4-8abf-4a61-a5d9-acf7bff20639" name="Default Changelist" comment="" />
+      <created>1597049862343</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1597049862343</updated>
+      <workItem from="1597049865308" duration="90000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="2" />
+  </component>
+</project>

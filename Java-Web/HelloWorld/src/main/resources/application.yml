@@ -12,6 +12,18 @@ spring:
     username: root
     password: lioilroot
     driver-class-name: com.mysql.cj.jdbc.Driver
+  # redis设置
+  redis:
+    database: 0  # 数据库索引，默认为0
+    host: 127.0.0.1
+    port: 6379
+    timeout: 30000
+    lettuce:
+      pool:
+        max-idle: 2  # 连接池最大空闲连接数量 默认为8
+        min-idle: 2  # 默认为0
+        max-active: 2  # 连接池最大连接数量 默认为8，使用负数表示没有限制
+        max-wait: -1  # 连接池最大阻塞等待时间，负值表没有限制 默认-1
 mybatis:
   mapper-locations: classpath:club/banyuan/mapper/*.xml
   type-aliases-package: club.banyuan.entity

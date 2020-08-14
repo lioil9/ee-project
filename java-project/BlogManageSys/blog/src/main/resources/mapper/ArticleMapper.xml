@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="club.banyuan.blog.mapper.ArticleMapper">
+    <insert id="addNewArticle"
+            parameterType="club.banyuan.blog.entity.ArticleEntity"
+            useGeneratedKeys="true" keyProperty="id">
+		insert into article
+		set title = #{title}, mdContent = #{mdContent}, htmlContent = #{htmlContent},
+			summary = #{summary}, cid = #{cid}, uid = #{uid}, state=#{state},
+			publishDate = #{publishDate}, editTime=#{editTime}
+	</insert>
+
+    <update id="updateArticle" parameterType="club.banyuan.blog.entity.ArticleEntity">
+        update article
+        set title = #{title}, mdContent = #{mdContent}, htmlContent = #{htmlContent},
+        summary = #{summary}, cid = #{cid}, editTime = #{editTime}
+        <if test="state == 1">
+            ,state = 1
+        </if>
+        <if test="publishDate != null">
+            ,publishDate = #{publishDate}
+        </if>
+        where id = #{id}
+    </update>
+
+    <select id="getArticleByState" resultType="club.banyuan.blog.entity.ArticleEntity">
+        select a.id, a.title, a.editTime, a.pageView, a.state, a.uid, u.nickname, c.cateName
+        from article a, user u, category c
+        where a.cid = c.id and a.uid = u.id
+        <if test="state != -2">
+            and a.uid = #{uid}
+        </if>
+        <if test="state != -1 and state != -2">
+            and a.state = #{state}
+        </if>
+        <if test="state == -2">
+            and a.state = 1
+        </if>
+        <if test="keywords != null">
+            and a.title like concat('%', #{keywords}, '%')
+        </if>
+        order by a.editTime desc limit #{start}, #{count}
+    </select>
+    <select id="getArticleCountByState" resultType="int">
+        select count(*) from article
+        <where>
+            <if test="state != -1">
+                and state = #{state}
+            </if>
+            <if test="uid != null">
+                and uid = #{uid}
+            </if>
+            <if test="keywords != null">
+                and title like concat('%', #{keywords}, '%')
+            </if>
+        </where>
+    </select>
+
+
+    <delete id="deleteArticleById">
+        delete from article where id in
+        <foreach collection="aids" item="aid" open="(" close=")" separator=",">
+            #{aid}
+        </foreach>
+    </delete>
+    <update id="updateArticleState">
+        update article set state = #{state} where id in
+        <foreach collection="aids" item="aid" open="(" close=")" separator=",">
+            #{aid}
+        </foreach>
+    </update>
+
+
+    <resultMap id="BaseResultMap" type="club.banyuan.blog.entity.ArticleEntity">
+        <id column="id" property="id"/>
+        <result column="title" property="title"/>
+        <result column="cid" property="cid"/>
+        <result column="uid" property="uid"/>
+        <result column="publishDate" property="publishDate"/>
+        <result column="editTime" property="editTime"/>
+        <result column="state" property="state"/>
+        <result column="pageView" property="pageView"/>
+        <result column="mdContent" property="mdContent"/>
+        <result column="htmlContent" property="htmlContent"/>
+        <result column="summary" property="summary"/>
+        <result column="nickname" property="nickname"/>
+        <result column="cateName" property="cateName"/>
+        <collection property="tags" ofType="club.banyuan.blog.entity.TagEntity" column="tagName">
+            <id property="id" column="tid"/>
+            <result property="tagName" column="tagName"/>
+        </collection>
+    </resultMap>
+
+    <select id="getArticleById" parameterType="Long" resultMap="BaseResultMap">
+		select a.id, a.title, a.cid, a.uid, a.publishDate, a.editTime, a.state,
+			   a.pageView, a.mdContent, a.htmlContent, a.summary,
+			   u.nickname, c.cateName, t.id as tid, t.tagName
+		from article a
+			left join article_tags ats on a.id = ats.aid
+			left join tags t on ats.tid = t.id
+			left join user u on a.uid = u.id
+			left join category c on a.cid = c.id
+		where a.id = #{aid}
+	</select>
+
+    <update id="pvIncrement" parameterType="Long">
+		update article set pageView = pageView + 1 where id = #{aid}
+	</update>
+
+    <insert id="pvStatisticsPerDay">
+	insert into pv(countDate,pv,uid)
+	select CURRENT_DATE(), totalPv - IFNULL(pv,0) as pv, t.uid
+	from totalpvview t left join pvview p on t.uid = p.uid
+	on duplicate key update
+	pv.pv = pv.pv + values(pv)
+</insert>
+
+    <select id="getCategories" parameterType="Long" resultType="String">
+	select countDate from pv where uid = #{uid} order by countDate limit 7
+</select>
+
+    <select id="getDataStatistics" parameterType="Long" resultType="int">
+	select pv from pv where uid = #{uid} order by countDate limit 7
+</select>
+
+</mapper>
