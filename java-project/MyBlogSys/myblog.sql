@@ -1,7 +1,7 @@
 create database my_blog;
 use my_blog;
 
-create table `user`(
+create table `user`( 
 	id bigint(20) NOT NULL AUTO_INCREMENT comment '用户id',
     username varchar(64) comment '用户名，登录名',
     password varchar(64) comment '用户密码',

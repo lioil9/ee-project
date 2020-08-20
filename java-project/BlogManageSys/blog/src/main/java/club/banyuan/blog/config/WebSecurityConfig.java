@@ -62,7 +62,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                         String result = "";
                         if (e instanceof InsufficientAuthenticationException) {
 //                            result =  new Result("error","请求失败，请联系管理员!");
-                            result = "{\"status\":\"error\",\"msg\":\"登录失败\"}";
+                            result = "{\"status\":\"error\",\"msg\":\"登录失败222\"}";
                         }
                         out.write(result);
                         out.flush();
